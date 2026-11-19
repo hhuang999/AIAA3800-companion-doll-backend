@@ -23,7 +23,7 @@
 
 既有研究升级已于 2026-11-04 集成 main，Pages 从 main:/docs 发布。[既有发布工作流](https://github.com/hhuang999/companion-doll-backend/actions/runs/41696251499)与线上检查记录见 VALIDATION。
 
-[研究报告](https://hhuang999.github.io/companion-doll-backend/)、[交互展示](https://hhuang999.github.io/companion-doll-backend/showcase.html)与[当前架构图](https://hhuang999.github.io/companion-doll-backend/architecture-course/overview.html)保留既有入口。本轮远端同步状态见工程 review。
+[研究报告](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)、[交互展示](https://hhuang999.github.io/AIAA3800-companion-doll-backend/showcase.html)与[当前架构图](https://hhuang999.github.io/AIAA3800-companion-doll-backend/architecture-course/overview.html)保留既有入口。本轮远端同步状态见工程 review。
 
 ## 资料分工
 

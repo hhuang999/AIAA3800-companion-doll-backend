@@ -27,7 +27,7 @@ const contexts = {
   body_focus_distress: "身体关注引发不适",
   safe_contact: "已确认相对安全的联系人",
 };
-const sourceBase = "https://github.com/hhuang999/companion-doll-backend/blob/";
+const sourceBase = "https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/";
 const list = (items, ordered = false) => {
   const node = element(ordered ? "ol" : "ul");
   items.forEach((text) => node.append(element("li", text)));
@@ -269,7 +269,7 @@ async function loadCatalog() {
     });
     $("#revision").textContent = data.revision.slice(0, 12);
     $("#revision").href =
-      "https://github.com/hhuang999/companion-doll-backend/tree/" +
+      "https://github.com/hhuang999/AIAA3800-companion-doll-backend/tree/" +
       data.revision;
     $("#content-version").textContent = data.catalog_version;
     const sources = new Map(data.sources.map((source) => [source.id, source]));

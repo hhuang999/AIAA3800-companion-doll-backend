@@ -1,6 +1,6 @@
 # 情感陪伴玩偶后端：安装与运行
 
-本文保留原根 README 的工程使用说明。完整研究与系统设计现可直接在 [仓库首页](README.md) 或 [排版版网页](https://hhuang999.github.io/companion-doll-backend/) 阅读。
+本文保留原根 README 的工程使用说明。完整研究与系统设计现可直接在 [仓库首页](README.md) 或 [排版版网页](https://hhuang999.github.io/AIAA3800-companion-doll-backend/) 阅读。
 
 接手当前后端先读 [AGENTS.md](AGENTS.md) 和 [2026-11-09 工程 review](companion/docs/ENGINEERING_REVIEW.md)。升级任务已完成，当前进入维护阶段；详细的 [当前状态](companion/docs/autonomous-upgrade/IMPLEMENTATION_STATUS.md) 与既有研究、性能测量分开维护。
 
@@ -10,21 +10,21 @@
 
 ## 研究、策略与架构
 
-[在线阅读：项目研究与系统设计说明](https://hhuang999.github.io/companion-doll-backend/)
+[在线阅读：项目研究与系统设计说明](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)
 
 新版说明从研究依据展开到六类策略、Multi-agent 协作、长期记忆及验证局限，配有 13 张说明图，支持章节目录、手机阅读与浏览器打印。另附 [Markdown 正文](companion/docs/research-design/PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md) 和 [本地阅读版、图源与核对记录](companion/docs/research-design/README.md)。
 
-[![课程后端模块总图](docs/architecture-course/preview.png)](https://hhuang999.github.io/companion-doll-backend/)
+[![课程后端模块总图](docs/architecture-course/preview.png)](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)
 
-[打开项目展示与交互架构](https://hhuang999.github.io/companion-doll-backend/showcase.html) · [逐项验收状态](companion/docs/V2_IMPLEMENTATION_STATUS.md) · [运行与迁移手册](companion/docs/V2_OPERATIONS.md)
+[打开项目展示与交互架构](https://hhuang999.github.io/AIAA3800-companion-doll-backend/showcase.html) · [逐项验收状态](companion/docs/V2_IMPLEMENTATION_STATUS.md) · [运行与迁移手册](companion/docs/V2_OPERATIONS.md)
 
 辅助展示页以日光场景与原创陪伴形象呈现项目；可切换“只想说说 / 想试办法 / 反馈没帮助”三种合成情境，亲自选择同意或拒绝，并点选实时、协作、安全、记忆四条系统通路。还可筛选六类策略、展开研究依据，并切换P50/P90实测时间轴。演示在浏览器本地运行，不调用在线模型；玩偶图片为AI概念视觉，非已验证设备实拍。[网站设计与验证](docs/PAGES_VALIDATION.md)记录界面检查。
 
-[![陪伴场景概念，AI生成](docs/assets/companion-daylight-small.webp)](https://hhuang999.github.io/companion-doll-backend/)
+[![陪伴场景概念，AI生成](docs/assets/companion-daylight-small.webp)](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)
 
 图集包含五个可交互视图：研究与策略执行闭环、实时与安全通路、有限协作与版本发布、长期关系记忆、小智语音流水。点击节点可追溯到固定实现提交的 GitHub 源码；HTML 下载后也可以独立打开。
 
-[v1 历史图集](https://hhuang999.github.io/companion-doll-backend/index-v1.html) 保留供比较，固定于历史提交 `d24f38f`。默认代码基于 v2，项目站增加研究证据、策略筛选和反馈记忆的解释。
+[v1 历史图集](https://hhuang999.github.io/AIAA3800-companion-doll-backend/index-v1.html) 保留供比较，固定于历史提交 `d24f38f`。默认代码基于 v2，项目站增加研究证据、策略筛选和反馈记忆的解释。
 
 六类支持的来源、适用与排除条件见 [策略设计](companion/docs/autonomous-upgrade/STRATEGY_DESIGN.md)；完整核查见 [16项研究证据](companion/docs/autonomous-upgrade/research/EVIDENCE_REVIEW.md)。短语音步骤是原创改编，不继承完整人工干预的效果。
 

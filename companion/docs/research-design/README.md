@@ -2,7 +2,7 @@
 
 完整材料面向课程老师、研究者与项目成员，按问题、证据、设计转译、内容、协作、记忆、控制及验证连续展开。
 
-- [在线阅读新版说明（GitHub Pages 默认首页）](https://hhuang999.github.io/companion-doll-backend/)
+- [在线阅读新版说明（GitHub Pages 默认首页）](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)
 - [仓库首页全文（Markdown）](../../../README.md)
 - [阅读完整正文（Markdown）](PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md)
 - [打开排版阅读版（HTML）](index.html)：下载本目录后双击打开；支持目录、窄屏与浏览器打印，点击配图可查看原图。图片采用相对路径，分享时保留整个目录。

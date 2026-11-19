@@ -1,5 +1,7 @@
 # 项目站点维护
 
+当前站点为 <https://hhuang999.github.io/AIAA3800-companion-doll-backend/>，交互展示为 [showcase.html](https://hhuang999.github.io/AIAA3800-companion-doll-backend/showcase.html)。仓库改名后 GitHub Pages 不会把旧项目路径自动跳转到新路径；修改仓库名时，同步更新文档构建脚本中的 `REPOSITORY_URL` / `PAGES_URL`、展示页链接及 Git remote，再按下述流程重新生成并发布。
+
 GitHub Pages 从 `main:/docs` 发布，默认入口 [`index.html`](index.html) 顶部嵌入可操作的交互展示，提供单独打开链接；下方 `#research-report` 保留完整研究与系统设计说明、章节目录和全部 13 张配图。报告侧栏随正文滚动，不覆盖顶部展示；打印时仅输出报告。仓库根 README 同步呈现完整 Markdown 正文。
 
 原交互展示保留在 [`showcase.html`](showcase.html)。`assets/project.css`、`project.js` 和 `project-data.json` 提供合成对话分支演示、四通路信号图、策略筛选、协议展开、累计延迟图与来源目录。静态页面不访问运行后端或 API key。设计约定见 [DESIGN.md](DESIGN.md)，界面验证见 [PAGES_VALIDATION.md](PAGES_VALIDATION.md)。

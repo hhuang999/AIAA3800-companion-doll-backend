@@ -13,6 +13,8 @@ import markdown
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md"
 REPO = ROOT.parents[2]
+REPOSITORY_URL = "https://github.com/hhuang999/AIAA3800-companion-doll-backend"
+PAGES_URL = "https://hhuang999.github.io/AIAA3800-companion-doll-backend/"
 
 
 def publish_pages(html):
@@ -26,7 +28,7 @@ def publish_pages(html):
         if parsed.scheme or not parsed.path or parsed.path.startswith("assets/"):
             return match.group(0)
         path = (ROOT / unquote(parsed.path)).resolve().relative_to(REPO)
-        target = "https://github.com/hhuang999/companion-doll-backend/blob/main/"
+        target = REPOSITORY_URL + "/blob/main/"
         target += quote(path.as_posix())
         if parsed.fragment:
             target += "#" + parsed.fragment
@@ -76,7 +78,7 @@ def publish_readme(text):
         return f"{match.group(1)}({target})"
 
     text = re.sub(r"(!?\[[^\]]*\])\(([^)]+)\)", repository_link, text)
-    showcase = "https://hhuang999.github.io/companion-doll-backend/showcase.html"
+    showcase = PAGES_URL + "showcase.html"
     preview = (
         "[![Companion 交互展示页面预览，点击打开在线体验]"
         f"(docs/assets/showcase-preview.png)]({showcase})\n\n"
@@ -84,8 +86,8 @@ def publish_readme(text):
         " — 体验合成对话、切换支持情境，探索系统架构。\n\n"
     )
     navigation = (
-        "[排版版网页（完整正文与章节目录）](https://hhuang999.github.io/companion-doll-backend/)"
-        " · [交互架构图](https://hhuang999.github.io/companion-doll-backend/architecture-course/overview.html)"
+        f"[排版版网页（完整正文与章节目录）]({PAGES_URL})"
+        f" · [交互架构图]({PAGES_URL}architecture-course/overview.html)"
         " · [安装与运行](ENGINEERING.md)\n\n"
     )
     text = text.replace("## 摘要\n", preview + navigation + "## 摘要\n", 1)

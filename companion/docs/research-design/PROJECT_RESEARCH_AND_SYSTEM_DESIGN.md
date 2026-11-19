@@ -514,7 +514,7 @@ SituationAssessment保存情境描述，PlanCandidate保存候选，SupportPlan�
 | 最新结果与逐段质量 | [VALIDATION](../VALIDATION.md)、[QUALITY_REVIEW](../autonomous-upgrade/QUALITY_REVIEW.md)、[持续状态](../autonomous-upgrade/IMPLEMENTATION_STATUS.md) |
 | 安装、运行、迁移与演示 | [安装与运行](../../../ENGINEERING.md)、[运行手册](../V2_OPERATIONS.md)、[课程演示](../autonomous-upgrade/DEMO.md) |
 | 小智接口与真机交接 | [XIAOZHI_HANDOFF](../XIAOZHI_HANDOFF.md) |
-| 既有可交互源码图 | [图集入口](../../../docs/architecture-course/README.md)、[项目站](https://hhuang999.github.io/companion-doll-backend/) |
+| 既有可交互源码图 | [图集入口](../../../docs/architecture-course/README.md)、[项目站](https://hhuang999.github.io/AIAA3800-companion-doll-backend/) |
 | 本说明的论证、图源与复核 | [PLAN](PLAN.md)、[图源目录](sources)、[FACT_CHECK](FACT_CHECK.md)、[资产与重建说明](README.md) |
 
 文稿修订版1.1，2026-11-04。图01、06、12由Codex图像生成工具制作，其余为可编辑SVG；图源、提示词和重建说明随文保存。

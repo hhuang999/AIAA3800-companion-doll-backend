@@ -1,5 +1,16 @@
 # 项目站改版验证
 
+## 仓库改名后的失效入口修复（2026-11-19）
+
+仓库现名为 `hhuang999/AIAA3800-companion-doll-backend`。截图中的旧 Pages 路径返回404，新路径的首页、交互展示和资源均正常。GitHub 对仓库地址提供的重定向不包含项目站地址，见 [官方改名说明](https://docs.github.com/en/repositories/creating-and-managing-repositories/renaming-a-repository)。
+
+已更新 README、工程入口、当前及历史文档中的站点链接；文档生成脚本集中维护仓库和 Pages 基址，重新生成阅读版与首页，展示页和动态源码链接使用新仓库地址。历史性能数值、正文、架构图和后端行为保留。
+
+- 重新构建通过75个链接、13张图及SVG检查；Python Ruff/格式检查、JavaScript语法、`git diff --check` 通过。
+- 新路径的首页、展示、独立报告、当前架构图及5项页面资源共9项HTTP200；原旧地址确认HTTP404。
+- Ego 浏览器实际打开新展示页并加载目录；切换“我想试个办法”后拒绝，回应“好，先不安排办法。”。
+- 本地证据保存在 `artifacts/pages-404-20261119/`；本轮仅修改入口和链接，未重跑后端与语音测试。
+
 ## 首页先展示交互体验（2026-11-09）
 
 首页顶部嵌入 `showcase.html`，提供新窗口打开及跳至完整介绍的链接；原报告在 `#research-report` 下完整保留。首页模板进入 `build_document.py --pages` 流程，独立阅读版不变。两处展示页报告链接均跳到外层正文，避免重复嵌套；打印隐藏交互展示。
@@ -45,7 +56,7 @@ Impeccable首次context受缓存目录权限影响；后来将缓存放入本地
 
 改版提交 `44f1750` 已推送到 `codex/pages-experience` 并正常快进集成 `main`，沿用 `main:/docs`。[部署工作流41772253361](https://github.com/hhuang999/companion-doll-backend/actions/runs/41772253361) completed/success。
 
-已通过实际浏览器访问[线上项目站](https://hhuang999.github.io/companion-doll-backend/)：新标题、6项策略与16项来源显示正确；拒绝邀请后回应“好，先不安排办法。”；P90显示4.02秒。12项资源（含字体、机制图、五张架构图与历史入口）均HTTP200。截图及结构化记录位于 `artifacts/pages-redesign/online.png`、`online.json`。后续发布记录提交仅补充此文，不改变页面行为。
+已通过实际浏览器访问[线上项目站](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)：新标题、6项策略与16项来源显示正确；拒绝邀请后回应“好，先不安排办法。”；P90显示4.02秒。12项资源（含字体、机制图、五张架构图与历史入口）均HTTP200。截图及结构化记录位于 `artifacts/pages-redesign/online.png`、`online.json`。后续发布记录提交仅补充此文，不改变页面行为。
 
 ## 第二次改版：Daylight 场景与技术表达
 

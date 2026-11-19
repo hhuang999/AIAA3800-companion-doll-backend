@@ -67,4 +67,4 @@
 
 此处原内容依赖已由2026-11-04研究驱动任务解决：六类策略、三练习、固定危机课程内容已核查并建立逐项回执。development与demo准入分开，见CONTENT。ESP32真机测试交给硬件同学，服务端completed不冒充设备ACK。
 
-准确命令、升级/备份/恢复/清除说明见 [V2_OPERATIONS](V2_OPERATIONS.md)。[四张交互架构图](https://hhuang999.github.io/companion-doll-backend/) 反映最终源码；v2 开发阶段只作本地提交，后续按用户授权发布到 GitHub 和 Pages，图中源码链接固定于实现提交。原有无关未跟踪文稿、CODEX_UPGRADE_V2_PROMPT 和历史 .archify 证据保留。
+准确命令、升级/备份/恢复/清除说明见 [V2_OPERATIONS](V2_OPERATIONS.md)。[四张交互架构图](https://hhuang999.github.io/AIAA3800-companion-doll-backend/) 反映最终源码；v2 开发阶段只作本地提交，后续按用户授权发布到 GitHub 和 Pages，图中源码链接固定于实现提交。原有无关未跟踪文稿、CODEX_UPGRADE_V2_PROMPT 和历史 .archify 证据保留。

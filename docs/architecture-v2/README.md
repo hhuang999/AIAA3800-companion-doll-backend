@@ -1,6 +1,6 @@
 # v2 源码架构图
 
-[打开在线图集](https://hhuang999.github.io/companion-doll-backend/)（[本地入口](index.html)）。每张 HTML 可以独立打开，支持缩放、关系追踪、深浅主题和导出；Pages 首页与 index 作为在线/本地图集入口，preview 用于 README 预览。
+[打开在线图集](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)（[本地入口](index.html)）。每张 HTML 可以独立打开，支持缩放、关系追踪、深浅主题和导出；Pages 首页与 index 作为在线/本地图集入口，preview 用于 README 预览。
 
 源码依据固定于实现提交 `e3ef674820ee25c4873b4a9658a2a980060aa922`。使用 `link_mode: web`，节点来源可直接打开 GitHub 上该提交的源码行。GitHub Pages 从 `main` 分支的 `/docs` 目录发布；旧版入口保留为 `../index-v1.html`。图中边代表实际调用/控制责任，节点是 Python 模块职责而非微服务。
 

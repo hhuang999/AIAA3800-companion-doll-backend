@@ -146,7 +146,7 @@ blockquote { border-left: 2px solid var(--rule); margin: 24px 0; padding-left: 2
 <p>研究情境与实际验收对象有所区别。已有文献涉及青少年，但课程原型采用合成案例，成年成员可以扮演学生；项目尚无目标用户访谈、共创设计、正式成年用户研究或长期效果研究。心理诊断、完整心理治疗、生涯测评和未经核查的升学决策也不属于当前功能。系统提供现实支持的表达协助，由用户决定是否联系，不自动通知家长、老师或其他人。</p>
 <h2 id="2">2. 研究依据如何影响设计</h2>
 <h3 id="21">2.1 资料选择与研究范围</h3>
-<p>前期工作从《研究链 v3》出发，核对原始论文、作者公开稿、综述和官方手册，登记了16项来源的研究对象、方法、可借鉴内容及限制。它是一项面向设计问题的证据审阅：关注哪些机制适合转成短对话，以及转译时需要保留哪些条件。完整登记见<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/research/EVIDENCE_REVIEW.md">证据审阅表</a>。</p>
+<p>前期工作从《研究链 v3》出发，核对原始论文、作者公开稿、综述和官方手册，登记了16项来源的研究对象、方法、可借鉴内容及限制。它是一项面向设计问题的证据审阅：关注哪些机制适合转成短对话，以及转译时需要保留哪些条件。完整登记见<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/research/EVIDENCE_REVIEW.md">证据审阅表</a>。</p>
 <p>资料的证据强度和读取范围各不相同。情境研究主要用于理解支持需求，实验研究提供局部机制线索，人工干预提供活动组织方式，对话系统研究则提供策略与语言生成的接口参考。E03、E07和E12主要读取摘要，其余来源的具体范围列在文末。项目没有登记穷尽性检索与预注册筛选流程，因此这份审阅不作为一项新的系统综述。</p>
 <h3 id="22">2.2 混合压力要求保留情境差异</h3>
 <p>压力测量研究呈现了不同生活领域；浙江三波队列进一步报告了学业压力、后续情绪症状与睡眠、孤独之间的统计联系。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6669116/">E01</a> <a href="https://onlinelibrary.wiley.com/doi/10.1002/jad.12471">E02</a> 这些发现使项目采用多标签情境分析，并区分事件与当前困扰过程。一次输入可以同时涉及家庭期待和反复想，系统再据用户意愿选择一个讨论焦点。</p>
@@ -215,7 +215,7 @@ blockquote { border-left: 2px solid var(--rule); margin: 24px 0; padding-left: 2
 <p>睡前短暂停（<code>bedtime</code>）从舒适姿势和自然呼吸开始，提示担心可以暂不处理，然后结束对话。它要求明确睡前且可以安静休息，排除不安全和身体聚焦不适，现版时长29.9秒。E02、E12提供关联及机制背景。</p>
 <p>三段练习均受90秒总长限制。以上时长来自当前部署音频，重新生成声音后需重测；播放完成与主观帮助分别记录。</p>
 <p>六类策略的形成也包含合并与排除。具体加工和可控小步合入S16，朋友视角与温和自我对话合并，生涯叙事收缩为有限探索。安全表达与现实支持入口因前提不同而分开；社交小尝试纳入后者。完整CBT-I、IPT-A、专业暴露、自动诊断和积极宣言未进入内容目录。早期缺失的“A线策略全文”没有被补写成原文，新语义ID也没有冒充历史S03—S19。</p>
-<p>内容发布与每次运行中的评议分别进行。当前<code>course-1.0</code>登记来源、Codex自动内容核查、文件摘要和行为证据；demo进一步检查内容及提示词摘要、真实回放回执、音频与文本／声音绑定和时长。六卡、三练习与固定危机内容共十项，使用<code>course-release-1</code>回执，本地准备24段固定音频。这是课程内容与工程准入，尚无人工临床审核。修改与准备流程见<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/CONTENT.md">内容说明</a>。</p>
+<p>内容发布与每次运行中的评议分别进行。当前<code>course-1.0</code>登记来源、Codex自动内容核查、文件摘要和行为证据；demo进一步检查内容及提示词摘要、真实回放回执、音频与文本／声音绑定和时长。六卡、三练习与固定危机内容共十项，使用<code>course-release-1</code>回执，本地准备24段固定音频。这是课程内容与工程准入，尚无人工临床审核。修改与准备流程见<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/CONTENT.md">内容说明</a>。</p>
 <h2 id="4">4. 后台协作如何形成支持方向</h2>
 <h3 id="41">4.1 分析、规划与评审</h3>
 <p>一次支持选择可能在几个地方出错：误解用户处境，选择了不合适的内容，遗漏了拒绝或话题边界，或者在表达时增加了未经许可的建议。后台分工让这些判断分别留下结果，便于定位问题。它也使实时Talker能够先回应，而不等待完整分析。</p>
@@ -264,7 +264,7 @@ blockquote { border-left: 2px solid var(--rule); margin: 24px 0; padding-left: 2
 <h3 id="62">6.2 部分提交与结束恢复</h3>
 <p>计划过期时，一条独立、有来源且未被更正的记忆仍可能有效。统一发布机制允许只提交合法记忆，将任务记为partial，并记录拒绝其他产物的原因。当前真实Analysis已收窄记忆输出，主要记忆来自显式交互及Memory／End；分产物判断仍保留在发布协议和测试中。</p>
 <p>SQLite保存任务、角色运行、计划、当轮策略、交互事件、记忆和来源。正式v1→v2升级先做一致备份，再事务迁移，重复启动不重复导入。课程增量字段主要进入已有JSON契约，数据库版本仍为2；一个数据库由一个Core进程持有。</p>
-<p>结束整理使用持久化任务和固定<code>final_turn_id</code>。重启可以恢复未完成任务，明确失败保留状态并支持显式重试。它只整理原会话，不修改新会话的当前策略，也不能覆盖后来的记忆更正。迁移、回滚、结束恢复与清除竞态的检查列在<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/V2_IMPLEMENTATION_STATUS.md">V2验收矩阵</a>。</p>
+<p>结束整理使用持久化任务和固定<code>final_turn_id</code>。重启可以恢复未完成任务，明确失败保留状态并支持显式重试。它只整理原会话，不修改新会话的当前策略，也不能覆盖后来的记忆更正。迁移、回滚、结束恢复与清除竞态的检查列在<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/V2_IMPLEMENTATION_STATUS.md">V2验收矩阵</a>。</p>
 <h3 id="63">6.3 风险检测与输出接管</h3>
 <p>风险通路由本地L1词表和独立L2模型组成，不在认知任务队列中等待。Talker可以同时生成，第一段内容则经过有界输出闸门：默认从输入起最多等待600毫秒风险结果，而非每句额外停顿600毫秒。到期后仍允许输出时可以先放行，迟到high继续拥有接管权。</p>
 <figure><a href="assets/fig10-control.svg" title="点击查看原图"><img alt="图10 风险、许可和取消的控制关系" src="assets/fig10-control.svg" /></a><figcaption>图10．风险状态、用户许可和输出代次共同约束执行；角色评审通过后仍须满足这些条件。</figcaption></figure>
@@ -276,7 +276,7 @@ blockquote { border-left: 2px solid var(--rule); margin: 24px 0; padding-left: 2
 <p>现有优化包括直接输出正文、缩短第一句、压缩角色上下文、资源隔离和有界下一句预取。两个动态语音槽允许当前句与下一句的准备重叠，按原序消费，避免无限预生成。当前TTS仍等待完整文件，因此预取主要改善后续句间等待，不能消除第一句合成时间。</p>
 <p>新输入或abort更新generation，取消旧输出和预取。合成前后、编码与发送边界都核对有效性；旧HTTP即使继续运行，返回的音频也不能重新进入发送。预取完成本身不激活邀请。危机与练习片段提前准备，检查文本、声音、文件hash和总时长，接管时无需等待动态TTS。</p>
 <p>当前<code>started</code>与<code>completed</code>来自服务端执行或发送估计；契约预留的<code>device_ack</code>尚未接入逐段设备确认。服务端开始邀请后才激活提议，后续用户明确反馈再用于归因。本机探针已检查abort后无旧binary继续到达，但设备缓冲何时清空、扬声器何时停声仍待真机测量。</p>
-<p>小智保留六处核心hook，将连接、输入、输出、结束、abort和真实wake来源衔接到Core。课程升级另有独立访问凭据补丁，由服务器映射用户身份。公开项目站展示内容与架构，不直接连接携带密钥的后端；联调方式见<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/XIAOZHI_HANDOFF.md">小智交接说明</a>。</p>
+<p>小智保留六处核心hook，将连接、输入、输出、结束、abort和真实wake来源衔接到Core。课程升级另有独立访问凭据补丁，由服务器映射用户身份。公开项目站展示内容与架构，不直接连接携带密钥的后端；联调方式见<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/XIAOZHI_HANDOFF.md">小智交接说明</a>。</p>
 <h2 id="7">7. 三个合成交互过程</h2>
 <p>以下案例将前述机制放在同一次互动中说明。语句是合成示例，不是参与者或实测逐字转录；后台结果仍需按实际时间形成。</p>
 <figure><a href="assets/fig12-interaction.png" title="点击查看原图"><img alt="图12 用户选择如何改变互动" src="assets/fig12-interaction.png" /></a><figcaption>图12．自愿尝试、中止与跨会话更正。三个场景展示用户选择带来的控制变化。</figcaption></figure>
@@ -295,14 +295,14 @@ blockquote { border-left: 2px solid var(--rule); margin: 24px 0; padding-left: 2
 <p>这一组合示例对应姓名更正、范围、例外和跨会话读取等已有机制。其证据来自N07真实回放及独立范围／更正测试，没有把组合后的所有台词当作一段已执行记录。</p>
 <h2 id="8">8. 验证结果与尚待回答的问题</h2>
 <h3 id="81">8.1 工程检查与真实接口</h3>
-<p>现有结果来自2026-11-04课程升级验收。152项离线检查通过，另有三项在线检查未纳入该次离线运行；Ruff与格式检查同时完成。测试使用可控时钟、屏障和故障注入，检查许可、重复、取消、过期、部分提交、来源、迁移、重启与清除等业务结果。V2-01—V2-24的逐项证据可在<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/V2_IMPLEMENTATION_STATUS.md">验收矩阵</a>查阅。</p>
-<p>真实接口验收覆盖Aihubmix各角色、CLI、观察台、小智WebSocket／Opus／ASR，以及隔离环境中的wheel资源和v1迁移。它们确认默认执行链与安装资源能够运行。设备音质、扬声器首响和实际停声尚需硬件联调。此前96项检查和40次语音是历史批次，本文采用<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/VALIDATION.md">最新验证报告</a>及<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/VALIDATION_SUMMARY.json">合成汇总</a>中的结果。</p>
+<p>现有结果来自2026-11-04课程升级验收。152项离线检查通过，另有三项在线检查未纳入该次离线运行；Ruff与格式检查同时完成。测试使用可控时钟、屏障和故障注入，检查许可、重复、取消、过期、部分提交、来源、迁移、重启与清除等业务结果。V2-01—V2-24的逐项证据可在<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/V2_IMPLEMENTATION_STATUS.md">验收矩阵</a>查阅。</p>
+<p>真实接口验收覆盖Aihubmix各角色、CLI、观察台、小智WebSocket／Opus／ASR，以及隔离环境中的wheel资源和v1迁移。它们确认默认执行链与安装资源能够运行。设备音质、扬声器首响和实际停声尚需硬件联调。此前96项检查和40次语音是历史批次，本文采用<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/VALIDATION.md">最新验证报告</a>及<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/VALIDATION_SUMMARY.json">合成汇总</a>中的结果。</p>
 <h3 id="82">8.2 多轮回放发现的问题</h3>
 <p>固定场景集<code>course-quality-1</code>包含T01—T09九段目标覆盖，以及N01—N08八段完整目录自然选择。前一组限制候选目录，以确保启用内容获得执行机会；后一组观察系统在完整目录中的选择。回放器模拟服务端执行，不合成音频，因而练习逻辑与音频另行检查。</p>
 <p>两次完整回放各有73个输入。第一批执行了8/9目标，T04未执行；第二批达到9/9，但仍有语言问题及N08结束捕获的驱动错误。第二批共76个后台任务：61 completed、4 partial、8 rejected、2 timed_out、1 expired；205条角色记录中197 completed、6 schema_error、2 timed_out。rejected可能表示候选被有效拦截，需要结合原因判断。之后按问题进行了8+1+2+1段定点补测，原始失败均保留。</p>
 <p>若干问题出在语言理解与状态控制的交界。“不想要办法”曾被求助子串误匹配，后来调整为拒绝优先，N01补测转为倾听；转述“愿不愿意”曾被当作撤回，修正后T04保持当前行动。句后闭引号被单独发声的问题，则通过流式尾部排版字符处理修正，T03补测没有依靠等待下一token来延后首句。</p>
 <p>另一些问题涉及模型表达和来源。T03／T05中出现计划被写成已发生、无依据保证，修复补充了计划与事实的区分及针对已观察问题的护栏。Memory／End曾引用不存在的事件ID，来源校验现在进入同一有界修复预算，错误候选无法入库，T03后续补测结束任务完成。N04中，边界阻止邀请后Talker仍给出泛化建议，修复将该分支改为固定确认；final6实际命中该分支，但仍出现一次后台超时。</p>
-<p>当前仍观察到概括性肯定、重复询问感受、学校支持可用性表述偏确定，以及边界目标不清时保守阻止行动。目标内容全部获得执行机会，与每句表达质量合格是不同结果。逐段记录见<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/QUALITY_REVIEW.md">质量审读</a>；T01—T06分别承接六卡执行，T02还覆盖退出与负反馈，T04检查版本化反馈，N02观察自然选择，N03／N05涉及不安全与依赖表达，N07检查跨会话记忆。</p>
+<p>当前仍观察到概括性肯定、重复询问感受、学校支持可用性表述偏确定，以及边界目标不清时保守阻止行动。目标内容全部获得执行机会，与每句表达质量合格是不同结果。逐段记录见<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/QUALITY_REVIEW.md">质量审读</a>；T01—T06分别承接六卡执行，T02还覆盖退出与负反馈，T04检查版本化反馈，N02观察自然选择，N03／N05涉及不安全与依赖表达，N07检查跨会话记忆。</p>
 <h3 id="83">8.3 动态语音与后台耗时</h3>
 <p>最终批次<code>voice-final2</code>使用单客户端顺序输入，后台正常开启，没有同时运行质量回放。30次普通动态语音均成功，无回退、失败或超时；共生成31句，均未命中固定音频缓存。21/21后台角色和8/8认知任务完成，结束任务为done。</p>
 <figure><a href="assets/fig13-performance.svg" title="点击查看原图"><img alt="图13 当前性能与证据层级" src="assets/fig13-performance.svg" /></a><figcaption>图13．最终批次的P50／P90。语音样本n=30，后台任务n=8，真机首响未测。两面板横轴尺度不同。</figcaption></figure>
@@ -585,7 +585,7 @@ blockquote { border-left: 2px solid var(--rule); margin: 24px 0; padding-left: 2
 <p>本说明依据实现基线<code>c33b50b</code>、后端v2和内容包<code>course-1.0</code>。既有源码图固定于<code>38fb8cf</code>，随后<code>c33b50b</code>更新项目站分层展示。DECISIONS及状态文件保留决定沿革，本文采用最新有效决定与当前配置。</p>
 <h2 id="_5">参考文献与项目资料</h2>
 <h3 id="_6">文献</h3>
-<p>编号沿用策略内容包，便于回查。读取范围来自既有证据登记；本说明的文献抽核过程保留在<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/research-design/FACT_CHECK.md">事实核对记录</a>。</p>
+<p>编号沿用策略内容包，便于回查。读取范围来自既有证据登记；本说明的文献抽核过程保留在<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/research-design/FACT_CHECK.md">事实核对记录</a>。</p>
 <p><strong>[E01]</strong> Ye等，2019／在线2018，<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6669116/">Evaluation of the Factor Structure of the Adolescent Stress Questionnaire in Chinese Adolescents</a>，10.1177/0033294118792686。中国中学生420人，因子研究；全文相关章节。</p>
 <p><strong>[E02]</strong> Wang等，2025，<a href="https://onlinelibrary.wiley.com/doi/10.1002/jad.12471">Academic Burden and Emotional Problems Among Adolescents</a>，10.1002/jad.12471。浙江初高中生2965人，三波观察队列；全文相关章节。</p>
 <p><strong>[E03]</strong> Dickerson与Kemeny，2004，<a href="https://pubmed.ncbi.nlm.nih.gov/15122924/">Acute stressors and cortisol responses</a>，10.1037/0033-2909.130.3.355。208项急性压力实验元分析；摘要。</p>
@@ -613,36 +613,36 @@ blockquote { border-left: 2px solid var(--rule); margin: 24px 0; padding-left: 2
 <tbody>
 <tr>
 <td>研究选择、排除与原始核查</td>
-<td><a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/research/EVIDENCE_REVIEW.md">证据审阅</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/STRATEGY_DESIGN.md">策略设计</a></td>
+<td><a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/research/EVIDENCE_REVIEW.md">证据审阅</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/STRATEGY_DESIGN.md">策略设计</a></td>
 </tr>
 <tr>
 <td>逐卡原文、练习及角色提示词</td>
-<td><a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/companion/config">内容配置目录</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/companion/config/cards">六张卡</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/companion/config/prompts">角色提示词</a></td>
+<td><a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/companion/config">内容配置目录</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/companion/config/cards">六张卡</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/companion/config/prompts">角色提示词</a></td>
 </tr>
 <tr>
 <td>架构规格与决定沿革</td>
-<td><a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/ARCHITECTURE_V2.md">ARCHITECTURE_V2</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/DECISIONS.md">DECISIONS</a></td>
+<td><a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/ARCHITECTURE_V2.md">ARCHITECTURE_V2</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/DECISIONS.md">DECISIONS</a></td>
 </tr>
 <tr>
 <td>最新结果与逐段质量</td>
-<td><a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/VALIDATION.md">VALIDATION</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/QUALITY_REVIEW.md">QUALITY_REVIEW</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/IMPLEMENTATION_STATUS.md">持续状态</a></td>
+<td><a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/VALIDATION.md">VALIDATION</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/QUALITY_REVIEW.md">QUALITY_REVIEW</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/IMPLEMENTATION_STATUS.md">持续状态</a></td>
 </tr>
 <tr>
 <td>安装、运行、迁移与演示</td>
-<td><a href="https://github.com/hhuang999/companion-doll-backend/blob/main/ENGINEERING.md">安装与运行</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/V2_OPERATIONS.md">运行手册</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/DEMO.md">课程演示</a></td>
+<td><a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/ENGINEERING.md">安装与运行</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/V2_OPERATIONS.md">运行手册</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/autonomous-upgrade/DEMO.md">课程演示</a></td>
 </tr>
 <tr>
 <td>小智接口与真机交接</td>
-<td><a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/XIAOZHI_HANDOFF.md">XIAOZHI_HANDOFF</a></td>
+<td><a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/XIAOZHI_HANDOFF.md">XIAOZHI_HANDOFF</a></td>
 </tr>
 <tr>
 <td>既有可交互源码图</td>
-<td><a href="https://github.com/hhuang999/companion-doll-backend/blob/main/docs/architecture-course/README.md">图集入口</a>、<a href="https://hhuang999.github.io/companion-doll-backend/">项目站</a></td>
+<td><a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/docs/architecture-course/README.md">图集入口</a>、<a href="https://hhuang999.github.io/AIAA3800-companion-doll-backend/">项目站</a></td>
 </tr>
 <tr>
 <td>本说明的论证、图源与复核</td>
-<td><a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/research-design/PLAN.md">PLAN</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/research-design/sources">图源目录</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/research-design/FACT_CHECK.md">FACT_CHECK</a>、<a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/research-design/README.md">资产与重建说明</a></td>
+<td><a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/research-design/PLAN.md">PLAN</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/research-design/sources">图源目录</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/research-design/FACT_CHECK.md">FACT_CHECK</a>、<a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/research-design/README.md">资产与重建说明</a></td>
 </tr>
 </tbody>
 </table></div>
-<p>文稿修订版1.1，2026-11-04。图01、06、12由Codex图像生成工具制作，其余为可编辑SVG；图源、提示词和重建说明随文保存。</p></article><footer class="edition">文稿1.1 · 实现基线 c33b50b · <a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/research-design/PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md">Markdown正文</a> · <a href="https://github.com/hhuang999/companion-doll-backend/blob/main/companion/docs/research-design/README.md">图源与核对记录</a></footer></main></body></html>
+<p>文稿修订版1.1，2026-11-04。图01、06、12由Codex图像生成工具制作，其余为可编辑SVG；图源、提示词和重建说明随文保存。</p></article><footer class="edition">文稿1.1 · 实现基线 c33b50b · <a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/research-design/PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md">Markdown正文</a> · <a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend/blob/main/companion/docs/research-design/README.md">图源与核对记录</a></footer></main></body></html>

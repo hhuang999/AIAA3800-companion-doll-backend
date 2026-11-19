@@ -40,7 +40,7 @@
 - 核对时分支：`codex/backend-v2`。
 - 核对时 HEAD：`3cb20bc8b47ef15924ca1a3c6557951a5680cd0c`，标题为 Align overview diagram notes with public v2 deployment。
 - 仓库 remote：<https://github.com/hhuang999/companion-doll-backend.git>。
-- 已有 Pages：<https://hhuang999.github.io/companion-doll-backend/>。
+- 已有 Pages：<https://hhuang999.github.io/AIAA3800-companion-doll-backend/>。
 - 核对时已跟踪文件无未提交改动；已有大量历史 `.archify/` 未跟踪产物和两份历史文稿，保留。当前任务包是本次新增资料，不要将其他未跟踪文件全量加入提交。
 - 发布文档记录 Pages 使用 `main` 的 `/docs`；正式执行前核实实际远端配置。当前发布文件已是 v2，但 `docs/README.md` 仍残留旧 v1 图集维护说明，需要在站点升级时统一。
 
