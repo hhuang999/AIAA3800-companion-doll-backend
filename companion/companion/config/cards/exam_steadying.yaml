@@ -1,0 +1,74 @@
+id: exam_steadying
+name: 考前紧绷稳住身体信号
+status: enabled
+requires_permission: true
+targets:
+  pressure_types:
+  - academic
+  - social_evaluative
+  pathways:
+  - sleep
+constraints:
+  excluded_emotion_intensities:
+  - high
+  excluded_readiness:
+  - low
+reasoner:
+  when_any: &id001
+  - 临近模考、月考、中高考或进考场前出现急性紧绷与心慌空白
+  - 用户想稳住状态、不是只想安静或拒绝任何方法
+  not_when:
+  - 严重惊恐到无法正常对话时，先由 L1 安抚或引导外部感官着陆
+  - 只是探讨选科或长期迷茫时，不与生涯探索混淆
+  success: 用户能把心跳发紧理解为身体调动能量，并挑出一个进考场/看卷前的稳妥起手动作
+  exit: 用户说不舒服、不想试、只想说说或出现风险信号时立即停止
+talker:
+  steps:
+  - 用协同心态解释当下的心慌或手心出汗：不是要垮掉，是身体在帮你集中注意力调动资源。
+  - 只缩小到一个开场动作（如发卷前深呼一口气，或先看会做的前两道小题），不喊加油口号。
+  - 让用户自己决定要不要记下这个起手节奏，不附加额外复习任务。
+  examples:
+  - 明早进考场前心跳快，其实只是身体在帮你提神，不代表你没准备好。
+  - 拿到卷子头一分钟，先圈两道最有把握的小题，把节奏拉回到自己手里就好。
+  never_say:
+  - 你肯定能考好
+  - 放轻松别紧张
+  - 这点考试算什么
+limits:
+  per_session: 1
+emo: 😌
+source:
+  document: 课程内容包 course-2.0（初高中升学陪伴）
+  verification: codex_source_checked
+  evidence: companion/docs/autonomous-upgrade/research/研究链-v3.md
+protocol:
+  version: course-2.0
+  adaptation: 中文初高中备考短步骤改编；依据 Yeager 等（2022）协同心态压力重评与急性评价威胁研究。
+  burden: 一次两到三步收住，不增加考前额外记背负担。
+  permission: 先询问用户是否愿意一起稳一稳考前节奏，获得明确同意再展开。
+  invitation: 考前心里发紧挺折磨人的，想不想花半分钟把身体信号和待会儿第一步先稳住？
+  stop: 用户觉得不适用、想休息或情绪剧烈升高时立刻停步。
+  followup: 仅在用户主动提到考后聊一聊且同意时才记作可选跟进。
+  feedback_limits: 仅记录用户对本步骤的主观感受反馈，不推断考试成绩或长期焦虑水平变化。
+  mechanism: 用“压力即资源调动”的协同心态重评考前躯体反应，再定一个最小开考起手动作。
+  evidence_ids:
+  - E17
+  - E03
+  minimum_information:
+  - 即将面对的测验或令他心慌的考场时刻
+  prerequisites: *id001
+  excluded_contexts:
+  - unsafe_relationship
+  keywords:
+  - 考前
+  - 模考
+  - 明早考试
+  - 进考场
+  - 心慌
+  - 发抖
+  - 手心出汗
+  - 脑子空白
+  - 倒计时
+  counterexample: 当考生已经躺在床上准备睡且只想卸下念头时，改用睡前存放（worry_parking），不讲考场步骤。
+  required_contexts: []
+  legacy_ids: []

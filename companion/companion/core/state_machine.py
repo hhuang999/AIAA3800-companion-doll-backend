@@ -27,7 +27,10 @@ class StateMachine:
         }
 
     def matches(self, name: str, text: str) -> bool:
-        return any(pattern.search(text.strip()) for pattern in self.rules[name])
+        stripped = text.strip()
+        if name == "agree" and any(p.search(stripped) for p in self.rules["refuse"]):
+            return False
+        return any(pattern.search(stripped) for pattern in self.rules[name])
 
     @staticmethod
     def can_reasoner_transition(current: Stage, target: Stage) -> bool:
@@ -63,23 +66,26 @@ class StateMachine:
         if snapshot.assessment.seeker_state.emotion_intensity == "high":
             return []
         result = []
-        for identifier in snapshot.allowed_cards:
+        for raw_id in snapshot.allowed_cards:
+            identifier = self.config.resolve_card_id(raw_id)
             card = self.config.cards.get(identifier)
             if (
                 card
                 and card.status != "draft"
                 and (
                     card.status != "enabled"
-                    or self.config.content_reviewed(f"cards/{identifier}.yaml")
+                    or self.config.content_reviewed(f"cards/{card.id}.yaml")
                 )
-                and identifier not in state.cards_refused
-                and state.cards_used.get(identifier, 0) < card.limits["per_session"]
+                and card.id not in state.cards_refused
+                and raw_id not in state.cards_refused
+                and state.cards_used.get(card.id, 0) < card.limits["per_session"]
                 and snapshot.assessment.seeker_state.emotion_intensity
                 not in card.constraints.get("excluded_emotion_intensities", [])
                 and snapshot.assessment.seeker_state.readiness
                 not in card.constraints.get("excluded_readiness", [])
+                and card.id not in result
             ):
-                result.append(identifier)
+                result.append(card.id)
         return result
 
     def apply_rules(
@@ -105,6 +111,8 @@ class StateMachine:
             triggers.append("refusal")
         if self.matches("quiet", text):
             state.pending_offer = None
+            state.resume_script_id = None
+            state.resume_index = 0
             self.move(state, Stage.quiet)
             return RuleResult(
                 fired_rules=("R4",), trigger_reasons=tuple(triggers), directive="quiet"
@@ -112,8 +120,14 @@ class StateMachine:
         if self.matches("change_topic", text):
             state.topic_revision += 1
             state.pending_offer = None
+            state.resume_script_id = None
+            state.resume_index = 0
             self.move(state, Stage.explore)
             return RuleResult(fired_rules=("topic_changed",), trigger_reasons=("topic_changed",))
+        if refusal and state.resume_script_id:
+            state.exercises_refused.add(state.resume_script_id)
+            state.resume_script_id = None
+            state.resume_index = 0
         if state.stage == Stage.action and (crying or refusal or correction):
             if refusal and state.card_in_use:
                 state.cards_refused.add(state.card_in_use)
@@ -182,9 +196,8 @@ class StateMachine:
                     return RuleResult(directive="exercise_offer")
                 cards = self.eligible(state, snapshot)
                 if cards:
-                    selected = (
-                        snapshot.preferred_card if snapshot.preferred_card in cards else cards[0]
-                    )
+                    preferred = self.config.resolve_card_id(snapshot.preferred_card)
+                    selected = preferred if preferred in cards else cards[0]
                     self.move(state, Stage.action)
                     state.card_in_use = selected
                     state.action_id = uuid.uuid4().hex
@@ -194,7 +207,7 @@ class StateMachine:
                     trigger_reasons=tuple(triggers + ["missing_card"]), directive="waiting_card"
                 )
             return RuleResult(trigger_reasons=tuple(triggers), directive="clarify_offer")
-        card = self.config.cards.get(state.card_in_use)
+        card = self.config.cards.get(self.config.resolve_card_id(state.card_in_use))
         action_limit = (
             min(settings.max_action_turns, len(card.talker.steps))
             if card
@@ -206,13 +219,32 @@ class StateMachine:
         if state.stage == Stage.closing and state.closing_turns >= 2:
             self.move(state, Stage.quiet)
             return RuleResult(fired_rules=("closing_limit",), directive="quiet")
+        exercise_ask = bool(re.search(r"(?:想|要|可以).*(?:做|试).{0,8}练习", text))
         if (
-            (self.matches("ask", text) or re.search(r"(?:想|要|可以).*(?:做|试).{0,8}练习", text))
+            (self.matches("ask", text) or exercise_ask)
             and not refusal
             and state.stage in (Stage.explore, Stage.comfort, Stage.quiet, Stage.opening)
         ):
+            exercise_id = snapshot.preferred_exercise
+            if (
+                exercise_ask
+                and snapshot.offer_exercise
+                and exercise_id in allowed_exercise_ids
+                and exercise_id in self.config.exercises
+                and exercise_id not in state.exercises_refused
+            ):
+                self.move(state, Stage.permission)
+                self.offer(state, "exercise", exercise_id)
+                return RuleResult(
+                    fired_rules=("R1",),
+                    trigger_reasons=tuple(triggers + ["ask_for_help"]),
+                    directive="exercise_offer",
+                )
+            cards = self.eligible(state, snapshot)
+            preferred = self.config.resolve_card_id(snapshot.preferred_card)
+            selected = preferred if preferred in cards else cards[0] if cards else None
             self.move(state, Stage.permission)
-            self.offer(state, "action")
+            self.offer(state, "action", selected)
             return RuleResult(
                 fired_rules=("R1",),
                 trigger_reasons=tuple(triggers + ["ask_for_help"]),
@@ -253,8 +285,25 @@ class StateMachine:
                         snapshot.assessment.seeker_state.emotion_intensity != "high"
                         and state.permission_asked_topic != state.topic_revision
                     ):
+                        exercise_id = snapshot.preferred_exercise
+                        if (
+                            snapshot.offer_exercise
+                            and exercise_id in allowed_exercise_ids
+                            and exercise_id in self.config.exercises
+                            and exercise_id not in state.exercises_refused
+                        ):
+                            self.move(state, Stage.permission)
+                            self.offer(state, "exercise", exercise_id)
+                            return RuleResult(
+                                fired_rules=("Q2",),
+                                trigger_reasons=tuple(triggers),
+                                directive="exercise_offer",
+                            )
+                        cards = self.eligible(state, snapshot)
+                        preferred = self.config.resolve_card_id(snapshot.preferred_card)
+                        selected = preferred if preferred in cards else cards[0] if cards else None
                         self.move(state, Stage.permission)
-                        self.offer(state, "action")
+                        self.offer(state, "action", selected)
                         return RuleResult(
                             fired_rules=("Q2",),
                             trigger_reasons=tuple(triggers),

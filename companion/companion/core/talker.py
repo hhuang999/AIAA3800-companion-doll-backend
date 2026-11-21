@@ -1,4 +1,4 @@
-"""Stream plain speech immediately; parse legacy tags without trusting them."""
+"""Stream plain speech immediately with early first-clause dispatch and safe rail recovery."""
 
 import re
 import threading
@@ -8,13 +8,23 @@ from collections.abc import Iterator
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 from companion.cognition.models import Usage
-from companion.cognition.policy import prompt_projection
+from companion.cognition.policy import boundary_blocks_probe, prompt_projection
 from companion.llm.client import LLMClient
 from companion.memory.service import estimate_tokens
 
 from .config import Config
+from .helpers import resolve_emoji
 from .models import TurnContext
 from .output_rail import OutputRail
+
+SEVERE_RAILS = {"rail_medical", "rail_appearance", "rail_intimate", "rail_guarantee"}
+DANGLING_PREFIX = re.compile(
+    r"^(?:这|那|它|他|她|所以|而且|但是|不过|然后|因为|或者|这样|那样|因此|再|也|还)"
+)
+
+
+def _content_chars(text: str) -> int:
+    return sum(1 for ch in text if "\u4e00" <= ch <= "\u9fff" or ch.isalnum())
 
 
 class Talker:
@@ -48,6 +58,34 @@ class Talker:
             return self.config.rules["emojis"]["default"]
         return emoji
 
+    @staticmethod
+    def _next_boundary(buffer: str, *, allow_clause: bool) -> tuple[int | None, bool]:
+        strong = set("。！？!?…；\n")
+        clauses = set("，,：:")
+        closing = set('”’」』"')
+        in_quote = False
+        chars = 0
+        for i, char in enumerate(buffer):
+            if char == '"':
+                in_quote = not in_quote
+            elif char in ("“", "「", "『"):
+                in_quote = True
+            elif char in ("”", "」", "』"):
+                in_quote = False
+            if "\u4e00" <= char <= "\u9fff" or char.isalnum():
+                chars += 1
+            if char in strong and chars >= 2:
+                end = i + 1
+                while end < len(buffer) and buffer[end] in closing:
+                    end += 1
+                if not in_quote:
+                    return end, False
+                if end > i + 1 or char == "\n" or chars >= 45:
+                    return end, False
+            if allow_clause and not in_quote and char in clauses and chars >= 8:
+                return i + 1, True
+        return None, False
+
     def run(
         self,
         context: TurnContext,
@@ -60,7 +98,12 @@ class Talker:
     ) -> Iterator[tuple[str, str]]:
         config = self.config
         sentence_limit = sentence_limit or config.settings.dialogue.max_sentences
-        card = config.cards.get(context.card_id)
+        card_id = (
+            config.resolve_card_id(context.card_id)
+            if hasattr(config, "resolve_card_id")
+            else context.card_id
+        )
+        card = config.cards.get(card_id)
         previous_reply = next(
             (row["text"] for row in reversed(history) if row["role"] == "assistant"), ""
         )
@@ -72,8 +115,14 @@ class Talker:
         if any(
             a.kind == "no_topic_probe" and a.target in (None, "current_topic")
             for a in context.policy_frame.avoid
+        ) or any(
+            boundary_blocks_probe(b, None, context.text)
+            for b in context.policy_frame.active_boundaries
         ):
             question_budget = 0
+        policy_json = prompt_projection(
+            context.policy_frame, config.settings.cognition.context_tokens
+        )
         prompt = self.env.get_template("talker.j2").render(
             persona=config.persona,
             rules=config.rules,
@@ -82,21 +131,13 @@ class Talker:
             card=card,
             step=step,
             action_step=card.talker.steps[min(step, len(card.talker.steps)) - 1] if card else None,
-            memory=prompt_projection(
-                context.policy_frame, config.settings.cognition.context_tokens
-            ),
             signals=context.signals.model_dump_json(),
             question_budget=question_budget,
         )
-        messages = [{"role": "system", "content": prompt}]
-        messages.append(
-            {
-                "role": "user",
-                "content": "<policy_data>"
-                + prompt_projection(context.policy_frame, config.settings.cognition.context_tokens)
-                + "</policy_data>",
-            }
-        )
+        messages = [
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": "<policy_data>" + policy_json + "</policy_data>"},
+        ]
         for row in history:
             messages.append({"role": row["role"], "content": row["text"]})
         if not history or history[-1].get("id") != context.turn_id:
@@ -122,10 +163,23 @@ class Talker:
         buffer = ""
         parsed = False
         discard_header = False
-        emoji = config.rules["emojis"]["default"]
+        emoji = resolve_emoji(context, card, config)
         count = 0
         questions = 0
-        punctuation = set("。！？!?…；\n")
+        effective_limit = sentence_limit
+        early_clause_used = False
+        dropped_previous = False
+        severe_abort = False
+
+        def check_sentence(segment: str) -> tuple[str, ...]:
+            rejected = self.rail.check(
+                segment, context.stage, tuple(card.talker.never_say) if card else ()
+            )
+            question_count = sum(segment.count(mark) for mark in ("?", "？"))
+            if questions + question_count > question_budget:
+                rejected += ("rail_questions",)
+            return rejected
+
         try:
             for token in stream:
                 if cancel.is_set():
@@ -138,12 +192,18 @@ class Talker:
                     discard_header = False
                 if not parsed:
                     header += token
-                    if header.lstrip() and not header.lstrip().startswith("<"):
+                    stripped = header.lstrip()
+                    if stripped and not stripped.startswith("<"):
                         buffer, parsed = header, True
                     elif "\n" in header:
                         line, buffer = header.split("\n", 1)
-                        emoji = self.parse_tag(line, context, violations)
-                        if not line.startswith("<<"):
+                        parsed_emoji = self.parse_tag(line, context, violations)
+                        if (
+                            line.startswith("<<")
+                            and parsed_emoji in config.rules["emojis"]["allowed"]
+                        ):
+                            emoji = parsed_emoji
+                        elif not line.startswith("<<"):
                             buffer = line + "\n" + buffer
                         parsed = True
                     elif len(header) > 256:
@@ -156,59 +216,62 @@ class Talker:
                 else:
                     buffer += token
                 if count:
-                    # A streamed closing quote may arrive after its sentence was emitted.
-                    # It is typography, not a standalone spoken segment.
-                    buffer = buffer.lstrip('”’」』" \n')
+                    buffer = buffer.lstrip(" \n")
                 while True:
-                    boundary = next(
-                        (i + 1 for i, char in enumerate(buffer) if char in punctuation and i >= 3),
-                        None,
-                    )
+                    allow_clause = count == 0 and not early_clause_used
+                    boundary, is_clause = self._next_boundary(buffer, allow_clause=allow_clause)
                     if boundary is None:
                         break
                     sentence, buffer = buffer[:boundary].strip(), buffer[boundary:]
                     if not sentence:
                         continue
-                    metrics.setdefault("first_sentence_ms", (time.monotonic() - context.t0) * 1000)
-                    rejected = self.rail.check(
-                        sentence, context.stage, tuple(card.talker.never_say) if card else ()
-                    )
-                    question_count = sum(sentence.count(mark) for mark in ("?", "？"))
-                    if questions + question_count > question_budget:
-                        rejected += ("rail_questions",)
+                    if dropped_previous and DANGLING_PREFIX.match(sentence):
+                        violations.append("rail_orphan_fragment")
+                        continue
+                    rejected = check_sentence(sentence)
                     if rejected:
                         violations.extend(rejected)
+                        dropped_previous = True
+                        if count == 0 and set(rejected) & SEVERE_RAILS:
+                            severe_abort = True
+                            break
                         continue
-                    if count >= sentence_limit:
+                    dropped_previous = False
+                    if is_clause:
+                        early_clause_used = True
+                        effective_limit = sentence_limit + 1
+                    if count >= effective_limit:
                         violations.append("too_many_sentences")
                         return
-                    questions += question_count
+                    metrics.setdefault("first_sentence_ms", (time.monotonic() - context.t0) * 1000)
+                    questions += sum(sentence.count(mark) for mark in ("?", "？"))
                     count += 1
                     yield sentence, emoji
-                    if count >= sentence_limit:
-                        if buffer.strip():
+                    if count >= effective_limit:
+                        if _content_chars(buffer) > 0:
                             violations.append("too_many_sentences")
                         return
-            if not parsed:
+                if severe_abort:
+                    break
+            if not parsed and not severe_abort:
                 if header.startswith("<<"):
                     violations.append("malformed_tag")
                 buffer = "" if header.startswith("<<") else header
+            tail = buffer.strip()
             if (
-                any(char.isalnum() for char in buffer)
-                and count < sentence_limit
+                not severe_abort
+                and _content_chars(tail) > 0
+                and count < effective_limit
                 and not cancel.is_set()
+                and not (dropped_previous and DANGLING_PREFIX.match(tail))
             ):
-                rejected = self.rail.check(
-                    buffer.strip(), context.stage, tuple(card.talker.never_say) if card else ()
-                )
-                if questions + buffer.count("?") + buffer.count("？") > question_budget:
-                    rejected += ("rail_questions",)
+                rejected = check_sentence(tail)
                 if rejected:
                     violations.extend(rejected)
                 else:
                     count += 1
                     metrics.setdefault("first_sentence_ms", (time.monotonic() - context.t0) * 1000)
-                    yield buffer.strip(), emoji
+                    yield tail, emoji
             if count == 0 and not cancel.is_set():
                 metrics["fallback"] = True
                 yield config.stages[context.stage.value]["fallback"], emoji

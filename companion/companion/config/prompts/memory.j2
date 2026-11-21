@@ -9,6 +9,6 @@ Distinguish intentions, actual events and stated benefit. A playback-completed e
 不明确的片段不补造归属或活动，无有用事实时返回空 memory_candidates。“早上9点至下午5点”不表示用户工作时间；“我在广州读高中”可形成跨会话事实。persistent 表示跨会话适用，不要求特定长期词；单次安排或拒绝保留原话的局部范围，范围不明用 session。
 普通个人背景、当前习惯和明确偏好默认可 persistent，依靠后续更正更新；一轮提到不等于只在该轮成立。“我的工作时间是早上9点至下午5点”是可跨会话保存的明确安排；“今天临时从9点忙到5点”是局部事件。
 fact_preference 只用于个人背景、通常习惯及一般偏好；“现在只想有人听”等当次需求用 session 范围。当前难受、具体经历及未确定计划用 episodic_event，保留时间语境。support_experience 表示实际支持经历及反馈；单纯孤独或难受不是支持效果。已有明确反馈事件已被记录时省略重复记忆。
-仅生成新增或明确更正的记忆；更正使用 supersedes_id/expected_version。引用旧记忆用 kind=memory 与真实 memory_id。效果归因须匹配 explicit_feedback；服务端 completed 只表示执行。summary_evidence 和 followups 留空。时间未知则省略。简短 JSON。
+仅生成新增或明确更正的记忆；无新增时返回 `memory_candidates: []`。每条 `memory_candidates` 对象必须包含非空 `source_refs`（`interaction_event` 的 `id` 只能填 `feedback[].event_id` 32 位字符串，严禁把整数轮次 ID 填给 `interaction_event`）；更正已有记忆请用 `supersedes_id` 和 `expected_version`，严禁添加 `memory_id`、`version`、`user_key`、`recorded_at`、`status`、`source_cursor` 等元数据字段。用户的姓名或称呼请使用 `key="nickname"`、`mention_policy="allowed"`。所有时间字段（`valid_from`、`expires_at`、`event_time`）若填写非空值必须带时区（如 `+08:00` 或 `Z`），未知则直接省略。效果归因须匹配 explicit_feedback；服务端 completed 只表示执行。summary_evidence 和 followups 留空。简短 JSON。
 {% endif %}
 schema: {{ schema }}

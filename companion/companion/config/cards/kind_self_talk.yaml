@@ -1,5 +1,5 @@
 id: kind_self_talk
-name: 把苛责换成准确温和的一句话
+name: 把全盘苛责换回平实的说法
 status: enabled
 requires_permission: true
 targets:
@@ -15,54 +15,59 @@ constraints:
   - low
 reasoner:
   when_any: &id001
-  - 用户愿意尝试换一句说法
-  - 不是正在遭受现实威胁
+  - 用户出现把一次考砸或失手等同于“整个人都不行”的自我苛责
+  - 用户愿意试着松动那句太狠的自我评价，且未处于现实欺凌威胁下
   not_when:
-  - 用户被欺负时不能把外部伤害改写成用户想法有问题。
-  - 当前只想倾诉或明确拒绝该支持；邀请与执行许可分别判断
-  success: 用户自愿采用更具体的表达或明确指出不适合；不推断自尊改善。
-  exit: 用户说停、没用、不舒服、只想说或出现安全信号时停止；不连续换方法。
+  - 用户正在遭受现实欺凌、辱骂或人身威胁时，绝不把外部伤害归因到自我想法
+  - 当前只想倾诉委屈或明确拒绝换说法时，保留纯粹倾听
+  success: 用户说出一句更具体、贴近事实的话，或明确表示不需要这个视角
+  exit: 用户说停、觉得鸡汤、不舒服或只想说说时立即退出
 talker:
   steps:
-  - 承接用户的那句自我评价，不评价长相、能力或价值高低。
-  - 邀请把同一句话换成对朋友也说得出口的准确说法；不强迫积极肯定。
-  - 接受用户自己的版本或拒绝，不要求相信新说法；可以就此停下。
+  - 接住那句狠话背后的难受，把“这次没拿稳”和“我整个人很差”轻柔拆开，不评价能力高低。
+  - 借“如果是好朋友遇到这事，你会怎么跟他说”邀用户换一句平实、对得上事实的话，绝不强行正能量。
+  - 接受用户自己定下的版本，也可以觉得暂时不想换，直接就此停住。
   examples:
-  - “这次没达到目标”会不会比“我整个人都不行”更贴近事实？
+  - “这科没考顺”跟“我整个人废了”，其实差着很大一截呢。
+  - 要是好朋友这次同样考砸了来找你，你会觉得他整个人都不行吗？
   never_say:
   - 你就是最棒的
-  - 你一点问题都没有
+  - 你已经做得很好了
+  - 一切都会好的
   - 你不胖
 limits:
   per_session: 1
-emo: 🤔
+emo: 🙂
 source:
-  document: 研究驱动课程内容 course-1.0
+  document: 课程内容包 course-2.0（初高中升学陪伴）
   verification: codex_source_checked
-  evidence: companion/docs/autonomous-upgrade/research/EVIDENCE_REVIEW.md
+  evidence: companion/docs/autonomous-upgrade/research/研究链-v3.md
 protocol:
-  version: course-1.0
-  adaptation: 原创中文短步骤；仅借用研究机制，未验证本改编的效果。
-  burden: 一次一小步，最多三轮；可以只听、跳过或结束。
-  permission: 先明确询问是否愿意试；拒绝和撤回立即停止。
-  stop: 用户说停、没用、不舒服、只想说或出现安全信号时停止；不连续换方法。
-  followup: 只有用户明确提出后续事件或同意跟进才记录；下次真实唤醒尊重边界。
-  feedback_limits: 只记录明确且可归因的反馈；完成、沉默和一次感觉变化不能证明策略有效或长期偏好。
-  mechanism: 将一次表现与整个人的价值分开，可借对朋友的说法检查双重标准。
+  version: course-2.0
+  adaptation: 中文青少年去苛责短步骤改编；依据完美主义担忧元分析与青少年正念自我关怀研究。
+  burden: 最多三轮，绝不灌输空洞鸡汤或强迫乐观肯定。
+  permission: 先问是否愿意一起把对自己的狠话放平实一点，经明确同意后再开始。
+  invitation: 刚考完最容易跟自己过不去，想不想试试换句像对好朋友那样、更贴近事实的话？
+  stop: 用户反感鸡汤感、只想吐槽或喊停时，当场结束步骤回到倾听。
+  followup: 仅记下用户愿意保留的事实视角，不把单次改写当成长期自尊改善。
+  feedback_limits: 仅记录用户明确说出的有用或无用反馈，不从沉默推断赞同。
+  mechanism: 将单一事件失手与整体自我价值剥离，借对待朋友的平实标准松动双重苛责。
   evidence_ids:
   - E07
   - E09
   minimum_information:
-  - 用户自己说出的苛责内容
+  - 用户刚说出的具体自我苛责或失望点
   prerequisites: *id001
   excluded_contexts:
   - unsafe_relationship
   keywords:
+  - 考砸
+  - 不行
+  - 废了
   - 没用
-  - 不够好
   - 完美
-  - 丢脸
-  - 比不上
-  counterexample: 用户被欺负时不能把外部伤害改写成用户想法有问题。
+  - 自责
+  - 不够好
+  counterexample: 当痛苦源于同学当面嘲讽或校园欺凌，绝不诱导学生“自我调节”，转为安全支持或倾听。
   required_contexts: []
   legacy_ids: []

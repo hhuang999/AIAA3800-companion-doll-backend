@@ -1,0 +1,73 @@
+id: comparison_reframe
+name: 从榜单横向比回到自己的基线
+status: enabled
+requires_permission: true
+targets:
+  pressure_types:
+  - social_evaluative
+  pathways:
+  - self_criticism
+constraints:
+  excluded_emotion_intensities:
+  - high
+  excluded_readiness:
+  - low
+reasoner:
+  when_any: &id001
+  - 因年级排名、红榜公布、同桌刷题速度带来“别人都在飞而我掉队”的窒息感
+  - 用户愿意试试看能不能从横向攀比里抽身一小会儿
+  not_when:
+  - 主要压力源来自父母当面贬低比较且情绪边界紧绷时，优先 expectation_boundary
+  - 只是单纯吐槽同桌很吵而不想找方法时，只倾听共情
+  success: 用户把关注点从别人的名次抽回来一点，看清自己本周真实站稳的地方或单点动作
+  exit: 用户说听了没用、不想比这些、想停时立刻结束
+talker:
+  steps:
+  - 先承认榜单和身边都在冲刺让人喘不上气的真实感，不说教“不要跟别人比”。
+  - 指出每个人露在榜单外面的底座不同，帮用户看回自己比起两三周前具体多会了一件什么小事。
+  - 只留一个不被别人节奏拽走的自己小锚点，用户不想留也能直接收住。
+  examples:
+  - 天天盯着榜单一上一下确实太磨人了，好像没考满分就是掉队了一样。
+  - 不拿同桌当尺子的话，你这周自己有没有一道之前总错的题终于顺手一点？
+  never_say:
+  - 别跟别人比了比自己就行
+  - 大家都很努力你要追上去
+  - 排名不重要
+limits:
+  per_session: 1
+emo: 😌
+source:
+  document: 课程内容包 course-2.0（初高中升学陪伴）
+  verification: codex_source_checked
+  evidence: companion/docs/autonomous-upgrade/research/研究链-v3.md
+protocol:
+  version: course-2.0
+  adaptation: 中文初高中榜单与同伴比较短步骤；依据显著排名效应（Megalokonomou & Zhang, 2024）与社会评价威胁研究。
+  burden: 一次聚焦一个对比落差片段，不制造“我也得更拼”的新焦虑。
+  permission: 询问是否愿意暂别排名尺子，回到自己的纵向小基线看看，同意再聊。
+  invitation: 盯着别人的进度和榜单确实容易发慌，愿不愿意先把视线拉回你自己这两天的具体变化上？
+  stop: 用户觉得被讲道理、不想继续比较或喊停时即刻收手。
+  followup: 仅在用户主动保留某个自身进步锚点时记录，不主动汇报排名趋势。
+  feedback_limits: 仅记录明确归因于本卡的反馈，不否定现实升学竞争本身。
+  mechanism: 将高度显著且不可控的横向名次威胁，转化为可观察、可掌控的个人纵向基线对照。
+  evidence_ids:
+  - E03
+  - E18
+  minimum_information:
+  - 引发窒息感的具体榜单、同桌或同伴比较情景
+  prerequisites: *id001
+  excluded_contexts:
+  - unsafe_relationship
+  keywords:
+  - 排名
+  - 名次
+  - 排行榜
+  - 掉队
+  - 别人
+  - 同桌
+  - 差距
+  - 比不过
+  - 卷
+  counterexample: 当学生说出学校或家庭有暴力威胁时禁止做比较重评，优先安全支持与边界尊重。
+  required_contexts: []
+  legacy_ids: []

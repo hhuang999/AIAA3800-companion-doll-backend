@@ -15,7 +15,6 @@ DELIBERATION_TRIGGERS = REPAIR_TRIGGERS | {
     "ask_for_help",
     "missing_card",
     "cry",
-    "emotion",
     "risk_watch",
     "exercise_recheck",
 }

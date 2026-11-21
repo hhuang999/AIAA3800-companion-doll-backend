@@ -3,23 +3,23 @@ name: 睡前短暂停
 status: enabled
 emo: 😌
 lines:
-- text: 不用努力让自己睡着，先找舒服的姿势。
+- text: 今晚不用逼自己马上睡着，先挑一个怎么躺都舒服的姿势。
   pause_s: 3
-- text: 让呼吸保持自然，不需要数数。
+- text: 呼吸顺着它自己的慢节奏走就好，脑袋不用再数数。
   pause_s: 4
-- text: 如果还有担心，今晚可以先不处理它。
+- text: 如果心里还有没写完、没弄懂的事，今晚都先放这儿，明天白天才管它。
   pause_s: 3
-- text: 我们就聊到这里，接下来留给你休息。
+- text: 我也先收声了，好好合眼休息一会儿吧。
   pause_s: 0
 protocol:
-  version: course-1.0
-  goal: 睡前暂时停下继续处理问题，允许休息
+  version: course-2.0
+  goal: 晚自习归来或睡前帮助学生停止白日备考问题处理，允许自己卸下休息
   evidence_ids:
   - E02
   - E12
   prerequisites:
-  - 用户明确处于睡前，想暂停思考
-  - 可以安静休息
+  - 用户明确处于睡前时段且想停下来歇着
+  - 环境允许安心休息
   required_contexts:
   - bedtime
   excluded_contexts:
@@ -28,9 +28,9 @@ protocol:
   pathways:
   - sleep
   - rumination
-  invitation: 愿意做一小段睡前暂停吗？不要求睡着，随时可以停。
-  stop: 拒绝、中止、新输入或风险接管立即取消；不自动恢复。
-  feedback_limits: 完成播放只说明执行，主观帮助需要用户明确反馈；一次无效不推断长期偏好。
+  invitation: 要不要用一分钟的睡前短暂停先把白天的题放下？不要求马上睡着，随时能停。
+  stop: 拒绝、中断、新输入或风险接管立刻停止。
+  feedback_limits: 仅记录用户睡前舒适度反馈，不作失眠疗效承诺。
   request_phrases:
   - 睡前暂停
   - 睡前练习

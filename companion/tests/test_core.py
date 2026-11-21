@@ -46,9 +46,9 @@ def test_direct_help_full_flow_and_action_count(core):
     assert core.wait_idle()
     turn(core, "好，你说")
     assert core.sessions["s"].state.stage == Stage.action
-    assert core.sessions["s"].state.cards_used == {"S16": 1}
+    assert core.sessions["s"].state.cards_used == {"concrete_step": 1}
     turn(core, "那天老师发下试卷，我很难过")
-    assert core.sessions["s"].state.cards_used == {"S16": 1}
+    assert core.sessions["s"].state.cards_used == {"concrete_step": 1}
 
 
 def test_high_risk_bypasses_models_and_is_sticky(core):

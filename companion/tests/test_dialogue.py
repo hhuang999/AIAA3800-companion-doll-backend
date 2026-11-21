@@ -38,7 +38,7 @@ def test_consent_waits_for_card_and_survives_clarification(config):
     )
     machine.apply_rules(state, "数学最让我担心", TurnSignals(), snapshot, now=101)
     assert state.stage == Stage.action
-    assert state.card_in_use == "S16"
+    assert state.card_in_use == "concrete_step"
 
 
 @pytest.mark.parametrize("text", ["好难受", "不可以", "我不愿意"])
@@ -56,7 +56,9 @@ def test_quiet_has_priority_over_request(config):
 
 
 def test_talker_streaming_strips_tags_and_blocks_advice(config):
-    llm = FakeLLM(streams=["<<state=action;card=S16;emo=🤔;offer=->>\n你应该努力。听起来你很累。"])
+    llm = FakeLLM(
+        streams=["<<state=action;card=concrete_step;emo=🤔;offer=->>\n你应该努力。听起来你很累。"]
+    )
     context = TurnContext(
         session_id="s",
         turn_id=1,
@@ -96,8 +98,8 @@ def test_evidenced_topic_change_revokes_pending_offer(config):
 
 
 def test_card_readiness_checked_again_before_action(config):
-    config.cards["S16"].constraints["excluded_readiness"] = ["low"]
-    snapshot = Snapshot(session_id="s", user_key="u", allowed_cards=("S16",))
+    config.cards["concrete_step"].constraints["excluded_readiness"] = ["low"]
+    snapshot = Snapshot(session_id="s", user_key="u", allowed_cards=("concrete_step",))
     assert StateMachine(config).eligible(SessionState(session_id="s", user_key="u"), snapshot) == []
 
 

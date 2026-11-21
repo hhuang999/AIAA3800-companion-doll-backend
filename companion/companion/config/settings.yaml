@@ -4,10 +4,10 @@ llm:
   api_key_env: AIHUBMIXKEY
   talker_model: qwen-flash
   risk_model: qwen-flash
-  reasoner_model: qwen-plus
+  reasoner_model: gpt-4.1-mini
   enable_thinking: false
 timing:
-  gate_timeout_ms: 600
+  gate_timeout_ms: 400
   risk_total_timeout_ms: 2500
   talker_first_token_timeout_ms: 2500
   talker_total_timeout_s: 10
@@ -32,9 +32,9 @@ cognition:
   plan_ttl_s: 120
   plan_turn_delta: 4
   context_tokens: 1200
-  analysis_model: qwen-plus
+  analysis_model: gpt-4.1-mini
   brief_model: qwen-flash
-  planner_model: qwen-plus
+  planner_model: gpt-4.1-mini
   critic_model: qwen-flash  # Plan critique and source-entailment review.
   delta_model: qwen-flash
   memory_model: gpt-4.1-mini
@@ -44,5 +44,5 @@ cognition:
   memory: {max_calls: 2, output_tokens: 1800, total_tokens: 16000}
   end_consolidation: {max_calls: 2, output_tokens: 2400, total_tokens: 16000}
 storage: {db_path: data/companion.db, busy_timeout_ms: 5000}
-tts: {model: gpt-4o-mini-tts, voice: coral, response_format: wav}
+tts: {model: gpt-4o-mini-tts, voice: coral, response_format: opus}
 alert_webhook: null

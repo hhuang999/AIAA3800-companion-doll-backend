@@ -141,11 +141,11 @@ class FakeLLM:
             if proposal and turns
             else None,
             cards=CardSelection(
-                allowed=("S16",),
-                preferred="S16",
+                allowed=("concrete_step",),
+                preferred="concrete_step",
                 evidence=(
                     CardEvidence(
-                        card_id="S16",
+                        card_id="concrete_step",
                         when_met=True,
                         exclusions_present=False,
                         source_turn_ids=tuple(turns[-1:]),
@@ -231,7 +231,14 @@ class FakeLLM:
                     None,
                 )
                 wants_help = payload["analysis"]["expressed_need"] == "solve"
-                boundary = any(m["kind"] == "interaction_boundary" for m in payload["memory"])
+                from companion.cognition.policy import no_advice_blocks_text
+
+                boundary = any(
+                    m["kind"] == "interaction_boundary"
+                    and m.get("boundary_rule") == "no_advice"
+                    and no_advice_blocks_text(m.get("target"), latest["text"] if latest else "")
+                    for m in payload["memory"]
+                )
                 action = (
                     payload["kind"] == "deliberation"
                     and wants_help

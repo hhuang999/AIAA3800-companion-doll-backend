@@ -50,16 +50,19 @@ def test_validator_rejects_unsourced_memory_and_illegal_action(config):
 
 
 def test_empty_target_side_does_not_match_everything(config):
-    # This rule is independent of S16's expanded course target set.
-    config.cards["S16"].targets.pressure_types = []
+    # This rule is independent of concrete_step's expanded course target set.
+    config.cards["concrete_step"].targets.pressure_types = []
     output = ReasonerOutput(
         assessment=Assessment(pressure_types=(TypedConfidence(type="academic", confidence=1),)),
         cards=CardSelection(
-            allowed=("S16",),
-            preferred="S16",
+            allowed=("concrete_step",),
+            preferred="concrete_step",
             evidence=(
                 CardEvidence(
-                    card_id="S16", when_met=True, exclusions_present=False, source_turn_ids=(1,)
+                    card_id="concrete_step",
+                    when_met=True,
+                    exclusions_present=False,
+                    source_turn_ids=(1,),
                 ),
             ),
         ),

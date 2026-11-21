@@ -3,27 +3,27 @@ name: 看看身边的一样东西
 status: enabled
 emo: 😌
 lines:
-- text: 如果周围安全，看看身边一样普通的东西。
+- text: 如果你周围这会儿觉得踏实，先把视线落到身边一样普通的东西上。
   pause_s: 3
-- text: 只留意它的一种颜色，不用告诉我答案。
+- text: 只留意它的一种颜色或纹理，不用急着回答我。
   pause_s: 4
-- text: 感觉一下脚下或椅子的支撑，哪里不舒服就跳过。
+- text: 再轻轻感觉一下脚底踩着地面，或者椅子托住背的感觉，不舒服就跳过。
   pause_s: 4
-- text: 不需要让自己马上平静，我们先停一下。
+- text: 也不用逼自己立刻静下来，我们先歇这一小会儿就好。
   pause_s: 0
 protocol:
-  version: course-1.0
-  goal: 把注意力暂时放在身边普通物件上
+  version: course-2.0
+  goal: 借助当下视野与触觉支持把紧绷思绪暂时落回到安全现实环境
   evidence_ids:
   - E13
   prerequisites:
-  - 当前环境安全，可以自由看周围
-  - 愿意尝试短暂外部注意练习
+  - 所处环境安全，能自由看一看手边日常物件
+  - 愿意尝试短暂外部感官着陆
   excluded_contexts:
   - unsafe_relationship
-  invitation: 愿意花一小会儿看看身边一个普通物件吗？不舒服就停。
-  stop: 拒绝、中止、新输入或风险接管立即取消；不自动恢复。
-  feedback_limits: 完成播放只说明执行，主观帮助需要用户明确反馈；一次无效不推断长期偏好。
+  invitation: 要不要花半分钟看看手边一样普通物件，把紧绷的念头稍微拉回眼前？不舒服随时停。
+  stop: 拒绝、中断、新输入或风险接管立即取消。
+  feedback_limits: 仅根据用户主观反馈记录是否受用，不从播完本身推断缓解。
   request_phrases:
   - 看看周围
   - 外部注意练习

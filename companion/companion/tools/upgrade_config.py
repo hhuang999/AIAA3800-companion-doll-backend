@@ -99,23 +99,34 @@ def upgrade(directory: Path, source: Path | None = None):
             preserved.append(name)
         if result != current:
             changed[name] = result
+    removed = [
+        name
+        for name, old in baseline.items()
+        if name not in resources
+        and (directory / name).is_file()
+        and (directory / name).read_text(encoding="utf-8") == old
+    ]
     directory.parent.mkdir(parents=True, exist_ok=True)
     # Validate the proposed complete copy before touching the deployment.
     with tempfile.TemporaryDirectory(prefix="companion-config-", dir=directory.parent) as temporary:
         staging = Path(temporary)
         if directory.exists():
             shutil.copytree(directory, staging, dirs_exist_ok=True)
+        for name in removed:
+            (staging / name).unlink(missing_ok=True)
         for name, value in changed.items():
             path = staging / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(value, encoding="utf-8")
         Config(staging, mode="development")
         backup = None
-        if changed and directory.exists():
+        if (changed or removed) and directory.exists():
             stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
             backup = directory.parent / f"{directory.name}.backup-{stamp}"
             shutil.copytree(directory, backup)
         directory.mkdir(parents=True, exist_ok=True)
+        for name in removed:
+            (directory / name).unlink(missing_ok=True)
         for name, value in changed.items():
             path = directory / name
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -125,6 +136,7 @@ def upgrade(directory: Path, source: Path | None = None):
         )
     return {
         "changed": sorted(changed),
+        "removed": sorted(removed),
         "customized_preserved": sorted(preserved),
         "backup": str(backup) if backup else None,
     }

@@ -1,0 +1,71 @@
+id: concrete_step
+name: 从反复想转向具体的一步
+status: enabled
+requires_permission: true
+targets:
+  pressure_types:
+  - academic
+  pathways:
+  - rumination
+constraints:
+  excluded_emotion_intensities:
+  - high
+  excluded_readiness:
+  - low
+reasoner:
+  when_any: &id001
+  - 用户想解决具体的学业或复习卡点
+  - 问题可谈且当前不是单纯倾诉或重度疲惫
+  not_when:
+  - 用户只想倾诉、不想找办法或处于低能量倦怠时，不追问经过或推行动
+  - 急性考前躯体紧张主导时，优先考前稳住心态
+  success: 用户说清卡住的一个片段，或自己选出一件眼下可动的小事
+  exit: 用户说停、没用、不舒服、只想说或出现安全信号时停止
+talker:
+  steps:
+  - 顺着原话落到最卡住的那一个小片段，已说清就不重复追问。
+  - 只区分一件自己当下能动的小事，把其余担心先放旁边。
+  - 用户愿意时一起选一个五分钟内能起头的动作；想停随时收住。
+  examples:
+  - 刚才让你反复打转的，是那道函数图像卡在哪一步，还是看见卷子就不想动手？
+  - 整张卷子先放着，今晚只挑这一小问看清条件就行。
+  never_say:
+  - 你又在钻牛角尖
+  - 别想了去做就好了
+limits:
+  per_session: 1
+emo: 🤔
+source:
+  document: 课程内容包 course-2.0（初高中升学陪伴）
+  verification: codex_source_checked
+  evidence: companion/docs/autonomous-upgrade/research/研究链-v3.md
+protocol:
+  version: course-2.0
+  adaptation: 中文初高中场景短步骤改编；依据具体化加工实验与 WHO EASE 小问题拆解机制。
+  burden: 一次一小步，最多三轮；可随时停下、跳过或改回纯倾听。
+  permission: 发出一次情境化邀请，等用户明确同意再进入，绝不代做决定。
+  invitation: 要不要先只挑卡住的那一小块，一起拆出眼下能动的一小步？
+  stop: 用户说停、没用、累了、只想说或出现风险信号时立即停止，不连续换招。
+  followup: 仅记录用户明确提及且同意跟进的事项，并严格遵守设定的话题边界。
+  feedback_limits: 仅记录明确可归因的体验反馈；完成步骤不代表整体压力已消除。
+  mechanism: 将笼统的学业焦虑缩回一个具体片段，再区分当下能影响的最小一步。
+  evidence_ids:
+  - E06
+  - E08
+  minimum_information:
+  - 当前卡住的一个具体学习片段（已说明则直接承接）
+  prerequisites: *id001
+  excluded_contexts:
+  - unsafe_relationship
+  keywords:
+  - 反复
+  - 一直想
+  - 错题
+  - 作业
+  - 卡住
+  - 刷题
+  - 下手
+  counterexample: 当学生只想抱怨作业多、或明显精疲力竭时，保持L1倾听，不强行拆步。
+  required_contexts: []
+  legacy_ids:
+  - S16

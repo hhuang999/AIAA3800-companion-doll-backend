@@ -19,6 +19,7 @@ from companion.store import Store
 
 from .config import Config
 from .exercise import ExercisePlayer
+from .helpers import recent_user_context, resolve_emoji, resolve_opening
 from .models import (
     InputKind,
     OutputEvent,
@@ -239,6 +240,7 @@ class CompanionCore:
                         state, text, turn_id
                     )
                 from companion.cognition.policy import (
+                    advice_blocked_for_turn,
                     build_turn_policy,
                     exercise_eligibility,
                     plan_invalid_reason,
@@ -247,13 +249,21 @@ class CompanionCore:
                 bundle = self.cognition.memory.retrieve(
                     state, text, self.config.settings.cognition.context_tokens
                 )
+                all_items = self.store.memory_items(state.user_key)
+                recent_text = (
+                    recent_user_context(self.store, session_id, turn_id) if kind == "user" else ""
+                )
                 plan = self.store.active_support_plan(state.session_id)
                 policy = build_turn_policy(
-                    state, plan, bundle, self.store.memory_items(state.user_key)
+                    state,
+                    plan,
+                    bundle,
+                    all_items,
+                    current_text=text,
+                    recent_text=recent_text,
+                    config=self.config,
                 )
-                if plan_invalid_reason(
-                    plan, state, bundle.model_dump(), self.store.memory_items(state.user_key)
-                ):
+                if plan_invalid_reason(plan, state, bundle.model_dump(), all_items):
                     runtime.snapshot = runtime.snapshot.model_copy(
                         update={
                             "allowed_cards": (),
@@ -281,7 +291,13 @@ class CompanionCore:
                         ),
                     )
                     exercise_ids, exercise_conditions_current = exercise_eligibility(
-                        plan, policy, unchecked_inputs, self.machine.matches
+                        plan,
+                        policy,
+                        unchecked_inputs,
+                        self.machine.matches,
+                        current_text=text,
+                        recent_text=recent_text,
+                        config=self.config,
                     )
                     exercise_pending = (
                         runtime.snapshot.offer_exercise
@@ -299,16 +315,38 @@ class CompanionCore:
                                 "stage_proposal": None,
                             }
                         )
-                    if policy.selection_reason == "verified" or policy.active_boundaries:
+                    if policy.selection_reason == "verified":
+                        allowed = tuple(
+                            c
+                            for c in runtime.snapshot.allowed_cards
+                            if c in policy.allowed_action_ids
+                        )
                         runtime.snapshot = runtime.snapshot.model_copy(
                             update={
-                                "allowed_cards": tuple(
-                                    c
-                                    for c in runtime.snapshot.allowed_cards
-                                    if c in policy.allowed_action_ids
-                                ),
+                                "allowed_cards": allowed,
                                 "preferred_card": runtime.snapshot.preferred_card
-                                if runtime.snapshot.preferred_card in policy.allowed_action_ids
+                                if runtime.snapshot.preferred_card in allowed
+                                else None,
+                            }
+                        )
+                    elif policy.active_boundaries:
+                        allowed = tuple(
+                            c
+                            for c in runtime.snapshot.allowed_cards
+                            if not advice_blocked_for_turn(
+                                policy,
+                                text,
+                                recent_text=recent_text,
+                                action_id=c,
+                                action_kind="card",
+                                config=self.config,
+                            )
+                        )
+                        runtime.snapshot = runtime.snapshot.model_copy(
+                            update={
+                                "allowed_cards": allowed,
+                                "preferred_card": runtime.snapshot.preferred_card
+                                if runtime.snapshot.preferred_card in allowed
                                 else None,
                             }
                         )
@@ -332,9 +370,22 @@ class CompanionCore:
                         and state.stage != Stage.quiet
                     ):
                         triggers = tuple(dict.fromkeys((*triggers, "exercise_recheck")))
-                    if (
-                        policy.active_boundaries or any(a.kind == "no_advice" for a in policy.avoid)
-                    ) and directive in ("action_offer", "exercise_offer", "resume_offer"):
+                    pending_target = state.pending_offer.target_id if state.pending_offer else None
+                    pending_kind = state.pending_offer.kind if state.pending_offer else None
+                    if directive in (
+                        "action_offer",
+                        "exercise_offer",
+                        "resume_offer",
+                    ) and advice_blocked_for_turn(
+                        policy,
+                        text,
+                        recent_text=recent_text,
+                        action_id=pending_target,
+                        action_kind="exercise"
+                        if pending_kind in ("exercise", "resume_exercise")
+                        else "card",
+                        config=self.config,
+                    ):
                         state.pending_offer = None
                         self.machine.move(state, Stage.explore)
                         directive = "boundary_hold"
@@ -390,15 +441,22 @@ class CompanionCore:
                             state, "topic_changed", "deterministic_rule", turn_id=turn_id
                         )
                 policy = build_turn_policy(
-                    state, plan, bundle, self.store.memory_items(state.user_key)
+                    state,
+                    plan,
+                    bundle,
+                    all_items,
+                    current_text=text,
+                    recent_text=recent_text,
+                    config=self.config,
                 )
                 if state.stage == Stage.action and state.card_in_use:
                     from companion.content.models import SupportReference
 
-                    card = self.config.cards[state.card_in_use]
+                    resolved_card = self.config.resolve_card_id(state.card_in_use)
+                    card = self.config.cards[resolved_card]
                     policy = policy.model_copy(
                         update={
-                            "allowed_action_ids": (state.card_in_use,),
+                            "allowed_action_ids": (card.id,),
                             "selection_reason": "current_consented_action",
                             "support": SupportReference(
                                 identifier=card.id,
@@ -573,7 +631,18 @@ class CompanionCore:
             if first:
                 self.store.update_turn(turn_id, mode="crisis")
         if risk.level == "watch" and active and runtime.state.mode != "crisis":
-            self.reasoner.submit(runtime.state.user_key, session_id, "risk_watch")
+            ctx = runtime.contexts.get(turn_id)
+            already_deliberating = bool(
+                ctx
+                and any(t in ("ask_for_help", "missing_card", "cry") for t in ctx.trigger_reasons)
+            )
+            permission_agree = bool(
+                runtime.state.stage in (Stage.permission, Stage.action)
+                and ctx
+                and self.machine.matches("agree", ctx.text)
+            )
+            if not already_deliberating and not permission_agree:
+                self.reasoner.submit(runtime.state.user_key, session_id, "risk_watch")
 
     def request_risk_review(self, session_id, turn_id):
         runtime = self.sessions.get(session_id)
@@ -695,15 +764,16 @@ class CompanionCore:
             return True
 
     def _text_event(
-        self, context: TurnContext, text: str, emoji: str = "😶", **fields: object
+        self, context: TurnContext, text: str, emoji: str | None = None, **fields: object
     ) -> OutputEvent:
+        resolved_emoji = emoji or resolve_emoji(context, None, self.config)
         return OutputEvent(
             output_id=uuid.uuid4().hex,
             session_id=context.session_id,
             turn_id=context.turn_id,
             generation=context.generation,
             text=text,
-            emoji=emoji,
+            emoji=resolved_emoji,
             support=context.policy_frame.support
             if fields.get("purpose", "reply") in ("reply", "exercise")
             else None,
@@ -729,40 +799,8 @@ class CompanionCore:
         failed = False
         try:
             if context.kind == "wake":
-                if not self.store.onboarding_done(state.user_key):
-                    event = self._text_event(
-                        context, self.config.persona["onboarding"], purpose="onboarding"
-                    )
-                else:
-                    followup = self.store.reserve_followup(state.user_key, session_id, self.today())
-                    if followup:
-                        from companion.cognition.policy import effective_boundaries
-
-                        boundaries = effective_boundaries(
-                            self.cognition.memory.retrieve(state, "", proactive=True)
-                        )
-                        if any(
-                            b.target == "current_topic"
-                            or (b.target and b.target in followup["content"])
-                            for b in boundaries
-                        ):
-                            with self.store.transaction() as db:
-                                db.execute(
-                                    "UPDATE followups SET status='pending',reservation_session_id=NULL WHERE id=? AND status='reserved'",
-                                    (followup["id"],),
-                                )
-                            followup = None
-                    text = (
-                        self.config.persona["followup"].format(content=followup["content"])
-                        if followup
-                        else self.config.persona["greeting"]
-                    )
-                    event = self._text_event(
-                        context,
-                        text,
-                        purpose="opening",
-                        followup_id=followup["id"] if followup else None,
-                    )
+                text, purpose, followup_id = resolve_opening(self, state, session_id)
+                event = self._text_event(context, text, purpose=purpose, followup_id=followup_id)
                 if self._gate(runtime, context):
                     emitted = True
                     yield event
@@ -791,15 +829,21 @@ class CompanionCore:
                 else:
                     text = self.config.stages["templates"][context.directive]
                 offer = state.pending_offer
+                card = None
                 if context.directive == "exercise_offer" and offer:
                     exercise = self.config.exercises.get(offer.target_id)
                     if exercise and exercise.protocol:
                         text = exercise.protocol.invitation
+                elif context.directive == "action_offer" and offer and offer.target_id:
+                    card = self.config.cards.get(self.config.resolve_card_id(offer.target_id))
+                    if card and card.protocol and card.protocol.invitation:
+                        text = card.protocol.invitation
                 if self._gate(runtime, context):
                     emitted = True
                     yield self._text_event(
                         context,
                         text,
+                        resolve_emoji(context, card, self.config),
                         purpose=context.directive,
                         offer_id=offer.offer_id
                         if offer
@@ -895,9 +939,8 @@ class CompanionCore:
             ):
                 runtime.action_counted.add(event.turn_id)
                 if self.store.record_card(state, event.turn_id, "used"):
-                    state.cards_used[state.card_in_use] = (
-                        state.cards_used.get(state.card_in_use, 0) + 1
-                    )
+                    card_key = self.config.resolve_card_id(state.card_in_use)
+                    state.cards_used[card_key] = state.cards_used.get(card_key, 0) + 1
                 state.action_turns += 1
             runtime.metrics[event.turn_id].setdefault(
                 "output_submit_ms", (time.monotonic() - context.t0) * 1000

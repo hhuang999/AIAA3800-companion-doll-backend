@@ -4,6 +4,7 @@ import json
 import re
 import uuid
 
+from companion.memory.concepts import targets_overlap
 from companion.memory.models import MemoryCandidate
 
 from .base import EvidenceRef
@@ -70,9 +71,9 @@ class Interactions:
             EvidenceRef(kind="user_turn", id=turn_id, claim="当前用户明确表达", quote=text[:300]),
         )
         boundary = self.memory.explicit_boundary(text, state, turn_id)
-        correction = machine.matches("correct", text) or bool(
-            re.search(r"你(?:记|说)错|(?:刚才|之前)(?:我)?说错了|更正|记错了|不是.*是", text)
-        )
+        factual_cue = bool(re.search(r"你(?:记|说)错|(?:刚才|之前)(?:我)?说错了|更正|记错了", text))
+        clarification_cue = bool(re.search(r"(?<!是)不是.*(?:而是|我是|其实|只是)", text))
+        correction = machine.matches("correct", text) or factual_cue or clarification_cue
         refusal = machine.matches("refuse", text) or bool(re.search(r"别再.*建议|不要.*教我", text))
         negative = bool(re.search(r"(?:刚才|这个|这样|那个).*(?:没用|没帮助|不舒服|不喜欢)", text))
         positive = bool(re.search(r"有帮助|帮到我|挺好|好多了", text))
@@ -97,21 +98,45 @@ class Interactions:
                 payload=EventPayload(text=text[:500]),
             )
             triggers.append("correction")
-            # Immediate protection of recalled facts. A later sourced correction creates a successor.
-            with self.store.transaction() as db:
-                for item in self.store.memory_items(state.user_key, db):
-                    if item.kind in ("fact_preference", "episodic_event") and (
-                        item.value in text or item.key in text or re.search(r"记错|说错|更正", text)
-                    ):
-                        self.store.set_memory_status(db, item, "invalidated")
-                        db.execute(
-                            "INSERT INTO memory_corrections VALUES (?,?,?,?) ON CONFLICT(user_key,kind,key) DO UPDATE SET source_turn_id=MAX(memory_corrections.source_turn_id,excluded.source_turn_id)",
-                            (state.user_key, item.kind, item.key, turn_id),
+            nickname_cue = bool(re.search(r"我叫|叫我|名字", text))
+            # Only explicit factual corrections invalidate matching recalled memories;
+            # dialogue clarifications trigger re-analysis without deleting unrelated memories.
+            if factual_cue or nickname_cue:
+                recent_recalled = set()
+                if factual_cue and not nickname_cue:
+                    prev_policies = self.store.query(
+                        "SELECT data FROM turn_policies WHERE session_id=? AND turn_id<? ORDER BY turn_id DESC LIMIT 1",
+                        (state.session_id, turn_id),
+                    )
+                    if prev_policies:
+                        proj = json.loads(prev_policies[0]["data"]).get("memory_projection", {})
+                        recent_recalled = {
+                            m["memory_id"] for m in proj.get("items", ()) if "memory_id" in m
+                        }
+                with self.store.transaction() as db:
+                    invalidated_any = False
+                    for item in self.store.memory_items(state.user_key, db):
+                        if item.kind not in ("fact_preference", "episodic_event"):
+                            continue
+                        matches_item = (
+                            item.value in text
+                            or item.key in text
+                            or targets_overlap(item.value, text)
+                            or (nickname_cue and item.key == "nickname")
+                            or (item.memory_id in recent_recalled and factual_cue)
                         )
-                db.execute(
-                    "UPDATE user_revisions SET memory_revision=memory_revision+1 WHERE user_key=?",
-                    (state.user_key,),
-                )
+                        if matches_item:
+                            invalidated_any = True
+                            self.store.set_memory_status(db, item, "invalidated")
+                            db.execute(
+                                "INSERT INTO memory_corrections VALUES (?,?,?,?) ON CONFLICT(user_key,kind,key) DO UPDATE SET source_turn_id=MAX(memory_corrections.source_turn_id,excluded.source_turn_id)",
+                                (state.user_key, item.kind, item.key, turn_id),
+                            )
+                    if invalidated_any:
+                        db.execute(
+                            "UPDATE user_revisions SET memory_revision=memory_revision+1 WHERE user_key=?",
+                            (state.user_key,),
+                        )
         if refusal:
             refused_card = state.card_in_use or (
                 state.pending_offer.target_id if state.pending_offer else None
@@ -183,7 +208,8 @@ class Interactions:
         if self.repeated_failure(state):
             triggers.append("repeated_failure")
         nickname = re.search(
-            r"(?:我叫|叫我|我的名字(?:是|叫))([\u4e00-\u9fffA-Za-z]{1,12})(?:[，。！!]|$)", text
+            r"(?:我叫|叫我|我的名字(?:是|叫))([\u4e00-\u9fffA-Za-z]{1,12})(?:[，。！!]|就好|就行|吧|$)",
+            text,
         )
         if nickname:
             self.memory.commit(

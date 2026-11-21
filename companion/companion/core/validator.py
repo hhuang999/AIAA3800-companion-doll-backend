@@ -45,14 +45,15 @@ class Validator:
         allowed = []
         evidence = {item.card_id: item for item in output.cards.evidence}
         for identifier in dict.fromkeys(output.cards.allowed):
-            card = self.config.cards.get(identifier)
-            item = evidence.get(identifier)
+            resolved = self.config.resolve_card_id(identifier)
+            card = self.config.cards.get(resolved)
+            item = evidence.get(identifier) or evidence.get(resolved)
             if (
                 not card
                 or card.status == "draft"
                 or (
                     card.status == "enabled"
-                    and not self.config.content_reviewed(f"cards/{identifier}.yaml")
+                    and not self.config.content_reviewed(f"cards/{card.id}.yaml")
                 )
                 or not item
                 or not sourced(item)
@@ -69,8 +70,8 @@ class Validator:
                 reject("V3", identifier)
                 continue
             if (
-                identifier in state.cards_refused
-                or state.cards_used.get(identifier, 0) >= card.limits["per_session"]
+                card.id in state.cards_refused
+                or state.cards_used.get(card.id, 0) >= card.limits["per_session"]
                 or assessment.seeker_state.emotion_intensity
                 in card.constraints.get("excluded_emotion_intensities", [])
                 or assessment.seeker_state.readiness
@@ -78,11 +79,11 @@ class Validator:
             ):
                 reject("V4", identifier)
                 continue
-            allowed.append(identifier)
-        preferred = output.cards.preferred
+            allowed.append(card.id)
+        preferred = self.config.resolve_card_id(output.cards.preferred)
         if preferred not in allowed:
-            if preferred:
-                reject("V5", preferred)
+            if output.cards.preferred:
+                reject("V5", output.cards.preferred)
             preferred = allowed[0] if allowed else None
         profiles = tuple(item for item in output.memory.profile_updates if sourced(item))
         events = []
@@ -121,7 +122,14 @@ class Validator:
         cards = CardSelection(
             allowed=tuple(allowed),
             preferred=preferred,
-            evidence=tuple(evidence[i] for i in allowed),
+            evidence=tuple(
+                (
+                    evidence[i]
+                    if i in evidence
+                    else evidence[next(k for k in evidence if self.config.resolve_card_id(k) == i)]
+                ).model_copy(update={"card_id": i})
+                for i in allowed
+            ),
         )
         exercise = output.offer_exercise
         if state.mode == "crisis" or ending:

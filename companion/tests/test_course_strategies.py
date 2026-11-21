@@ -10,8 +10,23 @@ from companion.core.models import SessionState, Stage, TurnSignals
 from companion.llm.fake import FakeLLM
 
 CASES = [
-    ("S16", "academic", "rumination", (), "我总想考试那道题卡住的地方，怎么办"),
-    ("kind_self_talk", "self", "self_criticism", (), "总觉得一次没做好就是整个人不行，怎么办"),
+    ("concrete_step", "academic", "rumination", (), "我总想数学函数那道题卡住的地方，怎么办"),
+    ("exam_steadying", "academic", "sleep", (), "明早模考我心慌手心出汗脑子空白，怎么稳住"),
+    ("kind_self_talk", "self", "self_criticism", (), "总觉得一次考砸就是整个人不行，怎么办"),
+    (
+        "comparison_reframe",
+        "social_evaluative",
+        "self_criticism",
+        (),
+        "排名榜一出来同桌刷得那么快我掉队了，怎么办",
+    ),
+    (
+        "expectation_boundary",
+        "relationship",
+        None,
+        (),
+        "爸妈总拿成绩跟亲戚比我不想吵架，怎么办",
+    ),
     (
         "safe_communication",
         "relationship",
@@ -26,7 +41,13 @@ CASES = [
         (),
         "我觉得孤独又怕被评价，想找安全的人聊聊，怎么办",
     ),
-    ("values_exploration", "future", None, (), "我对未来没有方向，想了解自己好奇的事，怎么办"),
+    (
+        "values_exploration",
+        "future",
+        None,
+        (),
+        "高一选科好迷茫还不想定死专业，怎么办",
+    ),
     ("worry_parking", "academic", "sleep", ("bedtime",), "准备睡了还在担心明天的考试，怎么办"),
 ]
 
@@ -118,7 +139,10 @@ def test_each_strategy_runs_roles_permission_step_feedback_and_exit(
         assert plan and plan.candidate_actions[0].action_id == identifier
         _turn, events = say("好，你说")
         assert core.sessions["s"].state.card_in_use == identifier
-        assert events and events[0].text == fake.content["strategy_replies"][identifier][0]
+        assert (
+            events
+            and "".join(e.text for e in events) == fake.content["strategy_replies"][identifier][0]
+        )
         assert events[0].support.identifier == identifier
         assert events[0].support.version == config.cards[identifier].protocol.version
         assert events[0].support.step == 1
@@ -152,3 +176,38 @@ def test_each_strategy_runs_roles_permission_step_feedback_and_exit(
         assert state.card_in_use is None
     finally:
         core.close()
+
+
+def test_legacy_s16_resolves_to_concrete_step(config):
+    from datetime import date
+
+    from companion.core.models import (
+        Assessment,
+        CardEvidence,
+        CardSelection,
+        ReasonerOutput,
+        SeekerState,
+    )
+    from companion.core.validator import Validator
+
+    assert config.resolve_card_id("S16") == "concrete_step"
+    output = ReasonerOutput(
+        assessment=Assessment(
+            pathway_signals=("rumination",), seeker_state=SeekerState(readiness="medium")
+        ),
+        cards=CardSelection(
+            allowed=("S16",),
+            preferred="S16",
+            evidence=(
+                CardEvidence(
+                    card_id="S16", when_met=True, exclusions_present=False, source_turn_ids=(1,)
+                ),
+            ),
+        ),
+    )
+    validated, rejected = Validator(config).validate(
+        output, SessionState(session_id="s", user_key="u"), {1}, date.today()
+    )
+    assert not rejected
+    assert validated.cards.allowed == ("concrete_step",)
+    assert validated.cards.preferred == "concrete_step"

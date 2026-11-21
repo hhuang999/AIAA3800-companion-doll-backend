@@ -20,6 +20,7 @@ class StrategyProtocol(ContentModel):
     excluded_contexts: tuple[str, ...] = ()
     burden: str = Field(min_length=1)
     permission: str = Field(min_length=1)
+    invitation: str | None = None
     stop: str = Field(min_length=1)
     followup: str = Field(min_length=1)
     feedback_limits: str = Field(min_length=1)

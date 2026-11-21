@@ -3,6 +3,6 @@ steps:
   - user: 我该怎么办
   - wait: true
     user: 好，你说
-    expect: {stage: action, card: S16}
+    expect: {stage: action, card: concrete_step}
   - user: 不想试了
     expect: {stage: explore, card: null}

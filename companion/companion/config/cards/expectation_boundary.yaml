@@ -1,0 +1,73 @@
+id: expectation_boundary
+name: 把父母的焦虑和自己节奏分开
+status: enabled
+requires_permission: true
+targets:
+  pressure_types:
+  - relationship
+  - social_evaluative
+  pathways: []
+constraints:
+  excluded_emotion_intensities:
+  - high
+  excluded_readiness:
+  - low
+reasoner:
+  when_any: &id001
+  - 父母因成绩排名反复唠叨、催促或拿亲戚家孩子作比较，关系并非高危虐待但学生暂不想硬碰硬沟通
+  - 用户想理清心里的憋屈、保护自己的学习呼吸感
+  not_when:
+  - 存在家庭暴力、威胁、辱骂或长期明显不安全控制（unsafe_relationship），绝不劝和或教“理解父母”
+  - 用户明确要跟安全长辈或老师练开口沟通时，改用 safe_communication
+  success: 用户分清“大人的担心”和“我自己的脚步”之间那条心理界线，拿回一点掌控感
+  exit: 用户说停、只想吐吐苦水或提到安全风险信号时立即终止
+talker:
+  steps:
+  - 接住听见比较和催促时的堵心感，明确站在学生这边，不替大人说“他们都是为你好”。
+  - 帮学生把“爸妈对分数不放心的焦虑”和“你自己的真实步调”温和分开放，不用一听唠叨就跟着自乱。
+  - 如果学生愿意，只挑一件晚上自己可决定怎么排的十来分钟，不逼着马上去跟家里谈判。
+  examples:
+  - 被一遍遍拿表哥来比，听多了换谁心里都又堵又烦。
+  - 爸妈的焦急归他们担心，你手头这道题怎么走还是得听你自己的节奏。
+  never_say:
+  - 父母都是为你好
+  - 你应该体谅爸妈不容易
+  - 去跟父母好好讲道理
+limits:
+  per_session: 1
+emo: 😌
+source:
+  document: 课程内容包 course-2.0（初高中升学陪伴）
+  verification: codex_source_checked
+  evidence: companion/docs/autonomous-upgrade/research/研究链-v3.md
+protocol:
+  version: course-2.0
+  adaptation: 中国初高中亲子学业比较场景短步骤；依据批评式亲子社会比较研究（Ding 等, 2026）与评价压力理论。
+  burden: 只做内心边界区分，不强制家庭沟通或代为评价家长对错。
+  permission: 询问是否愿意先把大人的焦急和自己的节奏拆开理一理，同意后进入。
+  invitation: 家里总拿分数和别人家孩子念叨挺憋屈的，要不要先把爸妈的焦虑和你自己的节奏分清楚？
+  stop: 用户不想谈家里、想换话题或出现家庭暴力线索时马上停止。
+  followup: 严格隔离敏感家庭话题边界，未经用户主动再提不主动追问家里近况。
+  feedback_limits: 仅记录明确的用户感受反馈，不推断家庭互动本身已经改变。
+  mechanism: 区分外部批评式社会比较带来的焦虑源与学生自身当下的可控任务边界，减少内耗与自我怀疑。
+  evidence_ids:
+  - E19
+  - E03
+  minimum_information:
+  - 来自家长具体的比较或施压语句情境
+  prerequisites: *id001
+  excluded_contexts:
+  - unsafe_relationship
+  keywords:
+  - 爸妈
+  - 父母
+  - 家长
+  - 唠叨
+  - 期待
+  - 亲戚
+  - 别人家孩子
+  - 比较
+  - 催
+  counterexample: 与 safe_communication 严格区分：本卡不要求 safe_contact，也不教学生直接开口谈条件。
+  required_contexts: []
+  legacy_ids: []

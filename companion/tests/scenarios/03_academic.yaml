@@ -8,5 +8,5 @@ steps:
     expect: {stage: permission, offer: action}
   - wait: true
     user: 好，你说
-    expect: {stage: action, card: S16}
+    expect: {stage: action, card: concrete_step}
 forbid: [你应该, 别想太多]

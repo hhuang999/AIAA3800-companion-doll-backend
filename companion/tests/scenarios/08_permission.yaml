@@ -4,4 +4,4 @@ steps:
     expect: {stage: permission, offer: action, card: null}
   - wait: true
     user: 好，你说
-    expect: {stage: action, card: S16, offer: null}
+    expect: {stage: action, card: concrete_step, offer: null}

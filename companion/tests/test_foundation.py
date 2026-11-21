@@ -33,5 +33,5 @@ def test_store_persists_and_uniquely_identifies_inputs(store):
 def test_session_collections_are_not_shared():
     first = SessionState(session_id="a", user_key="a")
     second = SessionState(session_id="b", user_key="b")
-    first.cards_refused.add("S16")
+    first.cards_refused.add("concrete_step")
     assert not second.cards_refused

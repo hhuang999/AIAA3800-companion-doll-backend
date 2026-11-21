@@ -19,15 +19,15 @@ from companion.llm.fake import FakeLLM
 
 
 def test_filter_before_ranking_and_user_state_isolation(config):
-    config.cards = {"S16": config.cards["S16"]}
+    config.cards = {"concrete_step": config.cards["concrete_step"]}
     catalog = StrategyCatalog(config)
     assessment = SituationAssessment(
         expressed_need="solve", pathway_signals=("rumination",), readiness="medium"
     )
     a, b = SessionState(session_id="a", user_key="a"), SessionState(session_id="b", user_key="b")
-    a.cards_refused.add("S16")
+    a.cards_refused.add("concrete_step")
     assert catalog.select(assessment, a, "反复想").selected_ids == ()
-    assert catalog.select(assessment, b, "反复想").selected_ids == ("S16",)
+    assert catalog.select(assessment, b, "反复想").selected_ids == ("concrete_step",)
     for changes, expected in [
         ({"expressed_need": "listen"}, "current_need_has_no_action"),
         ({"emotion_intensity": "high"}, "emotion_excluded"),
@@ -39,7 +39,7 @@ def test_filter_before_ranking_and_user_state_isolation(config):
 
 
 def test_protocol_context_exclusion_is_not_overridden_by_keywords(config):
-    config.cards["S16"].protocol = StrategyProtocol(
+    config.cards["concrete_step"].protocol = StrategyProtocol(
         version="test",
         mechanism="test",
         evidence_ids=("E1",),
@@ -79,15 +79,15 @@ def test_retrieval_reaches_planner_and_independent_critic_and_persists(config, s
         requests = {r["role"]: r["payload"] for r in fake.requests}
         assert "cards" not in requests["brief"]
         assert requests["planner"]["cards"] == requests["critic"]["cards"]
-        assert requests["critic"]["cards"][0]["id"] == "S16"
+        assert requests["critic"]["cards"][0]["id"] == "concrete_step"
         plan = store.active_support_plan("s")
-        assert "S16" in plan.strategy_selection.selected_ids
+        assert "concrete_step" in plan.strategy_selection.selected_ids
         job = json.loads(
             store.query("SELECT data FROM cognitive_jobs WHERE kind='deliberation'")[0]["data"]
         )
-        assert next(d for d in job["strategy_selection"]["decisions"] if d["strategy_id"] == "S16")[
-            "eligible"
-        ]
+        assert next(
+            d for d in job["strategy_selection"]["decisions"] if d["strategy_id"] == "concrete_step"
+        )["eligible"]
     finally:
         core.close()
 
@@ -153,7 +153,7 @@ def test_content_digests_follow_semantics_and_prompt_changes(config, tmp_path):
 def test_enabled_content_never_uses_missing_review_default(config, tmp_path):
     directory = tmp_path / "config"
     shutil.copytree(config.directory, directory)
-    card = directory / "cards/S16.yaml"
+    card = directory / "cards/concrete_step.yaml"
     data = yaml.safe_load(card.read_text(encoding="utf-8"))
     data["name"] = "changed without new review"
     card.write_text(yaml.safe_dump(data, allow_unicode=True), encoding="utf-8")
@@ -167,12 +167,12 @@ def synthetic_admitted_config(config, tmp_path):
     directory = tmp_path / "admission"
     shutil.copytree(config.directory, directory)
     for path in (directory / "cards").glob("*.yaml"):
-        if path.stem != "S16":
+        if path.stem != "concrete_step":
             path.unlink()
     with wave.open(str(directory / "unit.wav"), "wb") as audio:
         audio.setparams((1, 2, 16000, 0, "NONE", "not compressed"))
         audio.writeframes(b"\0\0" * 1600)
-    paths = ["cards/S16.yaml", "crisis.yaml"]
+    paths = ["cards/concrete_step.yaml", "crisis.yaml"]
     paths += [f"exercises/{identifier}.yaml" for identifier in config.exercises]
     for relative in paths:
         path = directory / relative

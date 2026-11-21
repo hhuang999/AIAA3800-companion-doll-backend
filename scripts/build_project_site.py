@@ -57,12 +57,30 @@ def export_data(root: Path, ref: str) -> dict:
         item = read_yaml(path)
         if item["status"] == "enabled":
             exercises.append({"id": item["id"], "name": item["name"], "protocol": item["protocol"]})
+    bench_path = "companion/docs/evidence/course-2.0-bench.json"
+    benchmarks = (
+        json.loads(
+            subprocess.check_output(["git", "show", f"{revision}:{bench_path}"], cwd=root).decode(
+                "utf-8"
+            )
+        )
+        if bench_path
+        in set(
+            subprocess.check_output(
+                ["git", "ls-tree", "-r", "--name-only", "-z", revision, "--", bench_path], cwd=root
+            )
+            .decode("utf-8")
+            .split("\0")
+        )
+        else None
+    )
     return {
         "revision": revision,
         "catalog_version": manifest["version"],
         "cards": cards,
         "exercises": exercises,
         "sources": manifest["sources"],
+        "benchmarks": benchmarks,
     }
 
 

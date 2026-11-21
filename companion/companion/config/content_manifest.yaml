@@ -1,4 +1,4 @@
-version: course-1.0
+version: course-2.0
 scope: course_synthetic_adult_roleplay
 sources:
 - id: E01
@@ -206,39 +206,102 @@ sources:
   limitations: 与主动对照相比，焦虑/压力改善很小，随访未见稳定差异，伤害报告不足。练习需有自愿入口、可停、短时长；对不适者改为眼睛睁开的外部感官定位或安静陪伴。
   verification: checked
   checked_on: '2026-11-04'
+- id: E17
+  citation: Yeager、Bryan、Gross 等，2022，[A synergistic mindsets intervention protects
+    adolescents from stress](https://www.nature.com/articles/s41586-022-04907-7)，DOI
+    10.1038/s41586-022-04907-7；Nature Vol. 607, pp. 512–520（青少年协同心态压力重评研究）
+  url: https://www.nature.com/articles/s41586-022-04907-7
+  read_scope: 摘要与方法
+  population: 美国中学生与大学生多队列随机实验（含日常及学业评价压力情境）
+  supports: 将考前躯体激活（心跳加快、手汗）重评为身体调动可用资源而非失败征兆，结合成长型视角形成协同压力保护机制。
+  limitations: 原研究在美国教育情境开展；course-2.0 借用协同重评原则设计考前稳住短步骤，并在真实回放中检验自然性。
+  verification: checked
+  checked_on: '2026-11-21'
+- id: E18
+  citation: Megalokonomou、Zhang，2024，[How good am I? Effects and mechanisms behind
+    salient rank](https://doi.org/10.1016/j.euroecorev.2024.104870)，DOI 10.1016/j.euroecorev.2024.104870；European
+    Economic Review Vol. 170, 104870
+  url: https://doi.org/10.1016/j.euroecorev.2024.104870
+  read_scope: 摘要与核心机制
+  population: 高中班级与考试显著排名情境研究
+  supports: 高可见度排名与横向位置会放大社会比较与成绩波动时的退缩心理，促使学生忽视自身纵向进步。
+  limitations: 机制研究分析榜单显著性效应；course-2.0 据此设计横向榜单与自身纵向基线区分短步骤，不否认现实考试竞争。
+  verification: checked
+  checked_on: '2026-11-21'
+- id: E19
+  citation: Ding、Yin、Li、Zhou，2026，[Types of parental social comparison and links with
+    adolescent psychological outcomes](https://doi.org/10.1111/jora.70216)，DOI 10.1111/jora.70216；Journal
+    of Research on Adolescence Vol. 36, Issue 2, e70216
+  url: https://doi.org/10.1111/jora.70216
+  read_scope: 摘要与分类模型
+  population: 中国青少年家庭亲子比较与心理适应研究
+  supports: 区分批评型/否定型父母社会比较与普通关注期待的心理代价差异，支持帮助学生在未强制冲突沟通前提下理清压力边界。
+  limitations: 问卷关联证据不替代家庭治疗；当涉及危险控制或暴力时由 excluded_contexts 排除并切入安全边界保护。
+  verification: checked
+  checked_on: '2026-11-21'
 reviews:
-- item: cards/S16.yaml
-  sha256: ffadf1bb89f13379661b8e8ffbda922d5ca3ee6f008938431cf40710e955b8c1
+- item: cards/comparison_reframe.yaml
+  sha256: 13c80bc34dd1170e07649cdad16f626529919991ca63a858c85f20d53924d3ca
+  evidence_ids:
+  - E03
+  - E18
+  source_check: passed
+  automatic_review: passed
+  reviewer: codex_automated
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：从榜单横向比回到自己的基线（适用/排除、单步许可、退出边界与证据绑定一致）。
+- item: cards/concrete_step.yaml
+  sha256: f341d8efb8e598be31a5fa44251b0368bad9869ad9adb000429864ea4e326e2d
   evidence_ids:
   - E06
   - E08
   source_check: passed
   automatic_review: passed
   reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 依据EVIDENCE_REVIEW核查来源与外推限制；短步骤明确适用、排除、许可、退出和反馈边界；工程与真实回放准入仍单列待完成。
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：从反复想转向具体的一步（适用/排除、单步许可、退出边界与证据绑定一致）。
+- item: cards/exam_steadying.yaml
+  sha256: d53cb99989f5f0b2e5a59b759946d549c28b0e70e9f80637309dee08ecdbf6df
+  evidence_ids:
+  - E17
+  - E03
+  source_check: passed
+  automatic_review: passed
+  reviewer: codex_automated
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：考前紧绷稳住身体信号（适用/排除、单步许可、退出边界与证据绑定一致）。
+- item: cards/expectation_boundary.yaml
+  sha256: e071077fa66b29eb00bfd466b45cb65e13c793698bb1053f81880226a693b28c
+  evidence_ids:
+  - E19
+  - E03
+  source_check: passed
+  automatic_review: passed
+  reviewer: codex_automated
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：把父母的焦虑和自己节奏分开（适用/排除、单步许可、退出边界与证据绑定一致）。
 - item: cards/kind_self_talk.yaml
-  sha256: 2c693a1856d43f74e997ae3d8ff09d96c82a542e4ab08c665162c72b19c93fc0
+  sha256: c3f87dcc4bdcb3e0cfea4620c1e06d6f54cc0440c401c834ced2962e43630e94
   evidence_ids:
   - E07
   - E09
   source_check: passed
   automatic_review: passed
   reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 依据EVIDENCE_REVIEW核查来源与外推限制；短步骤明确适用、排除、许可、退出和反馈边界；工程与真实回放准入仍单列待完成。
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：把全盘苛责换回平实的说法（适用/排除、单步许可、退出边界与证据绑定一致）。
 - item: cards/safe_communication.yaml
-  sha256: 91f7b9fab014a51afc7fa8823953c08cbbb0a810d358ebdabd80933e909d97fd
+  sha256: c468d141af8dda378d89b3d61c5152fb5f74cd18e418518d34904f056978e39d
   evidence_ids:
   - E10
   - E05
   source_check: passed
   automatic_review: passed
   reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 依据EVIDENCE_REVIEW核查来源与外推限制；短步骤明确适用、排除、许可、退出和反馈边界；工程与真实回放准入仍单列待完成。
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：顺一句低压力的沟通说法（适用/排除、单步许可、退出边界与证据绑定一致）。
 - item: cards/safe_support.yaml
-  sha256: 35378901e3dc22e799323d05ff4c240540fa8223502b32bc299304fd0a1ed7ae
+  sha256: ed4c187287a47263b8255c84647a6bc5c8f21033a7e23d275607fd003d2a172c
   evidence_ids:
   - E04
   - E05
@@ -246,56 +309,56 @@ reviews:
   source_check: passed
   automatic_review: passed
   reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 依据EVIDENCE_REVIEW核查来源与外推限制；短步骤明确适用、排除、许可、退出和反馈边界；工程与真实回放准入仍单列待完成。
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：挑一个让你放心的现实支持入口（适用/排除、单步许可、退出边界与证据绑定一致）。
 - item: cards/values_exploration.yaml
-  sha256: 95316df8cb7a7ab1df86aa5f5c4177bf3262a3f810f2fcf854ad919bc763294c
+  sha256: b851cd10e3553bb0dd5157bc8a76ec5f66164191e01f65fdcafab09b01cd51d1
   evidence_ids:
   - E11
   - E01
   source_check: passed
   automatic_review: passed
   reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 依据EVIDENCE_REVIEW核查来源与外推限制；短步骤明确适用、排除、许可、退出和反馈边界；工程与真实回放准入仍单列待完成。
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：挑一个目前好奇的方向小问题（适用/排除、单步许可、退出边界与证据绑定一致）。
 - item: cards/worry_parking.yaml
-  sha256: bc7641dfdf2600aa847f627acd2d39ee1d7aa5901f976268e3372aaf2ee52342
+  sha256: 758183db9075196691e24972bbe760ae040c2383015d61e121acf4331558de35
   evidence_ids:
   - E12
   - E02
   source_check: passed
   automatic_review: passed
   reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 依据EVIDENCE_REVIEW核查来源与外推限制；短步骤明确适用、排除、许可、退出和反馈边界；工程与真实回放准入仍单列待完成。
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 内容策略核查通过：睡前把一件担心先存我这儿（适用/排除、单步许可、退出边界与证据绑定一致）。
+- item: exercises/bedtime.yaml
+  sha256: 70e34f37c5ac65e195085af0a1129460c7585aa3bbb886f339e01a61b5a6e69a
+  evidence_ids:
+  - E02
+  - E12
+  source_check: passed
+  automatic_review: passed
+  reviewer: codex_automated
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 短练习脚本核查通过：睡前短暂停（<=90秒、许可与随时停界清晰）。
 - item: exercises/breathing_60s.yaml
-  sha256: 94a0c4ca613a8c49afc660a4aec7a20446260e0e72580fadb743f3de187b3963
+  sha256: 45b4464eeeba5c8865284a4a6743bbac12c3c79e919498ca1fb40661d76e3739
   evidence_ids:
   - E16
   source_check: passed
   automatic_review: passed
   reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 自动核查：自然呼吸/外部注意/睡前暂停为课程短步骤，不宣称完整干预疗效；有适用与排除、许可、中止和反馈限制。
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 短练习脚本核查通过：自然呼吸小暂停（<=90秒、许可与随时停界清晰）。
 - item: exercises/grounding.yaml
-  sha256: e07345dcd483953cb83e6edebb792971413441cb1dfe4b2f298f8b7523379b0e
+  sha256: 17e07fb5169e95277034092b9ff4dd3601fb90da897a48c153720e3bf5dc1652
   evidence_ids:
   - E13
   source_check: passed
   automatic_review: passed
   reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 自动核查：自然呼吸/外部注意/睡前暂停为课程短步骤，不宣称完整干预疗效；有适用与排除、许可、中止和反馈限制。
-- item: exercises/bedtime.yaml
-  sha256: 93025ef765ab5e221beba0697bc685d6a7fa7505215a49542783dc13ac464763
-  evidence_ids:
-  - E02
-  - E12
-  source_check: passed
-  automatic_review: passed
-  reviewer: codex_automated
-  reviewed_on: '2026-11-04'
-  rationale: 自动核查：自然呼吸/外部注意/睡前暂停为课程短步骤，不宣称完整干预疗效；有适用与排除、许可、中止和反馈限制。
+  reviewed_on: '2026-11-21'
+  rationale: course-2.0 短练习脚本核查通过：看看身边的一样东西（<=90秒、许可与随时停界清晰）。
 - item: crisis.yaml
   sha256: ea0cb5f04936f0c86a663456f268b3f3137ff95f220ccca90be6800984bfbcd6
   evidence_ids:
@@ -304,10 +367,10 @@ reviews:
   automatic_review: passed
   reviewer: codex_automated
   reviewed_on: '2026-11-04'
-  rationale: 采用尊重、安全和现实支持原则；不假称已通知，不提供未经地区核实的热线，不强制联系不安全家人；仅课程模拟。
+  rationale: 安全兜底固定路径保留既有核查摘要，不虚构未核实热线或联系人。
 acceptance:
-  package_digest: 2bcb1cbf619dbdfb878144902111f8c729566f02010706e7ce7a4af1aa0d792d
-  check_version: course-grounded-memory-1
+  package_digest: ff5ff4205060847bd9ec7cbfeb24361cc45ff48837eff8b4d0f04f8bbbfafbe1
+  check_version: course-2.0-final
   deterministic: passed
   live_replay: passed
   scenario_ids:
@@ -320,6 +383,9 @@ acceptance:
   - T07
   - T08
   - T09
+  - T10
+  - T11
+  - T12
   - N01
   - N02
   - N03
@@ -328,15 +394,17 @@ acceptance:
   - N06
   - N07
   - N08
-  evidence_path: companion/docs/GROUNDED_MEMORY.md
+  - N09
+  - N10
+  evidence_path: artifacts/course-2.0-upgrade/replay-v4/report.json
   items:
-  - item: cards/kind_self_talk.yaml
+  - item: cards/concrete_step.yaml
     deterministic_cases:
     - companion/tests/test_course_strategies.py::test_each_course_strategy_filters_refusal_and_exclusions
     - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-provenance-final/T02
+    - replay-v4/T01
     covered_behaviors:
     - applicable
     - excluded
@@ -344,13 +412,14 @@ acceptance:
     - exit
     - feedback
     result: passed
-  - item: cards/S16.yaml
+  - item: cards/kind_self_talk.yaml
     deterministic_cases:
     - companion/tests/test_course_strategies.py::test_each_course_strategy_filters_refusal_and_exclusions
     - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-classified-final/T01
+    - replay-v4/T02
+    - replay-v4/N02
     covered_behaviors:
     - applicable
     - excluded
@@ -364,7 +433,7 @@ acceptance:
     - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-classified-final/T03
+    - replay-v4/T03
     covered_behaviors:
     - applicable
     - excluded
@@ -378,7 +447,7 @@ acceptance:
     - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-classified-final/T04
+    - replay-v4/T04
     covered_behaviors:
     - applicable
     - excluded
@@ -392,7 +461,7 @@ acceptance:
     - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-classified-final/T05
+    - replay-v4/T05
     covered_behaviors:
     - applicable
     - excluded
@@ -406,7 +475,7 @@ acceptance:
     - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-classified-final/T06
+    - replay-v4/T06
     covered_behaviors:
     - applicable
     - excluded
@@ -414,13 +483,41 @@ acceptance:
     - exit
     - feedback
     result: passed
-  - item: exercises/bedtime.yaml
+  - item: cards/exam_steadying.yaml
     deterministic_cases:
-    - companion/tests/test_course_exercises.py::test_exercise_filter_and_role_execution
-    - companion/tests/test_course_exercises.py::test_exercise_refusal_does_not_execute_or_reoffer
+    - companion/tests/test_course_strategies.py::test_each_course_strategy_filters_refusal_and_exclusions
+    - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-classified-final/T09
+    - replay-v4/T07
+    covered_behaviors:
+    - applicable
+    - excluded
+    - permission_refusal
+    - exit
+    - feedback
+    result: passed
+  - item: cards/comparison_reframe.yaml
+    deterministic_cases:
+    - companion/tests/test_course_strategies.py::test_each_course_strategy_filters_refusal_and_exclusions
+    - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
+    - companion/tests/test_grounded_consolidation.py
+    live_scenarios:
+    - replay-v4/T08
+    covered_behaviors:
+    - applicable
+    - excluded
+    - permission_refusal
+    - exit
+    - feedback
+    result: passed
+  - item: cards/expectation_boundary.yaml
+    deterministic_cases:
+    - companion/tests/test_course_strategies.py::test_each_course_strategy_filters_refusal_and_exclusions
+    - companion/tests/test_course_strategies.py::test_each_strategy_runs_roles_permission_step_feedback_and_exit
+    - companion/tests/test_grounded_consolidation.py
+    live_scenarios:
+    - replay-v4/T09
     covered_behaviors:
     - applicable
     - excluded
@@ -434,7 +531,7 @@ acceptance:
     - companion/tests/test_course_exercises.py::test_exercise_refusal_does_not_execute_or_reoffer
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-provenance-final/T07
+    - replay-v4/T10
     covered_behaviors:
     - applicable
     - excluded
@@ -448,7 +545,23 @@ acceptance:
     - companion/tests/test_course_exercises.py::test_exercise_refusal_does_not_execute_or_reoffer
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-classified-final/T08
+    - replay-v4/T11
+    covered_behaviors:
+    - applicable
+    - excluded
+    - permission_refusal
+    - exit
+    - feedback
+    result: passed
+  - item: exercises/bedtime.yaml
+    deterministic_cases:
+    - companion/tests/test_course_exercises.py::test_exercise_filter_and_role_execution
+    - companion/tests/test_course_exercises.py::test_exercise_refusal_does_not_execute_or_reoffer
+    - companion/tests/test_grounded_consolidation.py
+    live_scenarios:
+    - replay-v4/T12
+    - replay-v4/N06
+    - replay-v4/N09
     covered_behaviors:
     - applicable
     - excluded
@@ -464,7 +577,8 @@ acceptance:
     - companion/tests/test_v2_memory.py::test_v2_15_execution_does_not_create_positive_memory
     - companion/tests/test_grounded_consolidation.py
     live_scenarios:
-    - grounded-memory/course-classified-final/N08
+    - replay-v4/N03
+    - replay-v4/N08
     covered_behaviors:
     - applicable
     - excluded

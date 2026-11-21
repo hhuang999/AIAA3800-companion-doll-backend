@@ -86,11 +86,7 @@ class Agents:
             )
         prompt = self.templates.get_template(f"{role}.j2").render(
             phase=payload.get("phase", "extract"),
-            schema=json.dumps(
-                role_schema,
-                ensure_ascii=False,
-                separators=(",", ":"),
-            ),
+            schema=terse_schema(role_schema),
         )
         messages = [
             {
@@ -99,7 +95,8 @@ class Agents:
                 "每条引用必须同时填写kind、id、claim；claim是简短的依据说明，不能省略。"
                 "evidence、source_refs、concerns、facts字段必须是JSON数组，即使只有一项。"
                 "事实结构为{statement:文本,evidence:[{kind:来源类型,id:真实来源ID,claim:依据说明}]}。"
-                "只有hypotheses中的对象允许conflicting_evidence。不要复制schema或示意占位内容。"
+                "Only hypotheses objects may include conflicting_evidence. "
+                "标量枚举字段（expressed_need、emotion_intensity、readiness、objective）必须是单个字符串，绝不能写成数组。"
                 "interaction_event引用只用feedback中的event_id，不能用output_id或support_plan_id。"
                 "时间未知则省略；提供时间必须是带时区的ISO格式。\n" + prompt,
             },
@@ -225,3 +222,62 @@ def reachable_schema(schema):
 
     visit(schema)
     return {**schema, "$defs": {name: definitions[name] for name in sorted(needed)}}
+
+
+def _format_type(spec: dict) -> str:
+    if "$ref" in spec:
+        return spec["$ref"].rsplit("/", 1)[-1]
+    if "const" in spec:
+        return json.dumps(spec["const"], ensure_ascii=False)
+    if "enum" in spec:
+        return " | ".join(json.dumps(v, ensure_ascii=False) for v in spec["enum"])
+    if "anyOf" in spec:
+        parts = [_format_type(branch) for branch in spec["anyOf"]]
+        return " | ".join(dict.fromkeys(parts))
+    kind = spec.get("type")
+    if kind == "null":
+        return "null"
+    if kind == "boolean":
+        return "bool"
+    if kind == "string":
+        bounds = []
+        if "minLength" in spec:
+            bounds.append(f">={spec['minLength']}")
+        if "maxLength" in spec:
+            bounds.append(f"<={spec['maxLength']}")
+        return f"str({','.join(bounds)})" if bounds else "str"
+    if kind in ("integer", "number"):
+        name = "int" if kind == "integer" else "float"
+        lo, hi = spec.get("minimum"), spec.get("maximum")
+        if lo is not None or hi is not None:
+            return f"{name}({lo if lo is not None else ''}..{hi if hi is not None else ''})"
+        return name
+    if kind == "array":
+        inner = _format_type(spec.get("items", {}))
+        lo, hi = spec.get("minItems"), spec.get("maxItems")
+        if lo is not None and hi is not None:
+            return f"array<{inner}>({lo}..{hi})"
+        if hi is not None:
+            return f"array<{inner}>(<={hi})"
+        if lo is not None:
+            return f"array<{inner}>(>={lo})"
+        return f"array<{inner}>"
+    if kind == "object":
+        required = set(spec.get("required", ()))
+        fields = [
+            f"{name}{'*' if name in required else '?'}:{_format_type(prop)}"
+            for name, prop in spec.get("properties", {}).items()
+        ]
+        return "{" + ";".join(fields) + "}"
+    return "any"
+
+
+def terse_schema(schema: dict) -> str:
+    """Render a compact typed contract preserving all enums, bounds, and required markers."""
+    lines = ["Root " + _format_type(schema)]
+    defs = schema.get("$defs", {})
+    if defs:
+        lines.append("Types:")
+        for name in sorted(defs):
+            lines.append(f"- {name} {_format_type(defs[name])}")
+    return "\n".join(lines)

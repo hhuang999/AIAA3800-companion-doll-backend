@@ -5,17 +5,69 @@ The transport is injected so cancellation can be tested without hardware.
 """
 
 import asyncio
+import audioop
+import io
 import json
 import logging
 import tempfile
 import threading
-from collections import deque
+import wave
+from collections import OrderedDict, deque
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from companion.core.models import OutputEvent, PlaybackEvent, PlaybackSegment
 
 logger = logging.getLogger(__name__)
+OPUS_SAMPLE_RATE = 16000
+OPUS_FRAME_SAMPLES = 960  # 60 ms at 16 kHz
+OPUS_FRAME_BYTES = OPUS_FRAME_SAMPLES * 2
+MAX_PACKET_CACHE = 64
+
+
+def _pcm16_to_opus_packets(raw_pcm: bytes) -> list[bytes]:
+    import opuslib_next
+
+    encoder = opuslib_next.Encoder(OPUS_SAMPLE_RATE, 1, opuslib_next.APPLICATION_AUDIO)
+    packets = []
+    for i in range(0, len(raw_pcm), OPUS_FRAME_BYTES):
+        chunk = raw_pcm[i : i + OPUS_FRAME_BYTES]
+        if len(chunk) < OPUS_FRAME_BYTES:
+            chunk += b"\x00" * (OPUS_FRAME_BYTES - len(chunk))
+        packets.append(encoder.encode(chunk, OPUS_FRAME_SAMPLES))
+    return packets
+
+
+def encode_audio_in_memory(data: bytes) -> list[bytes]:
+    """Encode WAV or Ogg/Opus bytes directly into 16kHz 60ms Opus packets without disk I/O."""
+    if data[:4] == b"RIFF":
+        with wave.open(io.BytesIO(data), "rb") as audio:
+            channels = audio.getnchannels()
+            width = audio.getsampwidth()
+            rate = audio.getframerate()
+            raw = audio.readframes(audio.getnframes())
+        if channels == 2:
+            raw = audioop.tomono(raw, width, 0.5, 0.5)
+        elif channels != 1:
+            raise ValueError(f"Unsupported channel count for fast encode: {channels}")
+        if width != 2:
+            raw = audioop.lin2lin(raw, width, 2)
+        if rate != OPUS_SAMPLE_RATE:
+            raw, _ = audioop.ratecv(raw, 2, 1, rate, OPUS_SAMPLE_RATE, None)
+        return _pcm16_to_opus_packets(raw)
+    if data[:4] == b"OggS":
+        import av
+
+        pcm_chunks = []
+        with av.open(io.BytesIO(data)) as container:
+            resampler = av.AudioResampler(format="s16", layout="mono", rate=OPUS_SAMPLE_RATE)
+            for frame in container.decode(audio=0):
+                for resampled in resampler.resample(frame):
+                    pcm_chunks.append(bytes(resampled.planes[0]))
+            for resampled in resampler.resample(None):
+                pcm_chunks.append(bytes(resampled.planes[0]))
+        return _pcm16_to_opus_packets(b"".join(pcm_chunks))
+    raise ValueError("Unsupported in-memory audio container")
 
 
 class XiaozhiTransport:
@@ -25,16 +77,20 @@ class XiaozhiTransport:
         self.event = None
 
     async def encode(self, data: bytes) -> list[bytes]:
-        from core.utils.util import audio_to_data
-
-        # Close the handle before ffmpeg opens it on Windows. Speech is transient.
-        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as file:
-            path = Path(file.name)
-            file.write(data)
         try:
-            return await audio_to_data(str(path), use_cache=False)
-        finally:
-            path.unlink(missing_ok=True)
+            return await asyncio.to_thread(encode_audio_in_memory, data)
+        except (ImportError, ValueError):
+            from core.utils.util import audio_to_data
+
+            # Fallback only when native in-memory decoders are unavailable or container is exotic.
+            suffix = ".ogg" if data[:4] == b"OggS" else ".wav"
+            with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as file:
+                path = Path(file.name)
+                file.write(data)
+            try:
+                return await audio_to_data(str(path), use_cache=False)
+            finally:
+                path.unlink(missing_ok=True)
 
     async def start(self, event: OutputEvent) -> None:
         from core.handle.sendAudioHandle import send_tts_message
@@ -116,6 +172,7 @@ class XiaozhiOutputPort:
         self.closed = False
         self.waiting = deque()
         self.prefetch = None
+        self.packet_cache: OrderedDict[str, tuple[list[bytes], float]] = OrderedDict()
         self.synthesis_pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix="tts-prefetch")
         self.synthesis_slots = asyncio.Semaphore(2)
         if isinstance(transport, XiaozhiTransport):
@@ -166,9 +223,29 @@ class XiaozhiOutputPort:
                 ),
             )
 
+    def _get_cached_packets(self, key: str):
+        with self.lock:
+            hit = self.packet_cache.get(key)
+            if hit is not None:
+                self.packet_cache.move_to_end(key)
+            return hit
+
+    def _put_cached_packets(self, key: str, packets: list[bytes], duration: float) -> None:
+        with self.lock:
+            self.packet_cache[key] = (packets, duration)
+            self.packet_cache.move_to_end(key)
+            while len(self.packet_cache) > MAX_PACKET_CACHE:
+                self.packet_cache.popitem(last=False)
+
     async def _prepare(self, event, segment, fixed):
         if not self.valid(event):
             raise asyncio.CancelledError
+        cache_id = self.tts.cache_key(segment.text)
+        cached = self._get_cached_packets(cache_id) if not segment.audio_path else None
+        if cached is not None:
+            if self.metric:
+                self.metric(event, "opus_first_packet_ready_ms")
+            return cached
         if fixed:
             data, duration = self._audio(segment, True)
         else:
@@ -195,6 +272,8 @@ class XiaozhiOutputPort:
         packets = await self.transport.encode(data)
         if not self.valid(event):
             raise asyncio.CancelledError
+        if fixed or len(segment.text) <= 24:
+            self._put_cached_packets(cache_id, packets, duration)
         if self.metric:
             self.metric(event, "opus_first_packet_ready_ms")
         return packets, duration

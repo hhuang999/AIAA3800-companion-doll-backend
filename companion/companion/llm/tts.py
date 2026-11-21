@@ -1,7 +1,8 @@
-"""Aihubmix WAV synthesis. Dynamic speech is not persisted by this client."""
+"""Aihubmix speech synthesis (Opus/PCM/WAV). Dynamic speech is not persisted to disk."""
 
 import io
 import os
+import struct
 import tempfile
 import wave
 from pathlib import Path
@@ -27,20 +28,41 @@ class TTSClient:
         tts = self.config.settings.tts
         return cache_key(tts.model, tts.voice, text)
 
-    def synthesize(self, text: str) -> bytes:
+    def synthesize(self, text: str, *, response_format: str | None = None) -> bytes:
         if not text or len(text) > 4096:
             raise ValueError("TTS text must contain 1-4096 characters")
         tts = self.config.settings.tts
+        fmt = response_format or tts.response_format
         response = self.client.post(
             "/audio/speech",
-            json={"model": tts.model, "voice": tts.voice, "input": text, "response_format": "wav"},
+            json={"model": tts.model, "voice": tts.voice, "input": text, "response_format": fmt},
         )
         response.raise_for_status()
-        self.duration(response.content)
-        return response.content
+        data = response.content
+        if fmt == "pcm":
+            if not data:
+                raise ValueError("Empty TTS audio")
+            # OpenAI/Aihubmix PCM output is 24kHz, mono, signed 16-bit little-endian.
+            buf = io.BytesIO()
+            with wave.open(buf, "wb") as wav_file:
+                wav_file.setnchannels(1)
+                wav_file.setsampwidth(2)
+                wav_file.setframerate(24000)
+                wav_file.writeframes(data)
+            data = buf.getvalue()
+        self.duration(data)
+        return data
 
     @staticmethod
     def duration(data: bytes) -> float:
+        if data.startswith(b"OggS"):
+            idx = data.rfind(b"OggS")
+            if idx < 0 or len(data) < idx + 14:
+                raise ValueError("Invalid Ogg/Opus audio")
+            granule = struct.unpack_from("<q", data, idx + 6)[0]
+            if granule <= 0:
+                raise ValueError("Empty TTS audio")
+            return granule / 48000.0
         with wave.open(io.BytesIO(data)) as audio:
             if audio.getframerate() <= 0 or audio.getnframes() == 0:
                 raise ValueError("Empty TTS audio")
@@ -51,7 +73,8 @@ class TTSClient:
         if path.is_file():
             data = path.read_bytes()
         else:
-            data = self.synthesize(text)
+            # Fixed exercise and crisis assets stay RIFF WAV for wave.open duration checks.
+            data = self.synthesize(text, response_format="wav")
             directory.mkdir(parents=True, exist_ok=True)
             with tempfile.NamedTemporaryFile(dir=directory, suffix=".tmp", delete=False) as file:
                 temporary = Path(file.name)

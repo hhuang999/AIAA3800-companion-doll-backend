@@ -1,5 +1,5 @@
 id: values_exploration
-name: 找一个暂时想了解的方向
+name: 挑一个目前好奇的方向小问题
 status: enabled
 requires_permission: true
 targets:
@@ -13,54 +13,60 @@ constraints:
   - low
 reasoner:
   when_any: &id001
-  - 用户愿意探索而非立刻定终身
-  - 不要求升学政策或医学判断
+  - 在选科分班、专业方向、或刷题意义感上迷茫发慌
+  - 愿意挑一个具体小问题来了解，而不是要现在定死人生
   not_when:
-  - 用户只想卸下焦虑时不做兴趣测评或规划。
-  - 当前只想倾诉或明确拒绝该支持；邀请与执行许可分别判断
-  success: 用户选出或暂缓一个探索问题；不推断生涯困扰改善。
-  exit: 用户说停、没用、不舒服、只想说或出现安全信号时停止；不连续换方法。
+  - 明确不想谈前途或选科（no_advice），或者已经困倦准备睡觉时严格禁用
+  - 严禁给出高考选科政策断语或“一定能录取/适合当某某师”的算命结论
+  success: 从大焦虑缩到一个可以去查证或问一问的好奇小问题
+  exit: 用户觉得还是太虚、累了不想选、或说停时即刻收住
 talker:
   steps:
-  - 从原话找一件有一点兴趣或在意的事，不编造天赋与职业适合度。
-  - 共同选一个想弄清的小问题，不要求现在确定未来。
-  - 用户愿意时选一个现实信息来源，如可信老师、相关从业者或官方资料；不提供未经核查的政策结论。
+  - 顺着话头找一件用户略微不那么排斥、甚至带一点点好奇的事，不乱夸天赋。
+  - 把“以后到底怎么办”缩小成一个不用定终身的观察小问题。
+  - 共同挑一个靠谱核实路子（如官方选科手册、科任老师或做过相关行当的人），绝不下政策定论。
   examples:
-  - 现在不用决定一辈子，可以先弄清你对这件事好奇什么。
+  - 选科又不是一锤子买卖，今天咱们就挑一个你最拿不准的小问题先看清楚好不好？
+  - 比方说先打听一下物理组真实学习节奏，而不是逼自己今晚定专业。
   never_say:
-  - 你天生适合这个专业
-  - 这个选科组合一定能录取
-  - 你应该选理科
+  - 你天生适合理科
+  - 这组选科一定能报上好专业
+  - 你必须尽早定下理想
 limits:
   per_session: 1
 emo: 🤔
 source:
-  document: 研究驱动课程内容 course-1.0
+  document: 课程内容包 course-2.0（初高中升学陪伴）
   verification: codex_source_checked
-  evidence: companion/docs/autonomous-upgrade/research/EVIDENCE_REVIEW.md
+  evidence: companion/docs/autonomous-upgrade/research/研究链-v3.md
 protocol:
-  version: course-1.0
-  adaptation: 原创中文短步骤；仅借用研究机制，未验证本改编的效果。
-  burden: 一次一小步，最多三轮；可以只听、跳过或结束。
-  permission: 先明确询问是否愿意试；拒绝和撤回立即停止。
-  stop: 用户说停、没用、不舒服、只想说或出现安全信号时停止；不连续换方法。
-  followup: 只有用户明确提出后续事件或同意跟进才记录；下次真实唤醒尊重边界。
-  feedback_limits: 只记录明确且可归因的反馈；完成、沉默和一次感觉变化不能证明策略有效或长期偏好。
-  mechanism: 从用户已有兴趣或重视的事选一个可探索问题，再找可靠信息而非替用户决定。
+  version: course-2.0
+  adaptation: 中文高中选科与生涯减压短步骤；依据中国高一在线生涯探索研究（Chen 等, 2022）与需求因子研究。
+  burden: 只聚焦一个低成本可查证的小好奇点，不搞繁琐兴趣测评。
+  permission: 先问是否愿意把未来的大问号缩成一个小好奇，允许再继续。
+  invitation: 不用今晚就把未来定死，想不想先把这团迷茫缩成一个能去摸底的小问题？
+  stop: 用户说太烦了、只想先安安静静发呆，马上停下来。
+  followup: 仅记用户自主选中的核实小问题，并尊重后续随时更改方向的自由。
+  feedback_limits: 不对任何升学政策、分数线或职业适配给出保证。
+  mechanism: 用可控的小范围信息探索代替过早的终身决定压迫感，降低信息不确定焦虑。
   evidence_ids:
   - E11
   - E01
   minimum_information:
-  - 用户提到的兴趣或困惑；不知道也可保留未知
+  - 令用户拿不准的选科或未来困惑点
   prerequisites: *id001
   excluded_contexts:
   - bedtime
   keywords:
   - 选科
-  - 未来
+  - 分班
+  - 志愿
   - 专业
+  - 未来
+  - 迷茫
   - 意义
-  - 不知道喜欢
-  counterexample: 用户只想卸下焦虑时不做兴趣测评或规划。
+  - 大学
+  - 出路
+  counterexample: 当学生处于晚睡状态（bedtime）想先放空入睡，坚决不用此卡唤醒长期担忧。
   required_contexts: []
   legacy_ids: []

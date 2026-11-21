@@ -15,6 +15,10 @@ Objective = Literal[
     "clarify",
     "comfort",
     "reflect",
+    "attuned_listen",
+    "tentative_reflect",
+    "low_energy_companionship",
+    "quiet_presence",
     "provide_information",
     "invite_action",
     "invite_exercise",
@@ -127,7 +131,9 @@ class SupportPlan(PlanCandidate):
     created_at: datetime = Field(default_factory=utcnow)
     valid_until: datetime
     max_user_turn_delta: int = 4
-    review_status: Literal["not_required", "approved", "rejected", "incomplete"]
+    review_status: Literal[
+        "not_required", "fast_path_non_action", "approved", "rejected", "incomplete"
+    ]
     review_run_id: str | None = None
     status: Literal["active", "superseded", "invalidated", "expired"] = "active"
     strategy_selection: StrategySelection | None = None

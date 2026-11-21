@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-11-21",
+  "scope": "Synthetic course-2.0 offline & local loopback live-model verification; no API keys, tokens, databases, or PII included.",
+  "package_digest": "ff5ff4205060847bd9ec7cbfeb24361cc45ff48837eff8b4d0f04f8bbbfafbe1",
+  "models": {
+    "course_1_0": {
+      "talker_risk_brief_critic_delta": "qwen-flash",
+      "analysis_planner": "qwen-plus",
+      "memory_end": "gpt-4.1-mini",
+      "tts": "gpt-4o-mini-tts (coral, wav)"
+    },
+    "course_2_0": {
+      "talker_risk_brief_critic_delta": "qwen-flash",
+      "analysis_planner": "gpt-4.1-mini",
+      "memory_end": "gpt-4.1-mini",
+      "tts": "gpt-4o-mini-tts (coral, opus + 64-entry packet LRU + clause dispatch)"
+    }
+  },
+  "course_1_0_baseline": {
+    "source": "companion/docs/VALIDATION.md & companion/docs/evidence/latency-final.json (2026-11-03..04)",
+    "replay": {
+      "targets_executed": 9,
+      "targets_total": 9,
+      "cognition_n": 75,
+      "cognition_p50_ms": 10729.5,
+      "cognition_p90_ms": 15422.6,
+      "job_timeouts": 2,
+      "role_timeouts": 2,
+      "talker_first_sentence_n": 41,
+      "talker_first_sentence_p50_ms": 1281.0,
+      "talker_first_sentence_p90_ms": 1406.0
+    },
+    "text_bench": {
+      "n": 30,
+      "first_token_p50_ms": 1242.5,
+      "first_token_p90_ms": 1625.0,
+      "first_sentence_p50_ms": 1398.5,
+      "first_sentence_p90_ms": 1828.0
+    },
+    "voice_bench": {
+      "n": 30,
+      "failures": 0,
+      "first_token_p50_ms": 1187.5,
+      "first_token_p90_ms": 1359.0,
+      "first_sentence_p50_ms": 1257.5,
+      "first_sentence_p90_ms": 1421.0,
+      "tts_complete_p50_ms": 3539.0,
+      "tts_complete_p90_ms": 3937.0,
+      "opus_first_packet_ready_p50_ms": 3586.0,
+      "opus_first_packet_ready_p90_ms": 3984.0,
+      "client_first_packet_p50_ms": 3609.0,
+      "client_first_packet_p90_ms": 4015.0,
+      "server_completed_p50_ms": 9273.0,
+      "server_completed_p90_ms": 11031.0,
+      "voice_cognition_n": 8,
+      "voice_cognition_p50_ms": 12610.7,
+      "voice_cognition_p90_ms": 15316.3
+    }
+  },
+  "course_2_0_measured": {
+    "replay": {
+      "suite_version": "course-quality-2",
+      "scenarios_passed": 22,
+      "scenarios_total": 22,
+      "targets_executed": 12,
+      "targets_total": 12,
+      "jobs_completed": 58,
+      "jobs_partial": 8,
+      "jobs_rejected": 3,
+      "job_timeouts": 0,
+      "role_timeouts": 0,
+      "cognition_n": 46,
+      "cognition_p50_ms": 5889.1,
+      "cognition_p90_ms": 7389.3,
+      "cognition_max_ms": 8186.9,
+      "end_consolidation_n": 23,
+      "end_consolidation_p50_ms": 7314.4,
+      "end_consolidation_p90_ms": 12034.3,
+      "talker_first_token_n": 63,
+      "talker_first_token_p50_ms": 1000.0,
+      "talker_first_token_p90_ms": 1063.0,
+      "talker_first_sentence_n": 63,
+      "talker_first_sentence_p50_ms": 1062.0,
+      "talker_first_sentence_p90_ms": 1219.0
+    },
+    "text_bench": {
+      "n": 30,
+      "errors": 0,
+      "fallback_turns": 0,
+      "risk_degraded_turns": 0,
+      "first_token_p50_ms": 1016.0,
+      "first_token_p90_ms": 1453.0,
+      "first_sentence_p50_ms": 1109.5,
+      "first_sentence_p90_ms": 1578.0,
+      "total_p50_ms": 1202.5,
+      "total_p90_ms": 1656.0
+    },
+    "voice_bench": {
+      "n": 30,
+      "failures": 0,
+      "end_status": "done",
+      "jobs_completed": 8,
+      "first_token_p50_ms": 1000.0,
+      "first_token_p90_ms": 1078.0,
+      "first_sentence_p50_ms": 1101.0,
+      "first_sentence_p90_ms": 1203.0,
+      "gate_release_p50_ms": 1101.0,
+      "gate_release_p90_ms": 1203.0,
+      "tts_complete_p50_ms": 2507.5,
+      "tts_complete_p90_ms": 2890.0,
+      "opus_first_packet_ready_p50_ms": 2421.5,
+      "opus_first_packet_ready_p90_ms": 2750.0,
+      "client_first_packet_p50_ms": 2656.0,
+      "client_first_packet_p90_ms": 3140.0,
+      "client_first_packet_min_ms": 1000.0,
+      "client_first_packet_max_ms": 3406.0,
+      "server_completed_p50_ms": 8101.5,
+      "server_completed_p90_ms": 9781.0,
+      "voice_cognition_n": 7,
+      "voice_cognition_p50_ms": 6457.0
+    },
+    "fixed_audio": {
+      "audio_count": 24,
+      "within_90s": true,
+      "durations_s": {
+        "bedtime": 39.0,
+        "breathing_60s": 43.5,
+        "grounding": 41.7
+      }
+    }
+  }
+}

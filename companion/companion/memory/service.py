@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 
 from companion.cognition.base import EvidenceRef, utcnow
 
+from .concepts import enriched_terms, targets_overlap, terms  # noqa: F401
 from .models import MemoryBundle, MemoryCandidate, MemoryItem
 
 
@@ -17,13 +18,6 @@ def estimate_tokens(value: object) -> int:
     text = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
     ascii_count = sum(ord(char) < 128 for char in text)
     return (ascii_count + 1) // 2 + 2 * (len(text) - ascii_count) + 32
-
-
-def terms(text):
-    words = set(re.findall(r"[a-z0-9_]+", text.lower()))
-    for run in re.findall(r"[\u4e00-\u9fff]+", text):
-        words.update(run[i : i + 2] for i in range(len(run) - 1))
-    return words
 
 
 def applicable(item, state, now):
@@ -241,16 +235,16 @@ class MemoryService:
             m for m in items if m.kind == "interaction_boundary" and m.epistemic_status == "stated"
         )
         candidates = []
-        query_terms = terms(query)
+        query_terms = enriched_terms(query)
         for item in items:
             if item.kind == "interaction_boundary" or item.epistemic_status == "legacy_unverified":
                 continue
-            relevance = len(terms(item.value + item.key) & query_terms)
+            relevance = len(enriched_terms(item.value + item.key) & query_terms)
             raised = relevance > 0
             blocked = any(
                 b.target
-                and b.target in (item.value + item.key)
                 and b.boundary_rule in ("no_topic_probe", "no_memory_mention")
+                and targets_overlap(b.target, item.value + item.key)
                 for b in boundaries
             )
             if (item.mention_policy != "allowed" or blocked) and (proactive or not raised):
@@ -300,9 +294,9 @@ class MemoryService:
         }
 
     def explicit_boundary(self, text, state, turn_id):
-        """Conservative Chinese controls; uncertain targets protect the current session."""
+        """Conservative Chinese controls; scoped topic extraction avoids global false blocks."""
         negative = re.search(
-            r"(?<![分区个识])别(?:再|主动)?(?:问|提|给|教|说|聊|追|管|劝|建议)|不要(?:再|主动)?|不想.*(?:建议|问)|不希望.*(?:问|建议)",
+            r"(?<![分区个识])别(?:再|主动)?(?:问|提|给|教|说|聊|追|管|劝|建议|替)|不要(?:再|主动)?|不(?:想|希望)[^，,。！？!?]{0,8}(?:被问|你问|提|聊|给.{0,4}建议|要.{0,4}建议|听.{0,4}建议)",
             text,
         )
         allow = re.search(r"可以问我|允许.*问|可以.*建议", text)
@@ -310,9 +304,39 @@ class MemoryService:
         if not (negative or allow or revoke):
             return None
         target_match = re.search(
-            r"论文|时间(?:管理|安排)?|安排时间|进度|学习|考试|工作|家人|父母|感情", text
+            r"论文|时间(?:管理|安排)?|安排时间|"
+            r"(?:数学|英语|物理|化学|语文)?(?:月考|期中|期末|模考|一模|二模|三模|中考|高考|测验|考试|成绩|分数|排名|名次)|"
+            r"选科|志愿|专业|分班|作业|刷题|补习|同桌|室友|舍友|同学|朋友|老师|班主任|"
+            r"睡眠|熬夜|睡前|身材|外貌|体重|爸妈|父母|家长|家人|进度|学习|工作|感情",
+            text,
         )
-        target = target_match.group() if target_match else "current_topic"
+        target = target_match.group() if target_match else None
+        if target is None and re.search(r"(?:任何|所有|都别).*(?:建议|办法)", text):
+            target = "all_topics"
+        elif target is None:
+            generic = re.search(
+                r"(?<![分区个识])(?:别|不要)(?:再|主动)?(?:问|提|聊|谈|说|管)(?:我)?([\u4e00-\u9fff]{2,6})",
+                text,
+            )
+            if generic:
+                phrase = re.sub(
+                    r"(?:的事|事情|问题|话题|了吧|了吗|了|啊|呀)$", "", generic.group(1)
+                )
+                if len(phrase) >= 2 and phrase not in {
+                    "建议",
+                    "办法",
+                    "这些",
+                    "那些",
+                    "这个",
+                    "那个",
+                    "什么",
+                    "怎么",
+                    "怎样",
+                    "如何",
+                    "别人",
+                }:
+                    target = phrase
+        target = target or "current_topic"
         target = "时间管理" if target in ("时间", "安排时间", "时间安排") else target
         rule = (
             "revoke"
@@ -320,11 +344,13 @@ class MemoryService:
             else "allow"
             if allow
             else "no_advice"
-            if re.search(r"建议|教我|安排时间|办法", text)
+            if re.search(
+                r"建议|教我|安排时间|办法|告诉我.*(?:选|怎么|必须)|替我(?:选|决定|安排)", text
+            )
             else "no_topic_probe"
         )
         scope, expiry = "session", None
-        if re.search(r"以后|永远|长期|一直", text) and target_match:
+        if re.search(r"以后|永远|长期|一直", text) and target not in ("current_topic",):
             scope = "persistent"
         elif "今天" in text:
             scope = "until_time"

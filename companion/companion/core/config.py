@@ -65,7 +65,7 @@ class StorageSettings(SettingsModel):
 class TTSSettings(SettingsModel):
     model: str = "gpt-4o-mini-tts"
     voice: str = "coral"
-    response_format: Literal["wav"] = "wav"
+    response_format: Literal["wav", "pcm", "opus"] = "opus"
 
 
 class JobBudgetSettings(SettingsModel):
@@ -185,6 +185,7 @@ class Config:
         if self.crisis.get("status") == "enabled" and not self.content_reviewed("crisis.yaml"):
             raise ValueError("Enabled crisis content has incomplete/stale review")
         self.cards = {}
+        self.legacy_card_map: dict[str, str] = {}
         for path in sorted((self.directory / "cards").glob("*.yaml")):
             card = Card.model_validate(self.read(str(path.relative_to(self.directory))))
             if card.id in self.cards or path.stem != card.id:
@@ -192,6 +193,9 @@ class Config:
             if card.limits.get("per_session", 0) < 1:
                 raise ValueError(f"Invalid card limit: {card.id}")
             self.cards[card.id] = card
+            if card.protocol:
+                for legacy_id in card.protocol.legacy_ids:
+                    self.legacy_card_map[legacy_id] = card.id
             if card.status == "enabled" and (
                 card.protocol is None or not self.content_reviewed(f"cards/{card.id}.yaml")
             ):
@@ -249,3 +253,11 @@ class Config:
         from companion.content.admission import review_valid
 
         return review_valid(self, relative)
+
+    def resolve_card_id(self, identifier: str | None) -> str | None:
+        if not identifier:
+            return None
+        if identifier in self.cards:
+            return identifier
+        mapped = self.legacy_card_map.get(identifier)
+        return mapped if mapped and mapped in self.cards else identifier

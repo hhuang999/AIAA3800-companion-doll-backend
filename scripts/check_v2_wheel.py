@@ -27,8 +27,8 @@ def main():
         assert (config.directory / "prompts" / f"{role}.j2").is_file()
     assert (package / "store/migrations/002.sql").is_file()
     assert (package / "tools/resources/config-v2-baseline.json").is_file()
-    assert len(config.cards) == 6 and len(config.exercises) == 3
-    assert config.read("course_scenarios.yaml")["version"] == "course-quality-1"
+    assert len(config.cards) == 9 and len(config.exercises) == 3
+    assert config.read("course_scenarios.yaml")["version"] == "course-quality-2"
     deployment = output / "config"
     upgrade(deployment)
     settings = deployment / "settings.yaml"
@@ -114,7 +114,7 @@ def main():
         "repeat": "passed",
         "cli": "passed",
         "backup": str(backup),
-        "content_resources": "six strategies, three exercises, fixed replay suite",
+        "content_resources": "nine strategies, three exercises, fixed course-2.0 replay suite",
         "config_upgrade": "customized settings preserved; idempotent",
     }
     (output / "report.json").write_text(

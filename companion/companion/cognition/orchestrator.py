@@ -7,7 +7,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor
 from datetime import timedelta
 
-from openai import APITimeoutError
+from openai import APIError, APITimeoutError
 from pydantic import BaseModel
 
 from companion.content.catalog import StrategyCatalog
@@ -20,6 +20,7 @@ from companion.core.models import (
     ReasonerOutput,
     SeekerState,
     Snapshot,
+    Stage,
     TypedConfidence,
 )
 from companion.memory.service import MemoryService
@@ -43,8 +44,8 @@ from .models import (
     SituationAssessment,
     SupportPlan,
 )
-from .policy import NON_ACTION, plan_invalid_reason
-from .scheduler import CognitiveScheduler
+from .policy import NON_ACTION, boundary_blocks_probe, plan_invalid_reason
+from .scheduler import REPAIR_TRIGGERS, CognitiveScheduler
 
 logger = logging.getLogger(__name__)
 
@@ -187,6 +188,28 @@ class Cognition:
         if isinstance(value, Consolidation):
             validate_summary_sources(value)
 
+    def _drain_brief(self, brief_future, cancel) -> None:
+        if brief_future is None or brief_future.done():
+            return
+        try:
+            # Keep the per-user slot occupied until an actual HTTP call exits.
+            brief_future.result()
+        except (
+            TimeoutError,
+            APITimeoutError,
+            APIError,
+            BudgetExceeded,
+            JobCancelled,
+            ValueError,
+            RuntimeError,
+            OSError,
+        ) as error:
+            logger.debug(
+                "Background brief cleanup (%s): %s",
+                "cancelled" if cancel.is_set() else "exit",
+                type(error).__name__,
+            )
+
     def run(self, job, cancel):
         rt = self.core.sessions.get(job.session_id)
         if rt is None:
@@ -276,11 +299,6 @@ class Cognition:
                             job, candidates, (), payload, budget
                         )
                     brief = None
-                    if brief_future:
-                        brief, _ = brief_future.result(
-                            timeout=max(0, budget.deadline - time.monotonic())
-                        )
-                        self._validate(job, brief, allowed)
                     selection = self.catalog.select(
                         analysis,
                         state,
@@ -308,6 +326,9 @@ class Cognition:
                     candidate_id = uuid.uuid4().hex
                     review_id = None
                     review_status = "not_required"
+                    user_text = " ".join(
+                        row["text"] for row in payload["history"] if row["role"] == "user"
+                    )
                     for version in (1, 2):
                         candidate, _ = self.agents.call(
                             job,
@@ -320,7 +341,8 @@ class Cognition:
                         self._validate(job, candidate, allowed)
                         if any(
                             action.kind == "card"
-                            and action.action_id not in selection.selected_ids
+                            and self.config.resolve_card_id(action.action_id)
+                            not in selection.selected_ids
                             or action.kind == "exercise"
                             and action.action_id not in exercise_ids
                             for action in candidate.candidate_actions
@@ -332,20 +354,58 @@ class Cognition:
                         ):
                             raise ValueError("Candidate action did not meet its prerequisites")
                         local_issues = []
-                        if candidate.open_question and any(
-                            avoid.kind == "no_topic_probe"
-                            and avoid.target in (None, "current_topic")
-                            for avoid in candidate.avoid
+                        if candidate.open_question and (
+                            any(
+                                avoid.kind == "no_topic_probe"
+                                and avoid.target in (None, "current_topic")
+                                for avoid in candidate.avoid
+                            )
+                            or any(
+                                boundary_blocks_probe(b, candidate.open_question, user_text)
+                                for b in bundle.boundaries
+                            )
                         ):
                             local_issues.append(
                                 "open_question与当前no_topic_probe冲突；删除问题，或仅在用户没有该边界时删除无依据的avoid项。"
                             )
+                        if (candidate.objective in NON_ACTION and candidate.candidate_actions) or (
+                            candidate.objective not in NON_ACTION
+                            and candidate.objective != "provide_information"
+                            and not candidate.candidate_actions
+                        ):
+                            local_issues.append("objective与candidate_actions状态不一致。")
                         if job.kind == "routine":
                             if local_issues:
                                 raise ValueError("Routine candidate contradicts its constraints")
                             if candidate.objective not in NON_ACTION or candidate.candidate_actions:
                                 raise ValueError("Routine cannot propose action/information")
                             break
+                        active_plan = self.store.active_support_plan(job.session_id)
+                        protects_active_offer = bool(
+                            state.stage == Stage.permission
+                            and active_plan
+                            and active_plan.review_status == "approved"
+                            and active_plan.objective in ("invite_action", "invite_exercise")
+                            and active_plan.topic_revision == job.topic_revision
+                            and not (
+                                set(job.triggers) & REPAIR_TRIGGERS
+                                or "topic_changed" in job.triggers
+                            )
+                        )
+                        if (
+                            version == 1
+                            and candidate.objective in NON_ACTION
+                            and not candidate.candidate_actions
+                            and not local_issues
+                            and not protects_active_offer
+                        ):
+                            review_status = "fast_path_non_action"
+                            break
+                        if brief_future and brief is None:
+                            brief, _ = brief_future.result(
+                                timeout=max(0, budget.deadline - time.monotonic())
+                            )
+                            self._validate(job, brief, allowed)
                         review_input = {
                             **payload,
                             "analysis": analysis.model_dump(mode="json"),
@@ -425,9 +485,7 @@ class Cognition:
                     )
                     plan, plan_reason = self._delta(job, plan, budget)
                 finally:
-                    if brief_future and not brief_future.done():
-                        # Keep the per-user slot occupied until an actual HTTP call exits.
-                        brief_future.result()
+                    self._drain_brief(brief_future, cancel)
             if not consolidation_review or consolidation_review["status"] != "unavailable":
                 budget.check()
             elif cancel.is_set():

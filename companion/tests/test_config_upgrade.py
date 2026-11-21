@@ -23,21 +23,23 @@ def test_v2_config_upgrade_preserves_customization_and_is_idempotent(tmp_path):
     prompt.write_text(prompt.read_text(encoding="utf-8") + "\n# custom", encoding="utf-8")
     result = upgrade(directory)
     loaded = Config(directory)
-    assert len(loaded.cards) == 6 and loaded.exercises["bedtime"].protocol
+    assert len(loaded.cards) == 9 and loaded.exercises["bedtime"].protocol
+    assert "cards/S16.yaml" in result["removed"]
+    assert "S16" not in loaded.cards and loaded.resolve_card_id("S16") == "concrete_step"
     assert loaded.settings.storage.db_path == "data/custom.db"
     assert loaded.settings.llm.talker_model == "custom-model"
     assert prompt.read_text(encoding="utf-8").endswith("# custom")
     assert Path(result["backup"]).is_dir()
     assert (directory / BASELINE).is_file()
     repeated = upgrade(directory)
-    assert repeated["changed"] == [] and repeated["backup"] is None
+    assert repeated["changed"] == [] and repeated["removed"] == [] and repeated["backup"] is None
     assert "prompts/talker.j2" in repeated["customized_preserved"]
 
 
 def test_invalid_custom_content_does_not_partially_upgrade(tmp_path):
     directory = tmp_path / "deployed"
     upgrade(directory)
-    card = directory / "cards/S16.yaml"
+    card = directory / "cards/concrete_step.yaml"
     data = yaml.safe_load(card.read_text(encoding="utf-8"))
     data["name"] = "changed without review"
     card.write_text(yaml.safe_dump(data, allow_unicode=True), encoding="utf-8")
