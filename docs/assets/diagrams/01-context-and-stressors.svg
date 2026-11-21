@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 01 · PROBLEM SPACE &amp; DESIGN GOALS</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Literature Basis: Ye et al. (2019), Wang et al. (2025), Zhao &amp; Hu (2022)</text>
+  <text x="48" y="68" class="t-title">中国初高中升学日常压力情境、共同通路与求助障碍图谱</text>
+  <text x="48" y="118" class="t-code-sig">01 · 日常学业与评价五类压力源（可并发叠加）</text>
+<text x="424" y="118" class="t-code">02 · 四条共同心理通路与求助障碍</text>
+<text x="780" y="118" class="t-code-sig">03 · 通用对话模型的失配与产品切入</text>
+<rect x="48" y="136" width="332" height="88" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="64" y="160" class="t-h">学业负担 (academic)</text>
+<text x="64" y="182" class="t-b">错题反复打转、晚自习刷题卡壳</text>
+<text x="64" y="204" class="t-m">典型原话：“十点半刚收尾，想歇会儿又愧疚”</text>
+<line x1="380" y1="180" x2="418" y2="180" stroke="#AEB3AA" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="48" y="238" width="332" height="88" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="64" y="262" class="t-h">社会评价 (social_evaluative)</text>
+<text x="64" y="284" class="t-b">月考排名公开、进考场急性手抖心慌</text>
+<text x="64" y="306" class="t-m">典型原话：“感觉别人在往前冲，自己一步步掉队”</text>
+<line x1="380" y1="282" x2="418" y2="282" stroke="#AEB3AA" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="48" y="340" width="332" height="88" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="64" y="364" class="t-h">家庭与同伴 (relationship)</text>
+<text x="64" y="386" class="t-b">父母反复拿他人比较、同学/室友误会</text>
+<text x="64" y="408" class="t-m">典型原话：“暂时不想跟家里硬碰硬争吵”</text>
+<line x1="380" y1="384" x2="418" y2="384" stroke="#AEB3AA" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="48" y="442" width="332" height="88" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="64" y="466" class="t-h">未来与选科 (future)</text>
+<text x="64" y="488" class="t-b">选科分班纠结、迷茫日常刷题的意义</text>
+<text x="64" y="510" class="t-m">典型原话：“现在不想被定死未来，只求理清头绪”</text>
+<line x1="380" y1="486" x2="418" y2="486" stroke="#AEB3AA" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="48" y="544" width="332" height="88" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="64" y="568" class="t-h">自我苛责 (self)</text>
+<text x="64" y="590" class="t-b">一次考砸全盘否定个人价值</text>
+<text x="64" y="612" class="t-m">典型原话：“苛责标准远严于对待朋友的标准”</text>
+<line x1="380" y1="588" x2="418" y2="588" stroke="#AEB3AA" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="424" y="136" width="314" height="248" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="442" y="164" class="t-h">四条共同情绪放大通路</text>
+<rect x="440" y="182" width="282" height="40" rx="4" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="452" y="198" class="t-code">抽象反刍 (rumination)</text>
+<text x="452" y="214" class="t-m">反复追问“为什么我总做不到”</text>
+<rect x="440" y="230" width="282" height="40" rx="4" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="452" y="246" class="t-code">过度自我批评 (self_criticism)</text>
+<text x="452" y="262" class="t-m">将单一失手泛化为整体无能</text>
+<rect x="440" y="278" width="282" height="40" rx="4" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="452" y="294" class="t-code">睡眠与疲惫干扰 (sleep)</text>
+<text x="452" y="310" class="t-m">夜深越躺越清醒，白日持续消耗</text>
+<rect x="440" y="326" width="282" height="40" rx="4" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="452" y="342" class="t-code">孤立扛压 (loneliness)</text>
+<text x="452" y="358" class="t-m">感觉无人理解，倾向把事憋回心里</text>
+<rect x="424" y="404" width="314" height="228" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="442" y="432" class="t-h">现实求助顾虑（Zhao &amp; Hu, 2022）</text>
+<text x="442" y="462" class="t-b">• 怕被说教或直接打分评判</text>
+<text x="452" y="479" class="t-m">一开口就被催着端正态度或列清单</text>
+<text x="442" y="506" class="t-b">• 面子、隐私与信息传话担心</text>
+<text x="452" y="523" class="t-m">顾虑被对比甚至转告家长老师</text>
+<text x="442" y="550" class="t-b">• 不愿向同样疲惫的家人添乱</text>
+<text x="452" y="567" class="t-m">倾向先向同龄人或低负担对象倾诉</text>
+<text x="442" y="594" class="t-b">• 难准确命名具体委屈来源</text>
+<text x="452" y="611" class="t-m">需要低负担陪伴而非标准心理量表</text>
+<line x1="738" y1="260" x2="774" y2="260" stroke="#BF471B" stroke-width="1.6" marker-end="url(#arr-sig)"/>
+<line x1="738" y1="518" x2="774" y2="518" stroke="#BF471B" stroke-width="1.6" marker-end="url(#arr-sig)"/>
+<rect x="780" y="136" width="372" height="232" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.4"/>
+<text x="798" y="164" class="t-h-sig">通用聊天模型为何常失效</text>
+<rect x="796" y="184" width="340" height="48" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="808" y="203" class="t-h">1. 未获许可抢给 1-2-3 建议清单</text>
+<text x="808" y="222" class="t-m">把只想吐槽当成求助，强化“被教育感”</text>
+<rect x="796" y="242" width="340" height="48" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="808" y="261" class="t-h">2. 粗粒度关键词一刀切封锁话题</text>
+<text x="808" y="280" class="t-m">分不清“不想定死未来”和“彻底封锁讨论”</text>
+<rect x="796" y="300" width="340" height="48" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="808" y="319" class="t-h">3. 缺乏来源校验的无根据记忆推断</text>
+<text x="808" y="338" class="t-m">把模型的安慰或揣测写成用户长期设定</text>
+<rect x="780" y="390" width="372" height="242" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.5"/>
+<text x="798" y="420" class="t-h-w">小伴 Companion 核心交互定位</text>
+<text x="798" y="454" class="t-code-w">▸ 桌面无屏幕实体陪伴</text>
+<text x="812" y="471" class="t-m-w">夜晚减少盯屏疲劳，短语音低负担承接</text>
+<text x="798" y="498" class="t-code-w">▸ 先默认共情、再单步许可</text>
+<text x="812" y="515" class="t-m-w">倾听无需门槛；给办法先发邀请并等 agree</text>
+<text x="798" y="542" class="t-code-w">▸ 作用域局部边界隔离</text>
+<text x="812" y="559" class="t-m-w">精确屏蔽指定禁忌话题，不误伤无关倾诉</text>
+<text x="798" y="586" class="t-code-w">▸ 来源蕴含防幻觉记忆</text>
+<text x="812" y="603" class="t-m-w">只留用户原话严格蕴含的事实与边界</text>
+  <rect x="48" y="672" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="689" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="689" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

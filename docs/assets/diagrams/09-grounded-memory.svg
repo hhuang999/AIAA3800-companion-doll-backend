@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 09 · GROUNDED MEMORY &amp; CONCEPTS</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">ConsolidationGrounder Entailment Gate + Scoped Mention Policy</text>
+  <text x="48" y="68" class="t-title">跨家族来源蕴含记忆核对、逐字原话摘要与八组概念簇跨会话召回架构</text>
+  <text x="48" y="118" class="t-code-sig">A · 有界两阶段来源蕴含核对与引文摘要管线（2 Calls / 20s Budget）</text>
+<rect x="48" y="136" width="252" height="166" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="64" y="168" class="t-h">1. 用户原文与事件源</text>
+<text x="64" y="202" class="t-b">仅采信转写 user_turn</text>
+<text x="64" y="227" class="t-b">及明确交互同意 event</text>
+<text x="64" y="252" class="t-b">严禁模型自述当作用户事实</text>
+<line x1="300" y1="219" x2="328" y2="219" stroke="#242824" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="332" y="136" width="252" height="166" rx="6" fill="#EFEAE0" stroke="#242824" stroke-width="1.4"/>
+<text x="348" y="168" class="t-h">2. 候选抽取 (Call #1)</text>
+<text x="348" y="202" class="t-b">gpt-4.1-mini 提取候选</text>
+<text x="348" y="227" class="t-b">禁用伪造元数据字段</text>
+<text x="348" y="252" class="t-b">summary_evidence 仅指 turn</text>
+<line x1="584" y1="219" x2="612" y2="219" stroke="#242824" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="616" y="136" width="252" height="166" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.4"/>
+<text x="632" y="168" class="t-h">3. 蕴含核对 (Call #2)</text>
+<text x="632" y="202" class="t-b">qwen-flash ConsolidationGrounder</text>
+<text x="632" y="227" class="t-b">PREMISE=原话 -&gt; HYPOTHESIS</text>
+<text x="632" y="252" class="t-b">未严格蕴含条目即刻丢弃</text>
+<line x1="868" y1="219" x2="896" y2="219" stroke="#242824" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="900" y="136" width="252" height="166" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="916" y="168" class="t-h">4. 作用域落库与摘要</text>
+<text x="916" y="202" class="t-b">persistent / session / ttl</text>
+<text x="916" y="227" class="t-b">新更名自动 supersedes 旧称</text>
+<text x="916" y="252" class="t-b">摘要严格按原话逐字拼接</text>
+<text x="48" y="346" class="t-code">B · 零依赖八组升学领域概念簇（记忆检索与边界匹配共享索引）</text>
+<rect x="48" y="360" width="650" height="276" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<rect x="66" y="378" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="398" class="t-code-sig">cluster:parent_family</text>
+<text x="78" y="417" class="t-m">爸妈 / 父母 / 亲戚 / 表哥 / 唠叨</text>
+<rect x="380" y="378" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="392" y="398" class="t-code-sig">cluster:exam_grade</text>
+<text x="392" y="417" class="t-m">月考 / 一模 / 模考 / 排名 / 错题 / 卷子</text>
+<rect x="66" y="440" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="460" class="t-code-sig">cluster:peer_school</text>
+<text x="78" y="479" class="t-m">同桌 / 室友 / 班里 / 班主任 / 宿舍</text>
+<rect x="380" y="440" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="392" y="460" class="t-code-sig">cluster:future_track</text>
+<text x="392" y="479" class="t-m">选科 / 分班 / 文理 / 志愿 / 大学 / 未来</text>
+<rect x="66" y="502" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="522" class="t-code-sig">cluster:sleep_burnout</text>
+<text x="78" y="541" class="t-m">睡不着 / 失眠 / 熬夜 / 晚自习 / 散架</text>
+<rect x="380" y="502" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="392" y="522" class="t-code-sig">cluster:appearance_self</text>
+<text x="392" y="541" class="t-m">外貌 / 身材 / 体重 / 苛责</text>
+<rect x="66" y="564" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="584" class="t-code-sig">cluster:time_plan</text>
+<text x="78" y="603" class="t-m">时间管理 / 日程 / 计划表 / 拖延</text>
+<rect x="380" y="564" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="392" y="584" class="t-code-sig">cluster:identity_name</text>
+<text x="392" y="603" class="t-m">名字 / 称呼 / 怎么叫 / 昵称 / nickname</text>
+<text x="722" y="346" class="t-code-sig">C · 提及权限与防臆测铁律</text>
+<rect x="722" y="360" width="430" height="276" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="738" y="378" width="398" height="52" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="750" y="398" class="t-h" font-size="12.5">allowed（常温自然背景）</text>
+<text x="750" y="417" class="t-m">姓名、长期稳定背景等安全偏好可在对话顺其自然引用。</text>
+<rect x="738" y="440" width="398" height="52" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="750" y="460" class="t-h" font-size="12.5">only_when_raised（按需唤醒）</text>
+<text x="750" y="479" class="t-m">过去烦心事、支持经历仅在用户主动提到对应概念簇时检索解封。</text>
+<rect x="738" y="502" width="398" height="52" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="750" y="522" class="t-h" font-size="12.5">avoid_proactive（禁忌隔离）</text>
+<text x="750" y="541" class="t-m">明确声明“别主动问”的领域由边界策略硬封锁，绝不主动钩起。</text>
+<rect x="738" y="564" width="398" height="52" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="750" y="584" class="t-h" font-size="12.5">纠错与废止（supersedes_id）</text>
+<text x="750" y="603" class="t-m">用户明确修正信息（如“我叫小琳，不是小林”）旧记录标为 superseded。</text>
+  <rect x="48" y="652" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="669" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="669" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

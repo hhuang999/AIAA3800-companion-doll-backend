@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 11 · INTERACTION WALKTHROUGHS</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Synthetic Interaction Traces Illustrating Agency, Empathy &amp; Memory Continuity</text>
+  <text x="48" y="68" class="t-title">三幕典型高中日常交互过程走查：许可进入、疲惫喊停与跨会话边界记忆</text>
+  <text x="48" y="118" class="t-code-sig">三个典型高中日常交互过程走查（权限流转 · 快通路 · 跨会话记忆边界）</text>
+<rect x="48" y="134" width="352" height="534" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="48" y="134" width="352" height="62" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="64" y="160" class="t-h-w">场景一 · 父母比较压力与单步许可进入</text>
+<text x="64" y="182" class="t-code-w" font-size="10">EXPECTATION BOUNDARY · explore -&gt; action</text>
+<rect x="62" y="210" width="324" height="76" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="74" y="231" class="t-code-sig">学生（倾诉求助）</text>
+<text x="74" y="253" class="t-b" font-size="11.5">“爸妈又拿月考排名跟表哥比，我暂时不想</text>
+<text x="74" y="272" class="t-b" font-size="11.5">吵架，胸口堵得慌，怎么办？”</text>
+<rect x="62" y="298" width="324" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="74" y="319" class="t-code-sig">后台协作 + 许可门</text>
+<text x="74" y="341" class="t-b" font-size="11.5">Catalog 排除 unsafe 后选定策略卡</text>
+<text x="74" y="360" class="t-b" font-size="11.5">expectation_boundary 并经 Critic 核准</text>
+<rect x="62" y="386" width="324" height="76" rx="5" fill="#FBECE6" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="74" y="407" class="t-code-sig">小伴（单步邀请）</text>
+<text x="74" y="429" class="t-b" font-size="11.5">“听着确实憋屈。要不要先把爸妈的焦虑</text>
+<text x="74" y="448" class="t-b" font-size="11.5">和你自己的节奏分清楚？”</text>
+<rect x="62" y="474" width="324" height="76" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="74" y="495" class="t-code-sig">学生（口语同意）</text>
+<text x="74" y="517" class="t-b" font-size="11.5">“行吧，那你讲讲怎么分。”</text>
+<text x="74" y="536" class="t-b" font-size="11.5">→ 命中自然口语 agree 规则解锁行动</text>
+<rect x="62" y="562" width="324" height="76" rx="5" fill="#E3E7DC" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="74" y="583" class="t-code-sig">小伴（action #1）</text>
+<text x="74" y="605" class="t-b" font-size="11.5">“大人的焦急归他们担心，今晚十一点前</text>
+<text x="74" y="624" class="t-b" font-size="11.5">这页错题怎么走，听你自己的就好。”</text>
+<rect x="424" y="134" width="352" height="534" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="424" y="134" width="352" height="62" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="440" y="160" class="t-h-w">场景二 · 晚自习散架疲惫与随时喊停</text>
+<text x="440" y="182" class="t-code-w" font-size="10">LOW-ENERGY EMPATHY · fast_path -&gt; quiet</text>
+<rect x="438" y="210" width="324" height="76" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="450" y="231" class="t-code-sig">学生（高疲惫拒建议）</text>
+<text x="450" y="253" class="t-b" font-size="11.5">“十点半下晚自习刷不动题了，歇会儿愧疚</text>
+<text x="450" y="272" class="t-b" font-size="11.5">得像犯罪，别给我排办法。”</text>
+<rect x="438" y="298" width="324" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="450" y="319" class="t-code-sig">快路径裁决</text>
+<text x="450" y="341" class="t-b" font-size="11.5">readiness=low + refusal -&gt; Planner 选</text>
+<text x="450" y="360" class="t-b" font-size="11.5">low_energy_companionship（免审直出）</text>
+<rect x="438" y="386" width="324" height="76" rx="5" fill="#E3E7DC" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="450" y="407" class="t-code-sig">小伴（去内疚陪伴）</text>
+<text x="450" y="429" class="t-b" font-size="11.5">“十点半连轴转后歇会儿真不是偷懒，</text>
+<text x="450" y="448" class="t-b" font-size="11.5">今晚不用再碰题了，安心喘口气。”</text>
+<rect x="438" y="474" width="324" height="76" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="450" y="495" class="t-code-sig">学生（要求安静）</text>
+<text x="450" y="517" class="t-b" font-size="11.5">“我想先自己静静。” -&gt; triggers=[quiet]，</text>
+<text x="450" y="536" class="t-b" font-size="11.5">清空待办邀约并锁定提问预算 = 0</text>
+<rect x="438" y="562" width="324" height="76" rx="5" fill="#FBECE6" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="450" y="583" class="t-code-sig">小伴（quiet 在场）</text>
+<text x="450" y="605" class="t-b" font-size="11.5">“好，我就在这儿陪着你，先不问了。”</text>
+<text x="450" y="624" class="t-b" font-size="11.5">（generation 递增作废一切多余追问）</text>
+<rect x="800" y="134" width="352" height="534" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="800" y="134" width="352" height="62" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="816" y="160" class="t-h-w">场景三 · 跨会话更名与局部边界隔离</text>
+<text x="816" y="182" class="t-code-w" font-size="10">GROUNDED MEMORY · scoped no_topic_probe</text>
+<rect x="814" y="210" width="324" height="76" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="826" y="231" class="t-code-sig">Session 1（立规与更名）</text>
+<text x="826" y="253" class="t-b" font-size="11.5">“我叫小林，别主动问数学成绩” -&gt; “你记</text>
+<text x="826" y="272" class="t-b" font-size="11.5">错了，我是小琳，双木林右边加个王字旁。”</text>
+<rect x="814" y="298" width="324" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="826" y="319" class="t-code-sig">来源蕴含核对入库</text>
+<text x="826" y="341" class="t-b" font-size="11.5">Grounder 校验原话提交“小琳”，旧“小林”</text>
+<text x="826" y="360" class="t-b" font-size="11.5">标为 superseded；持久化作用域边界</text>
+<rect x="814" y="386" width="324" height="76" rx="5" fill="#E3E7DC" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="826" y="407" class="t-code-sig">重连 Session 2 Wake</text>
+<text x="826" y="429" class="t-b" font-size="11.5">检测到历史 user 轮次，跳过迎新直接问候：</text>
+<text x="826" y="448" class="t-b" font-size="11.5">“小琳，今晚想聊点什么？”</text>
+<rect x="814" y="474" width="324" height="76" rx="5" fill="#FBECE6" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="826" y="495" class="t-code-sig">identity_name 召回</text>
+<text x="826" y="517" class="t-b" font-size="11.5">问“上次让你怎么叫我？” -&gt; 精准复述</text>
+<text x="826" y="536" class="t-b" font-size="11.5">“小琳，双木林右边加个王字旁那个琳”。</text>
+<rect x="814" y="562" width="324" height="76" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="826" y="583" class="t-code-sig">跨话题切换睡前放松</text>
+<text x="826" y="605" class="t-b" font-size="11.5">倾诉失眠 -&gt; 严守不提成绩边界的同时，</text>
+<text x="826" y="624" class="t-b" font-size="11.5">丝滑承接睡前 worry_parking 短收尾。</text>
+  <rect x="48" y="692" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="709" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="709" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

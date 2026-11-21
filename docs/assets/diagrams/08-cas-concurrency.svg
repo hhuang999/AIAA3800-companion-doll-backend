@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 08 · CAS CONCURRENCY &amp; STATE GUARD</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Deterministic Concurrency Authority Under Continuous User Interruption</text>
+  <text x="48" y="68" class="t-title">四重版本号 CAS 事务发布、DeltaGuard 复核与代次防串音控制</text>
+  <text x="48" y="118" class="t-code-sig">并发说话时的三阶段状态验证：保护当下输入不被过时建议抢写</text>
+<rect x="48" y="138" width="1104" height="152" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="68" y="166" class="t-h">时间轴 · 新输入插话与代次（generation）瞬间失效机制</text>
+<line x1="88" y1="214" x2="1112" y2="214" stroke="#8F968E" stroke-width="2"/>
+<rect x="92" y="184" width="210" height="56" rx="5" fill="#EFEAE0" stroke="#242824" stroke-width="1.2"/>
+<text x="106" y="206" class="t-code">t0 · Turn #1 入队后台</text>
+<text x="106" y="226" class="t-m">基线：topic=0 · policy=0 · gen=1</text>
+<rect x="366" y="184" width="236" height="56" rx="5" fill="#FBECE6" stroke="#BF471B" stroke-width="1.2"/>
+<text x="380" y="206" class="t-code-sig">t1 · 用户打断说出 Turn #2</text>
+<text x="380" y="226" class="t-b">gen 立即 -&gt; 2：旧音频/旧文本作废</text>
+<rect x="672" y="184" width="212" height="56" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="686" y="206" class="t-code">t2 · Turn #1 候选产成</text>
+<text x="686" y="226" class="t-m">已晚于 Turn #2，进入增量复核</text>
+<rect x="942" y="184" width="178" height="56" rx="5" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="956" y="206" class="t-code-w">t3 · CAS 原子仲裁</text>
+<text x="956" y="226" class="t-m-w">仅一致且兼容方提交</text>
+<text x="88" y="268" class="t-m">说明：新说话只打断过时播报并更新前端交互，不会粗暴丢弃仍在安全有效期内的后台理解；是否接纳由下方两级门控独立仲裁。</text>
+<rect x="48" y="314" width="534" height="176" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="66" y="344" class="t-code">GATE 1 · DeltaGuard 增量兼容校验（最多复核 1 次）</text>
+<text x="66" y="370" class="t-h">判断中途新说话是否推翻了原支持前提</text>
+<text x="66" y="398" class="t-b">• 调用轻量 DeltaChecker (qwen-flash) 读取期间新增的 user turns</text>
+<text x="66" y="422" class="t-b">• 有效期上限：排队起算 &lt;= 120 秒 且 新增用户轮次 &lt;= 4 轮（不续期）</text>
+<text x="66" y="446" class="t-b">• 若用户改了拒绝/安静/边界或情绪陡变 -&gt; 阻止该规划发布</text>
+<text x="66" y="470" class="t-code-sig">compatible 仅推进 checked_through_user_index，不改原意</text>
+<rect x="618" y="314" width="534" height="176" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.5"/>
+<text x="636" y="344" class="t-code-sig">GATE 2 · 四重版本号事务 CAS 提交门</text>
+<text x="636" y="370" class="t-h-sig">SQLite 用户锁 + 会话锁事务内原子比较</text>
+<text x="636" y="398" class="t-b">写入前逐一比对以下 4 项基线版本完全相等方可激活：</text>
+<text x="636" y="422" class="t-code">  (1) current.topic_revision == job.topic_revision</text>
+<text x="636" y="444" class="t-code">  (2) current.policy_revision == job.policy_revision</text>
+<text x="636" y="466" class="t-code">  (3) current.boundary_revision == job.boundary_revision</text>
+<text x="636" y="484" class="t-code">  (4) active_support_plan_version == job.base_plan_version</text>
+<rect x="48" y="514" width="534" height="120" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="66" y="544" class="t-h">寿命严格隔离：两类 Plan ID 互不混用</text>
+<text x="66" y="570" class="t-b">• active_plan_id：专注固定音频练习多段播放队列，遇拒绝/喊停立即清零。</text>
+<text x="66" y="594" class="t-b">• active_support_plan_id：承载支持方向与策略建议帧，不干涉音频播放状态。</text>
+<text x="66" y="618" class="t-m">未通过 DeltaGuard 检查的新入轮次自动回落为保守倾听姿态。</text>
+<rect x="618" y="514" width="534" height="120" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="636" y="544" class="t-h">部分提交与故障安全收尾 (partial_commit)</text>
+<text x="636" y="570" class="t-b">• 当建议方案因版本过期被拒绝时，经来源核验的新记忆仍可安全部分提交。</text>
+<text x="636" y="594" class="t-b">• 会话结束 end_consolidation 绑定固定 final_turn_id 与数据库持久化队列。</text>
+<text x="636" y="618" class="t-m">中断退出重启可安全恢复未完成整理任务，绝不污染新开会话状态。</text>
+  <rect x="48" y="652" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="669" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="669" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

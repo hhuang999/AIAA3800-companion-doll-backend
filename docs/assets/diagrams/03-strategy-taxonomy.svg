@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 03 · CAPABILITY TAXONOMY</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">L1 Non-Action Presence + L2 Consented Micro-Strategies &amp; Exercises</text>
+  <text x="48" y="68" class="t-title">分层陪伴能力全景图：主动共情四态、单步许可门、九张支持策略卡与三段短练习</text>
+  <text x="48" y="118" class="t-code">TIER 1 · 默认主动共情（无需许可）</text>
+<text x="364" y="118" class="t-code-sig">CONSENT GATE · 许可与边界闸</text>
+<text x="646" y="118" class="t-code">TIER 2 · 经单步许可开启的微策略与短练习</text>
+<rect x="48" y="134" width="280" height="444" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="66" y="162" class="t-h">L1 主动共情四态矩阵</text>
+<text x="66" y="182" class="t-m">日常倾诉默认停驻层，绝不抢推任务</text>
+<rect x="64" y="202" width="248" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="76" y="223" class="t-code-sig">attuned_listen</text>
+<text x="76" y="243" class="t-h">贴近原话接住委屈</text>
+<text x="76" y="262" class="t-m">紧扣刚才细节回应，零说教少追问</text>
+<rect x="64" y="292" width="248" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="76" y="313" class="t-code-sig">tentative_reflect</text>
+<text x="76" y="333" class="t-h">可纠正的试探反映</text>
+<text x="76" y="352" class="t-m">轻声尝试命名夹心情绪，留纠偏余地</text>
+<rect x="64" y="382" width="248" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="76" y="403" class="t-code-sig">low_energy_companionship</text>
+<text x="76" y="423" class="t-h">晚归低能量去内疚</text>
+<text x="76" y="442" class="t-m">极度疲惫时正常化休息，严禁安排任务</text>
+<rect x="64" y="472" width="248" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="76" y="493" class="t-code-sig">quiet_presence</text>
+<text x="76" y="513" class="t-h">安静无负担在场</text>
+<text x="76" y="532" class="t-m">响应“让我静静”，简短陪伴零提问</text>
+<line x1="328" y1="350" x2="358" y2="350" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="364" y="134" width="244" height="444" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.5"/>
+<text x="382" y="164" class="t-h-sig">单步许可与作用域隔离</text>
+<rect x="378" y="190" width="216" height="80" rx="5" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="390" y="211" class="t-h">1. 显式求助或适度开放</text>
+<text x="390" y="232" class="t-m">仅在 ask_for_help 或 readiness</text>
+<text x="390" y="250" class="t-m">非低状态时进入候选遴选</text>
+<rect x="378" y="284" width="216" height="80" rx="5" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="390" y="305" class="t-h">2. Catalog 资格与排除过滤</text>
+<text x="390" y="326" class="t-m">校验情绪强度、上下文条件、</text>
+<text x="390" y="344" class="t-m">unsafe_relationship 与会话拒绝集</text>
+<rect x="378" y="378" width="216" height="80" rx="5" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="390" y="399" class="t-h">3. 一次单步情境化邀请</text>
+<text x="390" y="420" class="t-m">激活 PendingOffer(target_id)，</text>
+<text x="390" y="438" class="t-m">仅邀请一项，不列候选菜单</text>
+<rect x="378" y="472" width="216" height="80" rx="5" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="390" y="493" class="t-h">4. 明确 agree 方解锁执行</text>
+<text x="390" y="514" class="t-m">拒绝 / 静静 / 换题即刻归零，</text>
+<text x="390" y="532" class="t-m">聚焦 &lt;= 3 轮，不连推同类卡片</text>
+<line x1="608" y1="290" x2="640" y2="290" stroke="#BF471B" stroke-width="1.8" marker-end="url(#arr-sig)"/>
+<line x1="608" y1="505" x2="640" y2="505" stroke="#3B5246" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="640" y="134" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="650" y="155" class="t-code-sig">concrete_step</text>
+<text x="650" y="176" class="t-h" font-size="11.5">从反复想转向具体一步</text>
+<text x="650" y="198" class="t-m" font-size="10">Leigh 2025 · WHO 2023</text>
+<rect x="812" y="134" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="822" y="155" class="t-code-sig">exam_steadying</text>
+<text x="822" y="176" class="t-h" font-size="11.5">考前紧绷稳住身体信号</text>
+<text x="822" y="198" class="t-m" font-size="10">Yeager et al., 2022</text>
+<rect x="984" y="134" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="994" y="155" class="t-code-sig">kind_self_talk</text>
+<text x="994" y="176" class="t-h" font-size="11.5">把全盘苛责换回平实说法</text>
+<text x="994" y="198" class="t-m" font-size="10">Lunn 2023 · Bluth 2024</text>
+<rect x="640" y="228" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="650" y="249" class="t-code-sig">comparison_reframe</text>
+<text x="650" y="270" class="t-h" font-size="11.5">从榜单横向比回到基线</text>
+<text x="650" y="292" class="t-m" font-size="10">Megalokonomou 2024</text>
+<rect x="812" y="228" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="822" y="249" class="t-code-sig">expectation_boundary</text>
+<text x="822" y="270" class="t-h" font-size="11.5">分开父母焦虑和自己节奏</text>
+<text x="822" y="292" class="t-m" font-size="10">Ding et al., 2026</text>
+<rect x="984" y="228" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="994" y="249" class="t-code-sig">safe_communication</text>
+<text x="994" y="270" class="t-h" font-size="11.5">顺一句低压力沟通说法</text>
+<text x="994" y="292" class="t-m" font-size="10">Filia et al., 2021</text>
+<rect x="640" y="322" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="650" y="343" class="t-code-sig">safe_support</text>
+<text x="650" y="364" class="t-h" font-size="11.5">挑一个放心支持入口</text>
+<text x="650" y="386" class="t-m" font-size="10">Zhao 2022 · WHO 2011</text>
+<rect x="812" y="322" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="822" y="343" class="t-code-sig">values_exploration</text>
+<text x="822" y="364" class="t-h" font-size="11.5">挑一个目前好奇的小问题</text>
+<text x="822" y="386" class="t-m" font-size="10">Chen et al., 2022</text>
+<rect x="984" y="322" width="166" height="82" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="994" y="343" class="t-code-sig">worry_parking</text>
+<text x="994" y="364" class="t-h" font-size="11.5">睡前把一件担心存我这儿</text>
+<text x="994" y="386" class="t-m" font-size="10">Scullin 2018 · Wang 2025</text>
+<rect x="646" y="422" width="502" height="156" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="664" y="450" class="t-h">固定音频短语音练习（单段总长 &lt; 90 秒 · 可随时喊停清除）</text>
+<rect x="662" y="466" width="150" height="94" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="672" y="487" class="t-code-sig">breathing_60s</text>
+<text x="672" y="507" class="t-h" font-size="12.5">自然呼吸小暂停</text>
+<text x="672" y="527" class="t-m" font-size="10">不屏气控息 · 约 44 秒</text>
+<text x="672" y="543" class="t-m" font-size="10">Dunning et al., 2022</text>
+<rect x="820" y="466" width="150" height="94" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="830" y="487" class="t-code-sig">grounding</text>
+<text x="830" y="507" class="t-h" font-size="12.5">看看身边一样东西</text>
+<text x="830" y="527" class="t-m" font-size="10">睁眼外部感官落点 · 约 42 秒</text>
+<text x="830" y="543" class="t-m" font-size="10">WHO, 2011</text>
+<rect x="978" y="466" width="150" height="94" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="988" y="487" class="t-code-sig">bedtime</text>
+<text x="988" y="507" class="t-h" font-size="12.5">睡前短暂停</text>
+<text x="988" y="527" class="t-m" font-size="10">结束思考准备入睡 · 约 39 秒</text>
+<text x="988" y="543" class="t-m" font-size="10">Scullin et al., 2018</text>
+<rect x="48" y="600" width="1104" height="68" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.4"/>
+<text x="68" y="628" class="t-h-w">独立静默安全底层通道（与日常策略池正交隔离）</text>
+<text x="68" y="650" class="t-m-w">高危安全识别由确定性词表与并发分类器静默保护，仅在明确风险规则触发时接管输出权限，日常升学倾诉与陪伴不受干扰。</text>
+  <rect x="48" y="692" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="709" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="709" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

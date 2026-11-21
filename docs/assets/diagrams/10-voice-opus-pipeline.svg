@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 10 · STREAMING VOICE &amp; FIXED AUDIO</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Clause Slicer + OutputRail + PacketCache (64 LRU) + In-Memory PyAV/Opus</text>
+  <text x="48" y="68" class="t-title">实时分句流式 TTS、内存 60ms Opus 打包、短语热缓存与固定音频切管流水线</text>
+  <text x="48" y="118" class="t-code-sig">A · 动态对话流式音频流水线（分句提前派发 · 内存 Opus 直转 · 短语热缓存）</text>
+<rect x="48" y="136" width="204" height="210" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="60" y="164" class="t-h" font-size="12.5">1. Talker 分句切片</text>
+<text x="60" y="198" class="t-b" font-size="11.5">qwen-flash 流式输出</text>
+<text x="60" y="228" class="t-b" font-size="11.5">首分句 &gt;= 8 字遇逗号/句号即切</text>
+<text x="60" y="258" class="t-b" font-size="11.5">吸纳闭合中文引号”防截断</text>
+<text x="60" y="288" class="t-b" font-size="11.5">自动跳过开场冗余引导</text>
+<line x1="252" y1="241" x2="269" y2="241" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="273" y="136" width="204" height="210" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.4"/>
+<text x="285" y="164" class="t-h" font-size="12.5">2. 安全护栏与并发闸门</text>
+<text x="285" y="198" class="t-b" font-size="11.5">OutputRail 检查禁语与说教句</text>
+<text x="285" y="228" class="t-b" font-size="11.5">L1 词表与 L2 分类并发评估</text>
+<text x="285" y="258" class="t-b" font-size="11.5">400ms 闸门到点释放不死等</text>
+<text x="285" y="288" class="t-b" font-size="11.5">迟到 high 依然拥有取消权</text>
+<line x1="477" y1="241" x2="494" y2="241" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="498" y="136" width="204" height="210" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="510" y="164" class="t-h" font-size="12.5">3. 64 项短语 LRU 缓存</text>
+<text x="510" y="198" class="t-b" font-size="11.5">短暖心承接句命中 PacketCache</text>
+<text x="510" y="228" class="t-b" font-size="11.5">直接复用内存 Opus 帧序列</text>
+<text x="510" y="258" class="t-b" font-size="11.5">未命中转流式 gpt-4o-mini-tts</text>
+<text x="510" y="288" class="t-b" font-size="11.5">response_format = opus</text>
+<line x1="702" y1="241" x2="719" y2="241" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="723" y="136" width="204" height="210" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="735" y="164" class="t-h" font-size="12.5">4. 纯内存 Opus 60ms 打包</text>
+<text x="735" y="198" class="t-b" font-size="11.5">PyAV 解码流式 opus 重采样</text>
+<text x="735" y="228" class="t-b" font-size="11.5">opuslib_next 编码 60ms/帧</text>
+<text x="735" y="258" class="t-b" font-size="11.5">完全绕过磁盘 WAV 读写往返</text>
+<text x="735" y="288" class="t-b" font-size="11.5">消除子进程启动磁盘延迟</text>
+<line x1="927" y1="241" x2="944" y2="241" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="948" y="136" width="204" height="210" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.4"/>
+<text x="960" y="164" class="t-h-w" font-size="12.5">5. 小智 WS 下发与打断</text>
+<text x="960" y="198" class="t-m-w" font-size="11.5">WebSocket 帧队列推送桌面端</text>
+<text x="960" y="228" class="t-m-w" font-size="11.5">携带当前 generation 校验</text>
+<text x="960" y="258" class="t-m-w" font-size="11.5">用户随时开口/abort 递增代次</text>
+<text x="960" y="288" class="t-m-w" font-size="11.5">零延迟清退过期缓存包</text>
+<text x="48" y="388" class="t-code">B · 确定性固定音频短练习切管流水线（Offline Pre-Built Segments + Pause Framing）</text>
+<rect x="48" y="404" width="1104" height="232" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<rect x="68" y="424" width="250" height="190" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="84" y="454" class="t-h">练习脚本规范与预算检查</text>
+<text x="84" y="490" class="t-b">YAML 定义多段落正文与静默停顿</text>
+<text x="84" y="522" class="t-b">单套总时长严格 &lt; 90 秒上限</text>
+<text x="84" y="554" class="t-b">含呼吸、外部感官定位、睡前暂停三套</text>
+<line x1="318" y1="519" x2="334" y2="519" stroke="#BF471B" stroke-width="1.5" marker-end="url(#arr-sig)"/>
+<rect x="338" y="424" width="250" height="190" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="354" y="454" class="t-h">离线预合成与包校验</text>
+<text x="354" y="490" class="t-b">prepare_audio 生成分片固定音频</text>
+<text x="354" y="522" class="t-b">计算语音时长写入内容清单元数据</text>
+<text x="354" y="554" class="t-b">demo 模式启动时自动校验资源完整</text>
+<line x1="588" y1="519" x2="604" y2="519" stroke="#BF471B" stroke-width="1.5" marker-end="url(#arr-sig)"/>
+<rect x="608" y="424" width="250" height="190" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="624" y="454" class="t-h">分段式 PlaybackPlan 执行</text>
+<text x="624" y="490" class="t-b">经 PendingOffer agree 后下发播放计划</text>
+<text x="624" y="522" class="t-b">按 segment 逐段吐出文字提示与音频流</text>
+<text x="624" y="554" class="t-b">on_playback_event 维护步进游标</text>
+<line x1="858" y1="519" x2="874" y2="519" stroke="#BF471B" stroke-width="1.5" marker-end="url(#arr-sig)"/>
+<rect x="878" y="424" width="250" height="190" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="894" y="454" class="t-h">随时中断与零强行续播</text>
+<text x="894" y="490" class="t-b">遇拒绝、新话题、告别或打断立即停止</text>
+<text x="894" y="522" class="t-b">明确拒绝清空 resume_script_id</text>
+<text x="894" y="554" class="t-b">仅中性环境声响保留重评恢复选项</text>
+  <rect x="48" y="652" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="669" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="669" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 02 · EVIDENCE TO ARCHITECTURE</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Mechanism Adaptation Only · No Direct Effect Size Extrapolation</text>
+  <text x="48" y="68" class="t-title">心理学与人机交互文献向可执行对话约束与工程模块的转译链</text>
+  <text x="48" y="118" class="t-code">01 · 实证文献线索（Author + Year）</text>
+<text x="436" y="118" class="t-code-sig">02 · 对话与策略机制转译</text>
+<text x="820" y="118" class="t-code">03 · 服务端确定性约束落地</text>
+<rect x="48" y="136" width="344" height="62" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="160" class="t-code">Ye et al. (2019) · Wang et al. (2025)</text>
+<text x="62" y="180" class="t-code">Dickerson &amp; Kemeny (2004)</text>
+<line x1="392" y1="167" x2="430" y2="167" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="436" y="136" width="340" height="62" rx="5" fill="#EFEAE0" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="450" y="160" class="t-b">五类压力框架 + 睡眠/孤独中介模型</text>
+<text x="450" y="180" class="t-b">+ 急性评价压力皮质醇反应规律</text>
+<line x1="776" y1="167" x2="814" y2="167" stroke="#BF471B" stroke-width="1.4" marker-end="url(#arr-sig)"/>
+<rect x="820" y="136" width="332" height="62" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="834" y="160" class="t-code">Analysis 结构化特征维度标注</text>
+<text x="834" y="180" class="t-code">夜间 bedtime 上下文策略互斥隔离</text>
+<rect x="48" y="210" width="344" height="62" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="234" class="t-code">Leigh et al. (2025)</text>
+<text x="62" y="254" class="t-code">WHO &amp; UNICEF (2023 EASE)</text>
+<line x1="392" y1="241" x2="430" y2="241" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="436" y="210" width="340" height="62" rx="5" fill="#EFEAE0" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="450" y="234" class="t-b">抽象反刍阻碍解决，具体化加工改善</text>
+<text x="450" y="254" class="t-b">近端表现 + 小问题可解性拆解</text>
+<line x1="776" y1="241" x2="814" y2="241" stroke="#BF471B" stroke-width="1.4" marker-end="url(#arr-sig)"/>
+<rect x="820" y="210" width="332" height="62" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="834" y="234" class="t-code">concrete_step：只聚焦眼前单个片段</text>
+<text x="834" y="254" class="t-code">一次仅定五分钟可动的一小步</text>
+<rect x="48" y="284" width="344" height="62" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="308" class="t-code">Yeager et al. (2022 Nature)</text>
+<text x="62" y="328" class="t-code">Megalokonomou &amp; Zhang (2024)</text>
+<line x1="392" y1="315" x2="430" y2="315" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="436" y="284" width="340" height="62" rx="5" fill="#FBECE6" stroke="#BF471B" stroke-width="1.2"/>
+<text x="450" y="308" class="t-b">协同心态把躯体激活重评为调动资源</text>
+<text x="450" y="328" class="t-b">显著排名放大横向退缩并遮蔽自身进步</text>
+<line x1="776" y1="315" x2="814" y2="315" stroke="#BF471B" stroke-width="1.4" marker-end="url(#arr-sig)"/>
+<rect x="820" y="284" width="332" height="62" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="834" y="308" class="t-code">exam_steadying（考前稳住起手动作）</text>
+<text x="834" y="328" class="t-code">comparison_reframe（回看纵向基线）</text>
+<rect x="48" y="358" width="344" height="62" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="382" class="t-code">Ding et al. (2026) · Lunn et al. (2023)</text>
+<text x="62" y="402" class="t-code">Bluth et al. (2024)</text>
+<line x1="392" y1="389" x2="430" y2="389" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="436" y="358" width="340" height="62" rx="5" fill="#FBECE6" stroke="#BF471B" stroke-width="1.2"/>
+<text x="450" y="382" class="t-b">批评型父母比较带来内耗分化需求</text>
+<text x="450" y="402" class="t-b">完美主义担忧 vs 自我关怀平实视角</text>
+<line x1="776" y1="389" x2="814" y2="389" stroke="#BF471B" stroke-width="1.4" marker-end="url(#arr-sig)"/>
+<rect x="820" y="358" width="332" height="62" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="834" y="382" class="t-code">expectation_boundary（隔离高危关系）</text>
+<text x="834" y="402" class="t-code">kind_self_talk（禁空洞夸奖，对友平实比照）</text>
+<rect x="48" y="432" width="344" height="62" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="456" class="t-code">Filia et al. (2021) · Chen et al. (2022)</text>
+<text x="62" y="476" class="t-code">Scullin et al. (2018)</text>
+<line x1="392" y1="463" x2="430" y2="463" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="436" y="432" width="340" height="62" rx="5" fill="#EFEAE0" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="450" y="456" class="t-b">安全关系下低压力日常沟通演练</text>
+<text x="450" y="476" class="t-b">小范围好奇探索 &amp; 睡前外化卸载思考</text>
+<line x1="776" y1="463" x2="814" y2="463" stroke="#BF471B" stroke-width="1.4" marker-end="url(#arr-sig)"/>
+<rect x="820" y="432" width="332" height="62" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="834" y="456" class="t-code">safe_communication (需 safe_contact)</text>
+<text x="834" y="476" class="t-code">values_exploration · worry_parking (禁列清单)</text>
+<rect x="48" y="506" width="344" height="62" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="530" class="t-code">Gulliver et al. (2010) · WHO (2011)</text>
+<text x="62" y="550" class="t-code">Dunning et al. (2022)</text>
+<line x1="392" y1="537" x2="430" y2="537" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="436" y="506" width="340" height="62" rx="5" fill="#EFEAE0" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="450" y="530" class="t-b">尊重意愿不强迫、拆解求助顾虑</text>
+<text x="450" y="550" class="t-b">正念呼吸谨慎适用与随时可停准则</text>
+<line x1="776" y1="537" x2="814" y2="537" stroke="#BF471B" stroke-width="1.4" marker-end="url(#arr-sig)"/>
+<rect x="820" y="506" width="332" height="62" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="834" y="530" class="t-code">safe_support（控制权还给学生）</text>
+<text x="834" y="550" class="t-code">三段 &lt;90s 短音频（不适即取消不续播）</text>
+<rect x="48" y="580" width="344" height="62" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="604" class="t-code">Liu et al. (2021) · Deng et al. (2024)</text>
+<line x1="392" y1="611" x2="430" y2="611" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="436" y="580" width="340" height="62" rx="5" fill="#FBECE6" stroke="#BF471B" stroke-width="1.2"/>
+<text x="450" y="604" class="t-b">支持技能与策略规划指令分层解耦</text>
+<text x="450" y="624" class="t-b">策略选择先于自然口语生成</text>
+<line x1="776" y1="611" x2="814" y2="611" stroke="#BF471B" stroke-width="1.4" marker-end="url(#arr-sig)"/>
+<rect x="820" y="580" width="332" height="62" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="834" y="604" class="t-code">L1 默认共情 vs PendingOffer 许可门控</text>
+<text x="834" y="624" class="t-code">Planner 定方向 -&gt; Talker 生成自然语音</text>
+  <rect x="48" y="672" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="689" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="689" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

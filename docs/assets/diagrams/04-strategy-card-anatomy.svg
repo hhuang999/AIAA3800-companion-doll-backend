@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 04 · STRATEGY CARD ANATOMY</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Structured YAML Protocol Shared Across Reasoner, Planner, Critic &amp; Talker</text>
+  <text x="48" y="68" class="t-title">单张支持策略卡内部结构解剖：靶点、准入排除、单步许可与表达护栏</text>
+  <rect x="48" y="114" width="1104" height="58" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="68" y="140" class="t-code-w">CARD SCHEMA ANATOMY · EXEMPLAR: expectation_boundary</text>
+<text x="68" y="159" class="t-m-w">每张策略卡在 YAML 协议中同时声明适用靶点、准入禁忌、情境化邀请、口语步骤、绝对禁语、停止与归因边界。</text>
+<rect x="48" y="194" width="344" height="196" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="64" y="222" class="t-h-sig" font-size="13.5">1 · targets（靶点匹配维度）</text>
+<text x="64" y="250" class="t-code">pressure_types: [relationship]</text>
+<text x="64" y="278" class="t-code">pathways: [rumination]</text>
+<text x="64" y="306" class="t-code">keywords: 父母 / 排名 / 别人家孩子 / 唠叨</text>
+<text x="64" y="334" class="t-code">mechanism: 区分外部批评焦虑源与个人可控节奏</text>
+<text x="64" y="362" class="t-code">source: Ding et al. (2026) · Dickerson (2004)</text>
+<rect x="428" y="194" width="344" height="196" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="444" y="222" class="t-h-sig" font-size="13.5">2 · reasoner（前置准入与排除约束）</text>
+<text x="444" y="250" class="t-code">when_any: 父母拿成绩比较而暂不想冲突沟通</text>
+<text x="444" y="278" class="t-code">not_when: 明确要主动安全沟通时转 safe_communication</text>
+<text x="444" y="306" class="t-code">excluded_contexts: [unsafe_relationship]</text>
+<text x="444" y="334" class="t-code">required_contexts: [] · readiness != low</text>
+<text x="444" y="362" class="t-code">session_limit: 1 次 / 会话（防重复推销）</text>
+<rect x="808" y="194" width="344" height="196" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.4"/>
+<text x="824" y="222" class="t-h-sig" font-size="13.5">3 · protocol（单步许可与退出契约）</text>
+<text x="824" y="250" class="t-code">invitation: “要不要先把爸妈的焦虑和你节奏分开？”</text>
+<text x="824" y="278" class="t-code">burden: 仅停在学生自己可调控的小时段，绝不劝和</text>
+<text x="824" y="306" class="t-code">stop: 觉得被说教 / 拒绝 / 喊停即刻收住</text>
+<text x="824" y="334" class="t-code">followup: 只跟进学生自愿留下的当晚小决定</text>
+<text x="824" y="362" class="t-code">feedback_limits: 不代替家庭沟通或否定压力</text>
+<rect x="48" y="418" width="534" height="212" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="64" y="446" class="t-h-sig" font-size="13.5">4 · talker（最多三轮的口语步骤与示例 · 仅向生成模型注入当步）</text>
+<text x="64" y="474" class="t-b">Step 1：先接住被反复比较的堵心感，明确站在学生一侧共情</text>
+<text x="64" y="502" class="t-b">Step 2：把“父母对分数的焦虑”与“你自己的真实步调”温和剥离</text>
+<text x="64" y="530" class="t-b">Step 3：若愿意，只挑今晚自己可决定的十几分钟；拒绝立刻回 L1</text>
+<text x="64" y="558" class="t-b">never_say（OutputRail 刚性黑名单）：</text>
+<text x="64" y="586" class="t-code-sig">  × “父母都是为你好”   × “你应该体谅大人”   × “去当面讲道理”</text>
+<rect x="618" y="418" width="534" height="212" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="634" y="446" class="t-h-sig" font-size="13.5">5 · execution &amp; attribution（跨模块分工闭环）</text>
+<text x="634" y="474" class="t-b">Brief &amp; Analysis：识别家庭比较压力与无安全冲突风险信号</text>
+<text x="634" y="502" class="t-b">Catalog：依据 excluded_contexts 与拒答集确定性筛选入围名单</text>
+<text x="634" y="530" class="t-b">Planner &amp; Critic：跨家族审核选卡并发布至 CAS，不越权直开</text>
+<text x="634" y="558" class="t-b">StateMachine：通过 PendingOffer(expectation_boundary) 等明确 agree</text>
+<text x="634" y="586" class="t-b">Feedback Ledger：仅归因用户明确针对本步骤的正/负表达，杜绝臆测成效</text>
+  <rect x="48" y="652" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="669" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="669" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

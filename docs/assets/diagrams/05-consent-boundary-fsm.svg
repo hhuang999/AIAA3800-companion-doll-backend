@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 05 · CONSENT FSM &amp; SCOPED BOUNDARIES</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">StateMachine + Scoped Boundary Matching + Colloquial Intent Rules</text>
+  <text x="48" y="68" class="t-title">确定性交互状态机、单步许可转移、作用域边界隔离与随时喊停控制</text>
+  <text x="48" y="118" class="t-code-sig">A · 确定性阶段状态机与 PENDING_OFFER 单步许可流</text>
+<rect x="48" y="136" width="198" height="92" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.5"/>
+<text x="62" y="164" class="t-h">opening / explore</text>
+<text x="62" y="188" class="t-m">默认 L1 倾听与共情</text>
+<text x="62" y="206" class="t-m">识别压力源但不催促</text>
+<rect x="308" y="136" width="232" height="92" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.5"/>
+<text x="322" y="164" class="t-h">permission (PendingOffer)</text>
+<text x="322" y="188" class="t-m">发出情境化单步邀请</text>
+<text x="322" y="206" class="t-m">target_id + invitation</text>
+<rect x="604" y="136" width="238" height="92" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.5"/>
+<text x="618" y="164" class="t-h">action / exercise</text>
+<text x="618" y="188" class="t-m">仅明确 agree 方可进入</text>
+<text x="618" y="206" class="t-m">单次聚焦 1 项 &lt;= 3 轮</text>
+<rect x="904" y="136" width="248" height="92" rx="6" fill="#EFEAE0" stroke="#AEB3AA" stroke-width="1.5"/>
+<text x="918" y="164" class="t-h">closing / quiet</text>
+<text x="918" y="188" class="t-m">随时喊停、睡觉、拒听退出</text>
+<text x="918" y="206" class="t-m">立刻清空 resume_script_id</text>
+<line x1="246" y1="182" x2="302" y2="182" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="274" y="173" text-anchor="middle" class="t-code">ask</text>
+<line x1="540" y1="182" x2="598" y2="182" stroke="#BF471B" stroke-width="1.8" marker-end="url(#arr-sig)"/>
+<text x="569" y="173" text-anchor="middle" class="t-code-sig">agree</text>
+<line x1="842" y1="182" x2="898" y2="182" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="870" y="173" text-anchor="middle" class="t-code">done/stop</text>
+<path d="M 424 228 C 424 256, 148 256, 148 232" fill="none" stroke="#BF471B" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-sig)"/>
+<text x="286" y="274" text-anchor="middle" class="t-code-sig">refuse / quiet / timeout -&gt; 记录拒答集，退回纯倾听</text>
+<text x="48" y="314" class="t-code">B · 负向瞻前（Negative Lookahead）与作用域边界隔离</text>
+<rect x="48" y="328" width="540" height="322" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="64" y="344" width="508" height="62" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="365" class="t-code-sig">并列句去误杀</text>
+<text x="196" y="365" class="t-b">“我现在不想定死未来，只想知道选科手册怎么看”</text>
+<text x="78" y="388" class="t-m">→ 负向瞻前精准排除“定死/规定”，放行 values_exploration</text>
+<rect x="64" y="418" width="508" height="62" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="439" class="t-code-sig">按主题作用域封锁</text>
+<text x="196" y="439" class="t-b">“以后别主动问数学成绩” -&gt; no_topic_probe:成绩</text>
+<text x="78" y="462" class="t-m">→ 屏蔽成绩追问，但仍允许睡前安抚与 worry_parking 练习</text>
+<rect x="64" y="492" width="508" height="62" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="513" class="t-code-sig">拒建议边界 vs 倾诉</text>
+<text x="196" y="513" class="t-b">“先别替我选科或出主意” -&gt; no_advice:future_track</text>
+<text x="78" y="536" class="t-m">→ 禁止选科策略推荐，但维持 L1 接住纠结情绪</text>
+<rect x="64" y="566" width="508" height="62" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="587" class="t-code-sig">练习拒听 vs 外界声响</text>
+<text x="196" y="587" class="t-b">“不想继续做了，先停下” vs “刚才旁边有声音”</text>
+<text x="78" y="610" class="t-m">→ 明确拒绝清空 resume_script_id；中性声响进 waiting_card 重评</text>
+<text x="612" y="314" class="t-code">C · 自然口语意图仲裁与断线重连防干扰规则</text>
+<rect x="612" y="328" width="540" height="322" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<rect x="628" y="344" width="508" height="62" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="642" y="364" class="t-h">口语同意 / 拒绝防误触 (rules.yaml)</text>
+<text x="642" y="383" class="t-m">支持“那行吧你讲讲”“可以呀试试”等口语 agree，</text>
+<text x="642" y="399" class="t-m">并用否定前瞻避免“不是我不愿意”“不用了”被误算为同意。</text>
+<rect x="628" y="418" width="508" height="62" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="642" y="438" class="t-h">事实更正 vs 情绪澄清区分 (interaction.py)</text>
+<text x="642" y="457" class="t-m">区分“我不是烦这道题而是烦排名”（重新理解）与</text>
+<text x="642" y="473" class="t-m">“你记错了，我是小琳”（使旧称呼记忆条目失效）。</text>
+<rect x="628" y="492" width="508" height="62" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="642" y="512" class="t-h">断线重连历史对话感知 (resolve_opening)</text>
+<text x="642" y="531" class="t-m">新连接 wake 前先查询 SQLite 历史 user 轮次：</text>
+<text x="642" y="547" class="t-m">已有互动记录则自然问候，跳过冗余的新手指引开场。</text>
+<rect x="628" y="566" width="508" height="62" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="642" y="586" class="t-h">generation 递增强制失效</text>
+<text x="642" y="605" class="t-m">任意新说话、打断回调或风险接管立刻递增代次，</text>
+<text x="642" y="621" class="t-m">抛弃在途分句队列、旧支持计划播放及未执行动作。</text>
+  <rect x="48" y="672" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="689" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="689" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

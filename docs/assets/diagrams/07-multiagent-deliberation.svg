@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 07 · MULTI-AGENT DELIBERATION</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Brief // Analysis (gpt-4.1-mini) -&gt; Catalog -&gt; Planner -&gt; Cross-Family Critic (qwen-flash)</text>
+  <text x="48" y="68" class="t-title">有界多 Agent 后台协作：并行理解、目录过滤、快慢分流与跨家族互审</text>
+  <rect x="48" y="120" width="198" height="224" rx="6" fill="#FFFFFF" stroke="#242824" stroke-width="1.4"/>
+<text x="64" y="148" class="t-code-sig">SCHEDULER QUEUE</text>
+<text x="64" y="172" class="t-h">单用户串行 · 跨用户公平</text>
+<text x="64" y="200" class="t-b">触发源分级路由：</text>
+<text x="64" y="222" class="t-code">• repair (纠偏/拒绝)</text>
+<text x="64" y="244" class="t-code">• deliberation (求助)</text>
+<text x="64" y="266" class="t-code">• end_consolidation</text>
+<text x="64" y="294" class="t-m">抑制同轮冗余 risk_watch</text>
+<text x="64" y="316" class="t-m">单轮总预算 8 calls / 20s</text>
+<line x1="246" y1="232" x2="278" y2="232" stroke="#242824" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="284" y="120" width="228" height="102" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="300" y="146" class="t-code">盲审简报 Brief</text>
+<text x="300" y="168" class="t-h">独立风险点检索 (qwen-flash)</text>
+<text x="300" y="190" class="t-m">独立平行运行，不看 Planner 先验</text>
+<text x="300" y="208" class="t-m">提交 counter_evidence 反证提示</text>
+<rect x="284" y="242" width="228" height="102" rx="6" fill="#EFEAE0" stroke="#242824" stroke-width="1.4"/>
+<text x="298" y="268" class="t-code">情境分析 Analysis</text>
+<text x="298" y="290" class="t-h" font-size="12.5">压力/通路提取 (gpt-4.1-mini)</text>
+<text x="298" y="312" class="t-m">输出带 user_turn 指向的证据项</text>
+<text x="298" y="330" class="t-m">判定 emotion_intensity &amp; readiness</text>
+<line x1="512" y1="171" x2="546" y2="215" stroke="#242824" stroke-width="1.4" marker-end="url(#arr)"/>
+<line x1="512" y1="293" x2="546" y2="245" stroke="#242824" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="552" y="120" width="232" height="224" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="568" y="148" class="t-code">DETERMINISTIC CATALOG</text>
+<text x="568" y="172" class="t-h">策略目录确定性前置过滤</text>
+<text x="568" y="202" class="t-b">• status == enabled</text>
+<text x="568" y="226" class="t-b">• 非本次会话拒答/已达上限</text>
+<text x="568" y="250" class="t-b">• readiness / intensity 匹配</text>
+<text x="568" y="274" class="t-b">• required / excluded 上下文</text>
+<text x="568" y="298" class="t-b">• 作用域边界 (future/exam) 过滤</text>
+<text x="568" y="324" class="t-code-sig">→ 仅向 Planner 交付小候选集</text>
+<line x1="784" y1="232" x2="818" y2="232" stroke="#242824" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="824" y="120" width="328" height="224" rx="6" fill="#FFFFFF" stroke="#242824" stroke-width="1.5"/>
+<text x="842" y="148" class="t-code">PLANNER (gpt-4.1-mini)</text>
+<text x="842" y="172" class="t-h">紧凑 Schema 约束方案规划</text>
+<text x="842" y="202" class="t-b">1. 从 L1 四态或 invite_action/exercise 择一</text>
+<text x="842" y="226" class="t-b">2. 对候选卡提供 evidence 验证引用</text>
+<text x="842" y="250" class="t-b">3. 生成 2–3 条平实口语 response_guidance</text>
+<text x="842" y="274" class="t-b">4. 设定 avoid / open_question 约束</text>
+<text x="842" y="302" class="t-code-sig">紧凑合约代替全量 JSON Schema 注入</text>
+<text x="842" y="324" class="t-m">省去冗余词元，聚焦准确推理</text>
+<line x1="900" y1="344" x2="320" y2="394" stroke="#3B5246" stroke-width="1.6" marker-end="url(#arr)"/>
+<line x1="1020" y1="344" x2="860" y2="394" stroke="#BF471B" stroke-width="1.8" marker-end="url(#arr-sig)"/>
+<rect x="48" y="398" width="536" height="232" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.5"/>
+<text x="68" y="426" class="t-code">PATH A · ADAPTIVE FAST-PATH (fast_path_non_action)</text>
+<text x="68" y="452" class="t-h">纯共情非行动快通路（跳过冗余评审）</text>
+<text x="68" y="480" class="t-b">启用条件全部满足时直达发布门校验：</text>
+<text x="68" y="504" class="t-code">• objective ∈ {attuned_listen, tentative_reflect,</text>
+<text x="68" y="523" class="t-code">               low_energy_companionship, quiet_presence}</text>
+<text x="68" y="547" class="t-code">• candidate_actions == [] 且 确定性边界/问题预算无冲突</text>
+<text x="68" y="571" class="t-code">• not protects_active_offer（当前无待确认的活跃邀约）</text>
+<text x="68" y="604" class="t-m">→ 显著降低日常纯倾诉的后台调用跳数，同时绝不踩踏活跃 PendingOffer。</text>
+<rect x="616" y="398" width="536" height="232" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.5"/>
+<text x="636" y="428" class="t-code-sig">PATH B · CROSS-FAMILY PEER REVIEW (critic = qwen-flash)</text>
+<text x="636" y="454" class="t-h-sig">跨家族独立评审与单次修复闭环</text>
+<text x="636" y="484" class="t-b">凡携带具体策略卡、练习邀请、或存在边界疑点时必须强制审核：</text>
+<text x="636" y="508" class="t-b">• 对照 Blind Brief 反证、user_turn 证据真实性与未授权越界条款</text>
+<text x="636" y="532" class="t-b">• 采用异构小模型家族评审，降低单模型“自查自批”确认偏误</text>
+<text x="636" y="556" class="t-b">• 未通过时带具体 Critic 指正理由回炉 Planner 仅修 1 次（最多 2 轮）</text>
+<text x="636" y="592" class="t-code-sig">→ 审核通过 (approved) 或快路径核准后统一进入 CAS Gate 发布检查。</text>
+  <rect x="48" y="652" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="669" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="669" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

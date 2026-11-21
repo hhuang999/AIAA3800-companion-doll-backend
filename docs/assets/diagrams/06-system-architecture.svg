@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 22px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12.5px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; fill: #FF9A76; font-weight: 700; }
+      .t-pill { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10px; fill: #3B5246; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">DIAGRAM 06 · THREE-LANE SYSTEM ARCHITECTURE</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Python 3.10 Modular Monolith · Decoupled Latency &amp; Safety Isolation</text>
+  <text x="48" y="68" class="t-title">三线解耦系统总图：CompanionCore 权威控制、三线分工与持久化架构</text>
+  <rect x="48" y="118" width="224" height="134" rx="6" fill="#FFFFFF" stroke="#242824" stroke-width="1.5"/>
+<text x="66" y="148" class="t-h">语音终端与文本适配器</text>
+<text x="66" y="174" class="t-b">• 小智 ESP32 WebSocket 接入</text>
+<text x="66" y="196" class="t-b">• SenseVoice ASR + 声学 signal</text>
+<text x="66" y="218" class="t-code">Bearer Auth + device_id 绑定</text>
+<line x1="272" y1="185" x2="318" y2="185" stroke="#242824" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="324" y="112" width="520" height="146" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.6"/>
+<text x="344" y="142" class="t-h-w">CompanionCore &amp; StateMachine（唯一权威内核）</text>
+<text x="344" y="168" class="t-m-w">• 独占阶段流转、PendingOffer 许可生命周期、generation 代次递减与取消</text>
+<text x="344" y="191" class="t-m-w">• active_plan_id 管固定音频播放，active_support_plan_id 管支持策略，严格分离</text>
+<text x="344" y="214" class="t-m-w">• 冻结单轮 TurnPolicyFrame 送实时线；所有后台结果经 CAS 核准后影响下轮</text>
+<text x="344" y="240" class="t-code-w">Single-Writer SQLite Lease + Atomic State Transition</text>
+<line x1="844" y1="185" x2="886" y2="185" stroke="#BF471B" stroke-width="1.8" marker-end="url(#arr-sig)"/>
+<rect x="892" y="118" width="260" height="134" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.5"/>
+<text x="910" y="148" class="t-h-sig">语音与表情实时输出</text>
+<text x="910" y="174" class="t-b">• 首分句 (&gt;=8 字) 即送流式 TTS</text>
+<text x="910" y="196" class="t-b">• 内存 60ms Opus + 64 项短语缓存</text>
+<text x="910" y="218" class="t-b">• 上下文动态 emoji 映射表达式</text>
+<rect x="48" y="294" width="344" height="244" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="66" y="322" class="t-code-sig">LANE 01 · REALTIME TALKER</text>
+<text x="66" y="348" class="t-h">实时表达通路（永不阻塞等待后台）</text>
+<text x="66" y="376" class="t-b">• 模型：qwen-flash 流式文本生成</text>
+<text x="66" y="400" class="t-b">• 400ms 安全闸口与 L1 词表并行检查</text>
+<text x="66" y="424" class="t-b">• OutputRail 防说教、禁空洞鸡汤、防半句漏发</text>
+<text x="66" y="448" class="t-b">• 闭合中文引号完整性保留与句子数硬限</text>
+<text x="66" y="472" class="t-b">• 问题预算 = 0 / 1 控制表达压迫感</text>
+<text x="66" y="514" class="t-code">Only consumes committed TurnPolicyFrame</text>
+<rect x="412" y="294" width="392" height="244" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="430" y="322" class="t-code">LANE 02 · BOUNDED MULTI-AGENT POOL</text>
+<text x="430" y="348" class="t-h">有界后台认知协作线</text>
+<text x="430" y="376" class="t-b">• Brief (qwen-flash) // Analysis (gpt-4.1-mini)</text>
+<text x="430" y="400" class="t-b">• Catalog 确定性候选排除与资格评分</text>
+<text x="430" y="424" class="t-b">• Planner (gpt-4.1-mini) 制定阶段与行动候选</text>
+<text x="430" y="448" class="t-b">• 跨家族 Critic (qwen-flash) 独立审校 / Fast-Path</text>
+<text x="430" y="472" class="t-b">• DeltaChecker 对中途中插话做单次兼容核对</text>
+<text x="430" y="514" class="t-code-sig">Budget Cap: 8 LLM Calls / 20s Deadline</text>
+<rect x="824" y="294" width="328" height="244" rx="6" fill="#E3E7DC" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="842" y="322" class="t-code">LANE 03 · SAFETY, MEMORY &amp; STORE</text>
+<text x="842" y="348" class="t-h">静默安全、蕴含记忆与本地观测台</text>
+<text x="842" y="376" class="t-b">• 独立并发 L1+L2 风险检出静默兜底接管</text>
+<text x="842" y="400" class="t-b">• 2-Call 来源蕴含核对 + 逐字引文摘要</text>
+<text x="842" y="424" class="t-b">• 8 组校园升学领域概念簇检索索引</text>
+<text x="842" y="448" class="t-b">• SQLite 事务迁移一致备份与断电结束恢复</text>
+<text x="842" y="472" class="t-b">• Streamlit WAL 只读双栏运行观测台</text>
+<text x="842" y="514" class="t-code">End / Memory Share 2-Call / 20s Cap</text>
+<line x1="396" y1="258" x2="220" y2="290" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<line x1="600" y1="258" x2="600" y2="290" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<line x1="780" y1="258" x2="970" y2="290" stroke="#5A6058" stroke-width="1.3" marker-end="url(#arr-muted)"/>
+<path d="M 650 294 C 650 272, 690 272, 690 262" fill="none" stroke="#BF471B" stroke-width="1.6" marker-end="url(#arr-sig)"/>
+<rect x="48" y="560" width="1104" height="96" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="68" y="590" class="t-h">架构级安全与隔离不变量</text>
+<text x="68" y="615" class="t-b">1. 单数据库实例严格受 WriterLease 租约保护，观测台保持只读连接（唯一写入仅限于风险条目人工确认标记）。</text>
+<text x="68" y="638" class="t-b">2. 所有后台角色不得直接修改会话状态或发送外网音流；必须先通过 Core CAS 校验或由 StateMachine 触发正式动作。</text>
+  <rect x="48" y="672" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="689" class="t-m">小伴 Companion · 架构与功能工程图谱</text>
+  <text x="1152" y="689" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>
