@@ -346,6 +346,49 @@
     return document.getElementById(id);
   }
 
+  function initScrollSpy() {
+    const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+    const sections = navLinks
+      .map((a) => {
+        const id = a.getAttribute("href").slice(1);
+        return { link: a, el: el(id), id };
+      })
+      .filter((item) => item.el);
+
+    if (!sections.length) return;
+
+    const setCurrent = (activeId) => {
+      sections.forEach(({ link, id }) => {
+        const match = id === activeId;
+        link.classList.toggle("is-current", match);
+        if (match) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const syncFromScroll = () => {
+      const marker = window.innerHeight * 0.28;
+      let current = null;
+      for (const s of sections) {
+        const rect = s.el.getBoundingClientRect();
+        if (rect.top <= marker && rect.bottom > 80) {
+          current = s.id;
+        }
+      }
+      if (!current && window.scrollY > 120) {
+        const visible = sections.find((s) => {
+          const r = s.el.getBoundingClientRect();
+          return r.top < window.innerHeight * 0.6 && r.bottom > 80;
+        });
+        if (visible) current = visible.id;
+      }
+      setCurrent(current);
+    };
+
+    window.addEventListener("scroll", syncFromScroll, { passive: true });
+    syncFromScroll();
+  }
+
   function renderScenario() {
     const s = SCENARIOS[activeScenario];
     const outcome = s.turns[activeOutcome];
@@ -430,6 +473,45 @@
     if (el("diagram-desc")) el("diagram-desc").textContent = d.desc;
     if (el("diagram-svg-link")) el("diagram-svg-link").href = d.svg;
     if (el("diagram-png-link")) el("diagram-png-link").href = d.src;
+    if (el("lightbox-title")) el("lightbox-title").textContent = d.title;
+    if (el("lightbox-img")) {
+      el("lightbox-img").src = d.src;
+      el("lightbox-img").alt = d.title;
+    }
+    if (el("lightbox-png")) el("lightbox-png").href = d.src;
+    if (el("lightbox-svg")) el("lightbox-svg").href = d.svg;
+  }
+
+  function initDiagramLightbox() {
+    const dlg = el("diagram-lightbox");
+    const zoomBtn = el("diagram-zoom-btn");
+    const mainImg = el("diagram-img");
+    const closeBtn = el("lightbox-close");
+    if (!dlg) return;
+
+    const openBox = () => {
+      renderDiagram();
+      if (typeof dlg.showModal === "function") {
+        if (!dlg.open) dlg.showModal();
+      } else {
+        dlg.setAttribute("open", "");
+      }
+    };
+
+    const closeBox = () => {
+      if (typeof dlg.close === "function") {
+        if (dlg.open) dlg.close();
+      } else {
+        dlg.removeAttribute("open");
+      }
+    };
+
+    if (zoomBtn) zoomBtn.addEventListener("click", openBox);
+    if (mainImg) mainImg.addEventListener("click", openBox);
+    if (closeBtn) closeBtn.addEventListener("click", closeBox);
+    dlg.addEventListener("click", (ev) => {
+      if (ev.target === dlg) closeBox();
+    });
   }
 
   function categoryMatch(item, filter) {
@@ -466,17 +548,33 @@
           const active = key === selectedStrategyKey;
           const citeLabel = formatEvidence(item.protocol?.evidence_ids);
           const tag = item._kind === "exercise" ? `EXERCISE · ${citeLabel}` : `CARD · ${citeLabel}`;
-          return `<button type="button" class="strat-btn" data-strat-key="${escapeHtml(key)}" aria-pressed="${active}">
-            <span class="strat-meta">${escapeHtml(item.id)} · ${escapeHtml(tag)}</span>
+          return `<button type="button" class="strat-btn" role="option" aria-selected="${active}" data-strat-key="${escapeHtml(key)}" aria-pressed="${active}">
             <span class="strat-title">${escapeHtml(item.name)}</span>
+            <span class="strat-meta">${escapeHtml(tag)}</span>
             <span class="strat-sub">${escapeHtml(item.protocol?.invitation || item.protocol?.goal || "")}</span>
           </button>`;
         })
         .join("");
-      grid.querySelectorAll("[data-strat-key]").forEach((btn) => {
+      const btns = [...grid.querySelectorAll("[data-strat-key]")];
+      btns.forEach((btn, idx) => {
         btn.addEventListener("click", () => {
           selectedStrategyKey = btn.dataset.stratKey;
           renderCatalog();
+        });
+        btn.addEventListener("keydown", (ev) => {
+          let nextIdx = -1;
+          if (ev.key === "ArrowDown" || ev.key === "ArrowRight") nextIdx = (idx + 1) % btns.length;
+          else if (ev.key === "ArrowUp" || ev.key === "ArrowLeft") nextIdx = (idx - 1 + btns.length) % btns.length;
+          else if (ev.key === "Home") nextIdx = 0;
+          else if (ev.key === "End") nextIdx = btns.length - 1;
+          if (nextIdx >= 0) {
+            ev.preventDefault();
+            const targetKey = btns[nextIdx].dataset.stratKey;
+            selectedStrategyKey = targetKey;
+            renderCatalog();
+            const focused = grid.querySelector(`[data-strat-key="${CSS.escape(targetKey)}"]`);
+            if (focused) focused.focus();
+          }
         });
       });
     }
@@ -538,6 +636,8 @@
     renderScenario();
     renderLane(false);
     renderDiagram();
+    initDiagramLightbox();
+    initScrollSpy();
 
     try {
       const resp = await fetch("assets/project-data.json");

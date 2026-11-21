@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>小伴 Companion · 面向初高中升学压力的日常情感陪伴智能体</title>
-  <meta name="description" content="面向中国初高中备考学生的日常情感陪伴智能体：分层陪伴体系、三线解耦架构、显式单步许可、作用域边界与跨家族来源蕴含记忆。">
+  <meta name="description" content="面向承受中考与高考日常学业及评价压力的中国初高中学生：共情倾听默认在场，单步许可微策略，三线解耦架构与来源蕴含记忆。">
   <link rel="icon" href="assets/companion-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/project.css">
 </head>
@@ -19,14 +19,14 @@
         <span class="brand-tag">HCI PROTOTYPE</span>
       </a>
       <nav class="nav-links" aria-label="主导航">
-        <a href="#scenarios">交互体验</a>
+        <a href="#presence">日常形态</a>
+        <a href="#scenarios">状态裁决</a>
         <a href="#architecture">三线架构</a>
-        <a href="#memory">记忆与边界</a>
+        <a href="#memory">记忆边界</a>
         <a href="#catalog">策略协议</a>
         <a href="#diagrams">系统图谱</a>
         <a href="#quickstart">本地运行</a>
-        <a href="research-design/">完整说明书</a>
-        <a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="research-design/">设计说明书</a>
       </nav>
     </div>
   </header>
@@ -34,209 +34,259 @@
   <main id="main-content">
     <section class="hero">
       <div class="wrap hero-grid">
-        <div>
-          <p class="kicker">ZHONGKAO &amp; GAOKAO DAILY COMPANIONSHIP · ARCHITECTURE &amp; CAPABILITIES</p>
+        <div data-enter>
+          <p class="kicker">ZHONGKAO &amp; GAOKAO DAILY COMPANIONSHIP</p>
           <h1>听得懂考前慌乱、也守得住边界的桌面陪伴伙伴</h1>
-          <p class="lead">
-            面向承受中考与高考日常学业压力的中国初高中学生：共情倾听默认在场，任何微策略或短练习必须经过一次情境化单步同意才进入；拒绝不讲道理，疲惫时不布置任务，记忆只留经原文蕴含核对的真实表达与边界。
+          <p class="hero-lead">
+            面向承受中考与高考日常学业压力的中国初高中学生。共情倾听默认在场，任何微策略或短练习必须经过一次情境化单步许可才进入；拒绝不讲道理，疲惫时不布置任务，跨会话记忆只保留经原文蕴含核对的真实表达与局部边界。
           </p>
-          <div class="cta-row">
+          <div class="cta-row" data-enter data-enter-delay="1">
             <a class="btn btn-primary" href="#scenarios">体验交互状态裁决</a>
-            <a class="btn btn-ghost" href="#catalog">查阅 9 张策略卡与 3 段练习</a>
-            <a class="btn btn-ghost" href="research-design/">阅读完整设计说明书</a>
+            <a class="text-action" href="research-design/">阅读完整设计说明书</a>
           </div>
-          <div class="hero-metrics">
-            <div class="metric-chip is-highlight">
-              <span class="num">L1 + L2</span>
-              <span class="lbl">四态主动共情与九卡三练分层许可体系</span>
+          <div class="spec-strip" data-enter data-enter-delay="2">
+            <div class="spec-cell is-key">
+              <span class="spec-num">L1 + L2</span>
+              <span class="spec-lbl">四态主动共情与九卡三练单步许可体系</span>
             </div>
-            <div class="metric-chip">
-              <span class="num">3 Lanes · CAS</span>
-              <span class="lbl">实时表达、有界多 Agent 与四重版本门控</span>
+            <div class="spec-cell">
+              <span class="spec-num">3 Lanes · CAS</span>
+              <span class="spec-lbl">实时流式表达与四重版本号原子门控</span>
             </div>
-            <div class="metric-chip">
-              <span class="num">2-Call · 8 Clusters</span>
-              <span class="lbl">来源蕴含核对记忆与作用域局部边界隔离</span>
+            <div class="spec-cell">
+              <span class="spec-num">2-Call · 8 Clusters</span>
+              <span class="spec-lbl">跨家族蕴含核对记忆与作用域边界隔离</span>
             </div>
           </div>
         </div>
-        <div class="photo-frame">
+
+        <div class="photo-stage" data-enter data-enter-delay="1">
           <picture>
             <source media="(max-width: 640px)" srcset="assets/companion-daylight-small.webp">
-            <img src="assets/companion-daylight.webp" width="1672" height="941" alt="阳光书桌上的无屏幕圆润羊毛桌面陪伴玩偶小伴">
+            <img src="assets/companion-daylight.webp" width="1672" height="941" alt="阳光书桌上的无屏幕圆润奶油羊毛桌面陪伴玩偶小伴">
           </picture>
         </div>
       </div>
     </section>
 
-    <section class="band band-soft" id="scenarios">
+    <section class="band band-muted" id="presence">
       <div class="wrap">
         <div class="sec-head">
           <div>
-            <p class="kicker">DETERMINISTIC AGENCY · INTERACTION SIMULATOR</p>
-            <h2>四个高中日常情境的权限与状态裁决</h2>
+            <p class="kicker">TACTILE FORM &amp; EVERYDAY CONTEXTS</p>
+            <h2>从晚自习书桌到轻触喊停的低打扰物理在场</h2>
           </div>
-          <p>切换下方升学压力场景与学生回应分支，观察确定性 <code>StateMachine</code> 如何守住“同意、拒绝、安静、局部边界隔离”，不让生成模型替学生拿主意。</p>
+          <p>脱离刺眼的手机消息流，以约一掌宽的无屏幕羊毛实体融入课桌与生活动线——先安顿存在感，再把何时对话、何时暂停的主动权交还学生。</p>
         </div>
 
-        <div class="tab-strip" role="group" aria-label="选择备考情境">
-          <button type="button" class="pill-btn" data-scenario-idx="0" aria-pressed="true">考前手抖心慌</button>
-          <button type="button" class="pill-btn" data-scenario-idx="1" aria-pressed="false">父母拿排名唠叨</button>
-          <button type="button" class="pill-btn" data-scenario-idx="2" aria-pressed="false">晚自习散架疲惫</button>
-          <button type="button" class="pill-btn" data-scenario-idx="3" aria-pressed="false">榜单与边界记忆</button>
-        </div>
-
-        <div class="sim-grid">
-          <div class="panel">
-            <div class="chat-log" id="sim-chat-log" aria-live="polite"></div>
-            <div class="sim-controls" role="group" aria-label="用户权限回应">
-              <button type="button" class="pill-btn is-signal" data-outcome="initial" aria-pressed="true">初始邀请 / 承接</button>
-              <button type="button" class="pill-btn is-signal" data-outcome="agree" aria-pressed="false">好，试试看 (agree)</button>
-              <button type="button" class="pill-btn is-signal" data-outcome="refuse" aria-pressed="false">不用，只聊聊 (refuse)</button>
-              <button type="button" class="pill-btn is-signal" data-outcome="quiet" aria-pressed="false">让我静静 (quiet)</button>
-            </div>
+        <article class="editorial-spread">
+          <div class="photo-stage">
+            <picture>
+              <source media="(max-width: 640px)" srcset="assets/companion-desk-scale-small.webp">
+              <img src="assets/companion-desk-scale.webp" width="1600" height="900" loading="lazy" alt="白日斜射光下放在 A5 硬壳笔记本与签字笔旁的奶油羊毛小伴概念图">
+            </picture>
           </div>
+          <div class="spread-copy">
+            <span class="spread-index">01 / PHYSICAL SCALE</span>
+            <h3>约 22 cm 掌心尺度，不抢占书桌注意力</h3>
+            <p>放在常见 A5 笔记本与签字笔旁仅占半掌桌面空间，底部微沉配重稳立且通体覆盖暖白短密羊毛；没有屏幕弹窗、进度条或提醒红点，让伴读归于安静本身。</p>
+            <ul class="spread-specs">
+              <li><span class="sk">概念参考高度</span><span class="sv">~22 cm · 掌心可抱</span></li>
+              <li><span class="sk">界面交互形态</span><span class="sv">零屏幕 · 纯语音与轻触</span></li>
+              <li><span class="sk">音频帧输出</span><span class="sv">60 ms 纯内存 Opus 流</span></li>
+            </ul>
+            <a class="spread-meta-link" href="assets/companion-desk-scale.webp" target="_blank" rel="noreferrer">查看硬件尺度高清原图</a>
+          </div>
+        </article>
 
-          <aside class="telemetry-panel" aria-label="状态机实时遥测">
-            <h3>STATEMACHINE · TELEMETRY</h3>
-            <div class="kv-list">
-              <div class="kv-box">
-                <span class="k">CURRENT STAGE</span>
-                <span class="v" id="tel-stage">-</span>
-              </div>
-              <div class="kv-box">
-                <span class="k">POLICY OBJECTIVE</span>
-                <span class="v" id="tel-obj">-</span>
-              </div>
-              <div class="kv-box">
-                <span class="k">ACTIVE CARD / STEP</span>
-                <span class="v" id="tel-card">-</span>
-              </div>
-              <div class="kv-box">
-                <span class="k">PENDING OFFER</span>
-                <span class="v" id="tel-offer">-</span>
-              </div>
-            </div>
-            <div class="kv-box">
-              <span class="k">SCOPED BOUNDARY &amp; RAIL</span>
-              <span class="v" id="tel-bound">-</span>
-            </div>
-          </aside>
-        </div>
-
-        <div class="scene-duo" style="margin-top: 24px;">
-          <figure class="scene-card" style="margin: 0;">
+        <article class="editorial-spread is-reversed">
+          <div class="spread-copy">
+            <span class="spread-index">02 / LATE-NIGHT BURNOUT GUARD</span>
+            <h3>夜晚十点半回到桌前，绝不趁疲惫加塞任务</h3>
+            <p>下晚自习后坐在台灯下连歇十分钟都在内疚时，常规助手最容易脱口而出“再来十分钟复盘清单”。当系统识别低准备度或明确拒建议时，直走非行动共情路线，首先替学生卸下负罪感。</p>
+            <a class="spread-meta-link" href="assets/companion-study-night.webp" target="_blank" rel="noreferrer">查看夜归书桌高清原图</a>
+          </div>
+          <div class="photo-stage">
             <picture>
               <source media="(max-width: 640px)" srcset="assets/companion-study-night-small.webp">
-              <img src="assets/companion-study-night.webp" width="1600" height="900" loading="lazy" alt="夜晚十点半暖光台灯照亮的书桌角，奶油短绒小伴安静陪在空白笔记本旁">
+              <img src="assets/companion-study-night.webp" width="1600" height="900" loading="lazy" alt="夜间十点半暖光台灯照亮的书桌角，奶油羊毛小伴静坐陪伴概念图">
             </picture>
-            <figcaption class="scene-caption">
-              <div class="scene-caption-bar">
-                <strong>晚自习归来 · 低负担书桌陪伴</strong>
-                <a href="assets/companion-study-night.webp" target="_blank" rel="noreferrer">查看高清 WebP</a>
-              </div>
-              <p>柔和台灯下安静坐在一旁陪你喘口气，先接住精疲力竭，绝不催着立刻刷题。</p>
-            </figcaption>
-          </figure>
+          </div>
+        </article>
 
-          <figure class="scene-card" style="margin: 0;">
+        <article class="editorial-spread">
+          <div class="photo-stage">
             <picture>
               <source media="(max-width: 640px)" srcset="assets/companion-wake-gesture-small.webp">
-              <img src="assets/companion-wake-gesture.webp" width="1600" height="900" loading="lazy" alt="自然光下青年手掌轻覆奶油短绒小伴肩侧顶部，示意触控唤醒与随时喊停">
+              <img src="assets/companion-wake-gesture.webp" width="1600" height="900" loading="lazy" alt="自然光下青年手掌轻覆小伴肩侧顶部示意触控唤醒与随时暂停概念图">
             </picture>
-            <figcaption class="scene-caption">
-              <div class="scene-caption-bar">
-                <strong>轻触唤醒与随时喊停 · 控制权在手</strong>
-                <a href="assets/companion-wake-gesture.webp" target="_blank" rel="noreferrer">查看高清 WebP</a>
-              </div>
-              <p>伸手轻拍即可唤醒对话或随时暂停退出，用物理触感配合确定性状态机守住人在主权。</p>
-            </figcaption>
-          </figure>
-        </div>
+          </div>
+          <div class="spread-copy">
+            <span class="spread-index">03 / AGENCY BY TOUCH &amp; VOICE</span>
+            <h3>伸手轻拍即唤醒，说声静静立刻撤回</h3>
+            <p>无论是轻触肩侧触发或暂停，还是口头一句“让我静静”，确定性状态机立即递增 <code>generation</code> 作废尚未说完的后半句播报，并同步清零续播游标与提问预算。</p>
+            <a class="spread-meta-link" href="assets/companion-wake-gesture.webp" target="_blank" rel="noreferrer">查看触控交互高清原图</a>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="band band-dark" id="architecture">
+    <section class="band band-console">
       <div class="wrap">
-        <div class="sec-head">
-          <div>
-            <p class="kicker">THREE DECOUPLED LANES · CAS AUTHORITY</p>
-            <h2>三线解耦架构与实时信号流</h2>
+        <div id="scenarios" class="console-block">
+          <div class="sec-head">
+            <div>
+              <p class="kicker">DETERMINISTIC AGENCY · HARDWARE CONSOLE</p>
+              <h2>四个高中日常情境的权限与状态裁决</h2>
+            </div>
+            <p>切换典型升学压力情境与学生回应分支，实时观察 <code>CompanionCore</code> 与确定性 <code>StateMachine</code> 如何裁决阶段、许可与作用域边界。</p>
           </div>
-          <p>实时表达线仅消费当前已提交策略帧，从不阻塞等待后台分析；所有后台协作候选必须经 4 重版本号 CAS 与增量复核才能进入后续对话。</p>
+
+          <div class="console-tabs" role="group" aria-label="选择备考情境">
+            <button type="button" class="console-btn" data-scenario-idx="0" aria-pressed="true">考前手抖心慌</button>
+            <button type="button" class="console-btn" data-scenario-idx="1" aria-pressed="false">父母拿排名唠叨</button>
+            <button type="button" class="console-btn" data-scenario-idx="2" aria-pressed="false">晚自习散架疲惫</button>
+            <button type="button" class="console-btn" data-scenario-idx="3" aria-pressed="false">榜单与边界记忆</button>
+          </div>
+
+          <div class="sim-grid">
+            <div class="console-bay">
+              <div class="chat-log" id="sim-chat-log" aria-live="polite"></div>
+              <div class="sim-controls" role="group" aria-label="用户权限回应">
+                <button type="button" class="console-btn is-signal" data-outcome="initial" aria-pressed="true">初始邀请 / 承接</button>
+                <button type="button" class="console-btn is-signal" data-outcome="agree" aria-pressed="false">好，试试看 (agree)</button>
+                <button type="button" class="console-btn is-signal" data-outcome="refuse" aria-pressed="false">不用，只聊聊 (refuse)</button>
+                <button type="button" class="console-btn is-signal" data-outcome="quiet" aria-pressed="false">让我静静 (quiet)</button>
+              </div>
+            </div>
+
+            <aside class="telemetry-bay" aria-label="状态机实时遥测">
+              <div class="telemetry-head">
+                <h3>STATEMACHINE · TELEMETRY</h3>
+                <span class="led-status"><span class="led-dot" aria-hidden="true"></span>CORE LOCKED</span>
+              </div>
+              <div class="kv-table">
+                <div class="kv-cell">
+                  <span class="k">CURRENT STAGE</span>
+                  <span class="v" id="tel-stage">-</span>
+                </div>
+                <div class="kv-cell">
+                  <span class="k">POLICY OBJECTIVE</span>
+                  <span class="v" id="tel-obj">-</span>
+                </div>
+                <div class="kv-cell">
+                  <span class="k">ACTIVE CARD / STEP</span>
+                  <span class="v" id="tel-card">-</span>
+                </div>
+                <div class="kv-cell">
+                  <span class="k">PENDING OFFER</span>
+                  <span class="v" id="tel-offer">-</span>
+                </div>
+                <div class="kv-cell is-wide">
+                  <span class="k">SCOPED BOUNDARY &amp; RAIL</span>
+                  <span class="v" id="tel-bound">-</span>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
 
-        <div class="lane-grid" role="group" aria-label="系统工作线">
-          <button type="button" class="lane-card" data-lane-idx="0" aria-pressed="true">
-            <span class="lane-id">LANE 01 · TALKER</span>
-            <strong>实时表达线</strong>
-            <span>首个 &gt;=8 字分句即送内存 Opus 流</span>
-          </button>
-          <button type="button" class="lane-card" data-lane-idx="1" aria-pressed="false">
-            <span class="lane-id">LANE 02 · COGNITION</span>
-            <strong>有界后台协作</strong>
-            <span>并行分析 + Catalog 过滤 + 跨家族互审</span>
-          </button>
-          <button type="button" class="lane-card" data-lane-idx="2" aria-pressed="false">
-            <span class="lane-id">LANE 03 · GROUNDING</span>
-            <strong>静默安全与蕴含记忆</strong>
-            <span>2-Call 来源蕴含核对 + 8 概念簇召回</span>
-          </button>
-          <button type="button" class="lane-card" data-lane-idx="3" aria-pressed="false">
-            <span class="lane-id">CORE · CAS GATE</span>
-            <strong>版本化并发控制</strong>
-            <span>topic / policy / boundary / plan 原子比较</span>
-          </button>
-        </div>
+        <hr class="console-divider">
 
-        <div class="lane-stage">
-          <div>
-            <p class="kicker" id="lane-title">-</p>
-            <p id="lane-summary" style="margin:0 0 12px; color:#d8ded9; font-size:14.5px;"></p>
-            <p class="mono" id="lane-metric" style="margin:0; color:#ff9a76; font-size:13px;"></p>
+        <div id="architecture" class="console-block">
+          <div class="sec-head">
+            <div>
+              <p class="kicker">THREE DECOUPLED LANES · CAS AUTHORITY</p>
+              <h2>三线解耦架构与实时信号总线</h2>
+            </div>
+            <p>实时表达线只消费当前已提交策略帧，从不等待后台推理；全部多 Agent 协作产出必经 4 重版本号 CAS 与增量复核才允许生效。</p>
           </div>
-          <div class="signal-nodes" id="lane-nodes"></div>
+
+          <div class="lane-grid" role="group" aria-label="系统工作线">
+            <button type="button" class="lane-card" data-lane-idx="0" aria-pressed="true">
+              <span class="lane-id">LANE 01 · TALKER</span>
+              <strong>实时表达线</strong>
+              <span>首个 &gt;=8 字分句即送内存 Opus 流</span>
+            </button>
+            <button type="button" class="lane-card" data-lane-idx="1" aria-pressed="false">
+              <span class="lane-id">LANE 02 · COGNITION</span>
+              <strong>有界后台协作</strong>
+              <span>并行理解 + 目录过滤 + 跨家族互审</span>
+            </button>
+            <button type="button" class="lane-card" data-lane-idx="2" aria-pressed="false">
+              <span class="lane-id">LANE 03 · GROUNDING</span>
+              <strong>静默安全与蕴含记忆</strong>
+              <span>2-Call 文本蕴含核对 + 8 概念簇召回</span>
+            </button>
+            <button type="button" class="lane-card" data-lane-idx="3" aria-pressed="false">
+              <span class="lane-id">CORE · CAS GATE</span>
+              <strong>版本化并发控制</strong>
+              <span>4 项基线修订号锁内原子比较</span>
+            </button>
+          </div>
+
+          <div class="lane-stage">
+            <div>
+              <p class="kicker" id="lane-title">-</p>
+              <p class="lane-summary" id="lane-summary"></p>
+              <p class="mono lane-metric" id="lane-metric"></p>
+            </div>
+            <div class="signal-nodes" id="lane-nodes"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="band band-sage" id="memory">
       <div class="wrap touch-grid">
-        <div class="photo-frame">
+        <div class="photo-stage">
           <picture>
             <source media="(max-width: 640px)" srcset="assets/companion-touch-small.webp">
-            <img src="assets/companion-touch.webp" width="1122" height="1402" alt="指尖轻触质感织物表面的桌面陪伴玩偶小伴近景概念图">
+            <img src="assets/companion-touch.webp" width="1122" height="1402" loading="lazy" alt="温柔手掌轻抚奶油短绒织物玩偶肩部的近景概念图">
           </picture>
         </div>
+
         <div>
           <p class="kicker">GROUNDED MEMORY &amp; INTERACTION ETHICS</p>
-          <h2 style="margin:0 0 18px; font-size:clamp(24px,2.8vw,34px);">记住学生说过的偏好，但绝不脑补没说过的心事</h2>
-          <div class="check-cards">
-            <div class="check-item">
-              <strong>跨家族来源蕴含核对（ConsolidationGrounder）</strong>
-              <p>记忆候选取自真实用户转写与同意事件后，交由跨家族模型以原话为前提逐句判定 entailed；凡是未经原文严格支持的性格标签或默认称呼，落库前一律过滤。</p>
-            </div>
-            <div class="check-item">
-              <strong>八组升学域概念簇与负向瞻前作用域边界</strong>
-              <p>通过负向瞻前断言区分“不想定死未来”与“别替我选科”；借助 <code>identity_name</code>、<code>parent_family</code>、<code>exam_grade</code> 等八组概念簇实现重连称呼召回与局部禁忌隔离。</p>
-            </div>
-            <div class="check-item">
-              <strong>不制造依恋、不说教的平等对话守则</strong>
-              <p>遇到“只要你陪我一个人”等独占期望时温和坦诚自己只是 AI 玩偶，在学生主动愿意时协助梳理现实中相对放心的师友支持入口。</p>
-            </div>
-          </div>
+          <h2 style="margin:0 0 22px; font-size:clamp(1.55rem, 2.7vw, 2.2rem); line-height:1.22;">记住学生明确交代的偏好，但绝不脑补没说过的心事</h2>
+          <ul class="hairline-list">
+            <li class="hairline-item">
+              <span class="hairline-idx num">01</span>
+              <div>
+                <strong>跨家族来源蕴含核对（ConsolidationGrounder）</strong>
+                <p>记忆候选取自真实用户转写与同意事件，由异构模型以原话为前提逐句判定 entailed；未经原文严格支持的揣测标签或默认称呼落库前一律过滤。</p>
+              </div>
+            </li>
+            <li class="hairline-item">
+              <span class="hairline-idx num">02</span>
+              <div>
+                <strong>八组升学域概念簇与负向瞻前局部隔离</strong>
+                <p>用负向瞻前断言区分“不想定死未来”与“别替我选科”；凭借 <code>identity_name</code>、<code>parent_family</code>、<code>exam_grade</code> 等八组概念簇实现更名纠错召回与局部禁忌隔离。</p>
+              </div>
+            </li>
+            <li class="hairline-item">
+              <span class="hairline-idx num">03</span>
+              <div>
+                <strong>不制造依恋、不说教的平等对话守则</strong>
+                <p>面对“只要你陪我一个人”等独占倾诉时温和坦诚自己只是 AI 玩偶，并在学生主动点头后才梳理现实中相对放心的师友沟通入口。</p>
+              </div>
+            </li>
+          </ul>
+          <p style="margin:18px 0 0;">
+            <a class="spread-meta-link" href="assets/companion-touch.webp" target="_blank" rel="noreferrer">查看近景触感高清原图</a>
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="band band-soft" id="catalog">
+    <section class="band" id="catalog">
       <div class="wrap">
         <div class="sec-head">
           <div>
-            <p class="kicker">STRATEGY &amp; EXERCISE PROTOCOLS · GIT HEAD SYNCED</p>
+            <p class="kicker">STRATEGY &amp; EXERCISE PROTOCOLS · GIT SYNCED</p>
             <h2>九张支持策略卡与三段固定短练习</h2>
           </div>
-          <p>按压力类别筛选浏览全套内容条目；右侧协议面板直接读取配置内的心理学机制、情境化邀请、停止边界与学术文献出处。</p>
+          <p>按压力类别筛选或用键盘方向键切换条目；右侧规范卡直接展示心理学机理、单步邀请词、禁语护栏与标准作者年份出处。</p>
         </div>
 
         <div class="tab-strip" role="group" aria-label="按压力维度筛选">
@@ -249,22 +299,22 @@
         </div>
 
         <div class="catalog-grid">
-          <div class="cards-matrix" id="cards-matrix"></div>
+          <div class="cards-matrix" id="cards-matrix" role="listbox" aria-label="策略与练习列表"></div>
           <aside class="proto-inspector" id="proto-inspector" aria-label="策略协议检查器">
-            <p class="muted">正在加载策略目录…</p>
+            <p style="margin:0; color:var(--ink-secondary);">正在加载策略目录…</p>
           </aside>
         </div>
       </div>
     </section>
 
-    <section class="band" id="diagrams">
+    <section class="band band-paper" id="diagrams">
       <div class="wrap">
         <div class="sec-head">
           <div>
-            <p class="kicker">PRECISION ARCHITECTURE &amp; FEATURE GALLERY</p>
-            <h2>十一套工程与功能高清矢量图谱</h2>
+            <p class="kicker">PRECISION ENGINEERING DRAWINGS · GALLERY</p>
+            <h2>十一套高清工程与功能矢量图谱</h2>
           </div>
-          <p>采用统一的 Warm Daylight × TE 精密图纸风绘制，完整覆盖压力情境、文献转译、策略分层、单卡解剖、许可状态机、三线总图、多 Agent 协作、CAS 并发、蕴含记忆、流式音频与场景走查。每张均提供 2x PNG 与无损矢量 SVG 下载。</p>
+          <p>统一精密工程图纸风格覆盖压力背景、文献转译、策略解剖、许可状态机、三线总图、多 Agent 协作、CAS 并发、蕴含记忆、流式音频与场景走查。</p>
         </div>
 
         <div class="tab-strip" id="diagram-tabs" role="group" aria-label="选择架构与功能图谱"></div>
@@ -272,10 +322,11 @@
         <div class="diagram-frame">
           <div class="diagram-head-row">
             <strong id="diagram-title-line">-</strong>
-            <span style="display:flex; gap:14px; font-size:13px;">
-              <a id="diagram-png-link" href="assets/diagrams/01-context-and-stressors.png" target="_blank" rel="noreferrer">打开 @2x PNG</a>
-              <a id="diagram-svg-link" href="assets/diagrams/01-context-and-stressors.svg" target="_blank" rel="noreferrer">打开矢量 SVG</a>
-            </span>
+            <div class="diagram-actions">
+              <button type="button" class="diagram-zoom-btn" id="diagram-zoom-btn">大图预览</button>
+              <a id="diagram-png-link" href="assets/diagrams/01-context-and-stressors.png" target="_blank" rel="noreferrer">@2x PNG</a>
+              <a id="diagram-svg-link" href="assets/diagrams/01-context-and-stressors.svg" target="_blank" rel="noreferrer">矢量 SVG</a>
+            </div>
           </div>
           <img id="diagram-img" src="assets/diagrams/01-context-and-stressors.png" width="1200" height="700" alt="Fig 01">
           <div class="diagram-bar">
@@ -285,61 +336,35 @@
       </div>
     </section>
 
-    <section class="band band-soft" id="presence">
+    <section class="band band-muted" id="quickstart">
       <div class="wrap">
-        <div class="sec-head">
-          <div>
-            <p class="kicker">PHYSICAL PRESENCE &amp; NIGHTTIME CALM</p>
-            <h2>实体尺度与夜间静默在场</h2>
-          </div>
-          <p>无屏幕、无刺眼指示灯，也不在深夜强推待办列表；用可抱入掌心的温润织物实体区分“随时可聊的桌面伙伴”与“全天候刷屏的效率机器”。</p>
-        </div>
-
-        <div class="scene-duo">
-          <figure class="scene-card" style="margin: 0;">
-            <picture>
-              <source media="(max-width: 640px)" srcset="assets/companion-desk-scale-small.webp">
-              <img src="assets/companion-desk-scale.webp" width="1600" height="900" loading="lazy" alt="白日斜射光下的浅橡木桌面侧拍，约 22cm 奶油羊毛小伴放在素色硬壳笔记本与签字笔旁呈现掌心尺度">
-            </picture>
-            <figcaption class="scene-caption">
-              <div class="scene-caption-bar">
-                <strong>约 22cm 掌心尺度与短密羊毛触感</strong>
-                <a href="assets/companion-desk-scale.webp" target="_blank" rel="noreferrer">查看高清 WebP</a>
-              </div>
-              <p>放在普通 A5 笔记本与签字笔旁仅占半掌桌面空间，底部微沉配重稳立且完全无屏幕按钮干扰。</p>
-            </figcaption>
-          </figure>
-
-          <figure class="scene-card" style="margin: 0;">
+        <article class="editorial-spread">
+          <div class="photo-stage">
             <picture>
               <source media="(max-width: 640px)" srcset="assets/companion-bedtime-small.webp">
-              <img src="assets/companion-bedtime.webp" width="1600" height="900" loading="lazy" alt="微暗卧室床头橡木柜一角与浅米色亚麻寝具旁，暖色微光勾勒安静在场的奶油羊毛小伴">
+              <img src="assets/companion-bedtime.webp" width="1600" height="900" loading="lazy" alt="柔和夜灯微光下床头原木柜一角的奶油羊毛小伴与亚麻寝具概念图">
             </picture>
-            <figcaption class="scene-caption">
-              <div class="scene-caption-bar">
-                <strong>睡前床头微光在场 · 无光打扰与认知卸载</strong>
-                <a href="assets/companion-bedtime.webp" target="_blank" rel="noreferrer">查看高清 WebP</a>
-              </div>
-              <p>睡前仅保留极低负荷的外化存放与简短晚安收尾，零蓝光、零提示灯，不把休眠时间拉成长对话。</p>
-            </figcaption>
-          </figure>
-        </div>
-
-        <p class="scene-provenance-note">说明：以上场景视觉为工业外观与交互体验概念示意（非量产硬件实拍），完整提示词、参照图与比例元数据见 <a href="assets/image-provenance.json" target="_blank" rel="noreferrer">image-provenance.json</a>。</p>
-      </div>
-    </section>
-
-    <section class="band" id="quickstart">
-      <div class="wrap">
-        <div class="sec-head">
-          <div>
-            <p class="kicker">LOCAL WORKSPACE &amp; FULL SPECIFICATION</p>
-            <h2>本地运行入口与完整系统设计说明书</h2>
           </div>
-          <p>Python 3.10 模块化单体搭配只读双栏运行观测台与小智 ESP32 WebSocket 协议适配器，支持本地合成剧本体验与实机协议对接。</p>
-        </div>
+          <div class="spread-copy">
+            <span class="spread-index">04 / BEDTIME COGNITIVE UNLOADING</span>
+            <h3>把明早的惦记先放妥，然后安心道晚安</h3>
+            <p>夜间熄灯前后仅支持一句话外化存放与 39 秒短暂停音频收尾，绝无刺眼电子屏光，也不顺势展开明天复习日程表；全部设计论证、逐卡协议与源码模块映射尽在在线说明书。</p>
+            <div class="cta-row" style="margin-bottom:14px;">
+              <a class="btn btn-primary" href="research-design/">进入完整设计说明书</a>
+              <a class="text-action" href="https://github.com/hhuang999/AIAA3800-companion-doll-backend" target="_blank" rel="noreferrer">查看 GitHub 源码仓库</a>
+            </div>
+            <a class="spread-meta-link" href="assets/companion-bedtime.webp" target="_blank" rel="noreferrer">查看睡前安静在场高清原图</a>
+          </div>
+        </article>
+
+        <hr class="quickstart-divider">
 
         <div class="quickstart-grid">
+          <div class="spread-copy">
+            <p class="kicker">LOCAL WORKSPACE · WINDOWS POWERSHELL</p>
+            <h3 style="margin-top:0;">本地启动与 WAL 只读运行观测台</h3>
+            <p>Python 3.10 模块化单体附带零阻塞 SQLite 只读双栏运行观测台与小智 ESP32 WebSocket 协议适配器，支持离线合成剧本体验与固定短练习音频打包。</p>
+          </div>
           <div class="cmd-panel">
 <pre><span class="cm"># 1. 初始化本地 Python 3.10 .venv 运行环境</span>
 ./scripts/setup.ps1
@@ -348,20 +373,9 @@
 ./scripts/run.ps1 fake --db data/development.db
 ./scripts/run.ps1 dashboard --db data/development.db
 
-<span class="cm"># 3. 配置 .env 模型密钥后启动真实模型会话、固定音频构建与设备接入</span>
+<span class="cm"># 3. 配置 .env 模型密钥后启动真实模型会话与固定音频打包</span>
 ./scripts/run.ps1 live --db data/development.db
 .venv/Scripts/python.exe -m companion.tools.prepare_audio --env-file .env --config-dir data/xiaozhi-config --output data/fixed_audio --bind-config</pre>
-          </div>
-          <div class="spec-card">
-            <div>
-              <p class="kicker">COMPLETE DESIGN MONOGRAPH</p>
-              <h3>阅读完整研究与系统架构说明书</h3>
-              <p>包含五类压力与四条通路、全部 19 项文献转译链路、L1 四态与 9 张策略卡逐张详解、三线解耦与 CAS 并发控制机制、Grounded Memory 架构、实时 Opus 流管线以及三幕交互走查。</p>
-            </div>
-            <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <a class="btn btn-primary" href="research-design/">进入完整说明书</a>
-              <a class="btn btn-ghost" href="https://github.com/hhuang999/AIAA3800-companion-doll-backend" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
-            </div>
           </div>
         </div>
       </div>
@@ -370,17 +384,34 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <div class="scope-box">
+      <div class="scope-ledger">
         <h2>SCOPE &amp; ETHICS</h2>
         <p>本系统为 HKUST(GZ) AIAA 3800 课程研发的初高中日常情感陪伴与减压原型，定位为非医疗、非诊断性的同龄感支持工具。<br>后台独立风险分类仅作日常交互保护兜底，不构成临床心理评估、危机干预认证或升学政策推荐保证。<br>公开仓库与站点仅包含合成案例、策略协议、工程架构规格及开源学术文献列表，绝不包含设备令牌、API 密钥或真实学生对话记录。<br>全套概念玩偶场景图由模型创作并仅在本站用作桌面质感与交互概念示意，具体工业外观及真实量产传感器尚在硬件课程设计探索中。</p>
       </div>
       <div class="footer-links">
         <span>小伴 Companion · Architecture &amp; Capabilities Showcase</span>
-        <a href="research-design/">完整研究与系统设计说明书</a>
-        <a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend" target="_blank" rel="noreferrer">GitHub 仓库主页</a>
+        <div class="footer-nav">
+          <a href="research-design/">完整研究与系统设计说明书</a>
+          <a href="assets/image-provenance.json" target="_blank" rel="noreferrer">视觉概念资产说明</a>
+          <a href="https://github.com/hhuang999/AIAA3800-companion-doll-backend" target="_blank" rel="noreferrer">GitHub 仓库主页</a>
+        </div>
       </div>
     </div>
   </footer>
+
+  <dialog id="diagram-lightbox" class="lightbox" aria-label="高清工程图谱大图预览">
+    <div class="lightbox-head">
+      <strong id="lightbox-title">-</strong>
+      <div class="diagram-actions">
+        <a id="lightbox-png" href="assets/diagrams/01-context-and-stressors.png" target="_blank" rel="noreferrer">在新标签查看 @2x PNG</a>
+        <a id="lightbox-svg" href="assets/diagrams/01-context-and-stressors.svg" target="_blank" rel="noreferrer">在新标签查看 SVG</a>
+        <button type="button" class="lightbox-close" id="lightbox-close">关闭预览 (Esc)</button>
+      </div>
+    </div>
+    <div class="lightbox-body">
+      <img id="lightbox-img" src="assets/diagrams/01-context-and-stressors.png" alt="高清工程图谱大图">
+    </div>
+  </dialog>
 
   <script src="assets/project.js" defer></script>
 </body>
