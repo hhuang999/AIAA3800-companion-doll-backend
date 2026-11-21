@@ -13,6 +13,46 @@
       "small": "companion-touch-small.webp",
       "reference": "companion-daylight.webp",
       "prompt": "Use case: identity-preserve. Create a second editorial photograph for the same emotional companion website. Use the reference photograph to preserve EXACTLY this original ivory rounded plush companion's identity: two small rounded ears, two tiny dark eyes, no mouth, same soft wool body silhouette. Change the framing and setting: an intimate vertical 4:5 photograph, close-up of this companion resting on an off-white linen sofa in afternoon daylight, gently touched on its upper left shoulder by one relaxed adult hand with a charcoal knitted sleeve entering from the left. Only one anatomically correct adult hand, no face or person visible. The plush fills about 65% of the frame with beautiful tactile fiber detail, lower third linen folds, background muted green-grey wall softly out of focus. Natural high-end design editorial photography, gentle human connection, soft light and believable shadow, neutral cream rather than yellow, restrained composition. Keep both eyes visible and no additional features. No screen, no branding, no text, no watermarks, no graphics. This is a conceptual illustration of companionship, not a real tested device photo."
+    },
+    {
+      "file": "companion-study-night.webp",
+      "small": "companion-study-night-small.webp",
+      "reference": "companion-daylight.webp",
+      "generated": "2026-11-21",
+      "tool": "Antigravity image-generator",
+      "aspect": "16:9",
+      "use": "Conceptual scene visual, not a photograph of mass-produced hardware.",
+      "prompt": "16:9 widescreen editorial studio photograph matching companion-daylight.webp plush identity (~22cm rounded pebble-like warm ivory brushed wool plush, two tiny rounded ears, two tiny dark espresso-brown round inset eyes, no mouth, no screen, no LED, no buttons, no branding). Late evening (~10:30 PM) study desk corner illuminated gently from upper-left by a minimalist warm-yellow eye-care desk lamp head across pale natural oak wood against a dim warm-grey-olive wall. On the left-center rest a closed unruled matte cream blank notebook (zero words or marks) and a minimalist matte dark gel pen; the companion sits calmly toward the right (~68-70% width), conveying unhurried low-burden companionship. Zero text, screens, watermarks, or logos."
+    },
+    {
+      "file": "companion-bedtime.webp",
+      "small": "companion-bedtime-small.webp",
+      "reference": "companion-daylight.webp",
+      "generated": "2026-11-21",
+      "tool": "Antigravity image-generator",
+      "aspect": "16:9",
+      "use": "Conceptual scene visual, not a photograph of mass-produced hardware.",
+      "prompt": "16:9 widescreen editorial photograph matching companion-daylight.webp plush identity. Quiet softly lit night bedroom bedside corner: washed light-beige linen pillow and duvet edge on the left beside a pale natural oak nightstand on the right, gently illuminated by dim warm evening ambient light without harsh glare or screens. The exact ivory brushed wool companion rests peacefully on the nightstand against a calm dim warm-grey wall. Strictly zero screens, alarm clocks, glowing LEDs, smartphones, text, or watermarks."
+    },
+    {
+      "file": "companion-wake-gesture.webp",
+      "small": "companion-wake-gesture-small.webp",
+      "reference": "companion-daylight.webp, companion-touch.webp",
+      "generated": "2026-11-21",
+      "tool": "Antigravity image-generator",
+      "aspect": "16:9",
+      "use": "Conceptual scene visual, not a photograph of mass-produced hardware.",
+      "prompt": "16:9 widescreen natural daylight close-up editorial photograph on a pale oak desk against a warm-grey plaster wall softly out of focus, preserving exact identity of companion-daylight.webp plush (both small rounded ears and both tiny dark espresso eyes cleanly visible). Entering from the left is one relaxed, anatomically accurate young-adult hand in a dark charcoal-grey ribbed knit sweater cuff (matching companion-touch.webp), gently patting/resting lightly on the companion's upper-left rounded crown-shoulder curve to illustrate tactile wake or pause-on-touch control. Zero extra fingers, zero text, zero buttons, zero screens or watermarks."
+    },
+    {
+      "file": "companion-desk-scale.webp",
+      "small": "companion-desk-scale-small.webp",
+      "reference": "companion-daylight.webp",
+      "generated": "2026-11-21",
+      "tool": "Antigravity image-generator",
+      "aspect": "16:9",
+      "use": "Conceptual scene visual, not a photograph of mass-produced hardware.",
+      "prompt": "16:9 widescreen daytime industrial design studio photograph on a pale oak desk with crisp slatted afternoon daylight from upper-right and broad clean pale warm-grey plaster wall negative space across the left ~40%. On the right half sits the exact ~22cm warm ivory brushed-wool plush companion on its weighted flat base right beside an unbranded closed cream-linen A5 hardcover notebook and a single matte black signature pen lying parallel on the oak wood to naturally convey palm-sized ~22cm scale and tactile wool micro-texture. Zero embossed text, zero logos, zero ruler markings, zero screens or watermarks."
     }
   ]
 }

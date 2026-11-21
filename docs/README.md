@@ -6,7 +6,16 @@
 - [`docs/research-design/index.html`](research-design/index.html)：完整研究与系统架构说明书在线阅读版（对应 Markdown 源文件 [`PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md`](../companion/docs/research-design/PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md)）。
 - [`docs/showcase.html`](showcase.html)：兼容历史书签平滑跳转至 `./`。
 - [`docs/assets/diagrams/`](assets/diagrams/)：`01-context-and-stressors` 至 `11-interaction-walkthroughs` 全套 11 张统一风格矢量 `SVG` 与 `@2x PNG` 工程图纸。
-- [`docs/assets/companion-daylight*.webp`](assets/) 与 [`companion-touch*.webp`](assets/)：暖光奶油羊毛桌面玩偶概念图像（来源说明见 [`image-provenance.json`](assets/image-provenance.json)）。
+- **桌面玩偶概念图像资产库（统一造型，含 `-small.webp` 轻量移动端版本，来源说明见 [`image-provenance.json`](assets/image-provenance.json)）**：
+
+| 资产名称 | 画幅比例 | 桌面端 / 移动端文件 | 应用位置与概念说明 |
+| --- | --- | --- | --- |
+| 阳光书桌主图 | `16:9` | [`companion-daylight.webp`](assets/companion-daylight.webp) / [`-small`](assets/companion-daylight-small.webp) | 首页 Hero 与仓库主页主图，确立暖白奶油羊毛玩偶参照形象 |
+| 织物轻触近景 | `4:5` | [`companion-touch.webp`](assets/companion-touch.webp) / [`-small`](assets/companion-touch-small.webp) | 首页“记忆与边界”板块，展现温润无压迫的日常陪伴触感 |
+| 硬件实体尺度 | `16:9` | [`companion-desk-scale.webp`](assets/companion-desk-scale.webp) / [`-small`](assets/companion-desk-scale-small.webp) | 约 22cm 掌心实体尺度对比（A5 硬壳本与中性笔旁）与短绒肌理 |
+| 晚自习归来陪伴 | `16:9` | [`companion-study-night.webp`](assets/companion-study-night.webp) / [`-small`](assets/companion-study-night-small.webp) | 夜里十点半暖光台灯下安静在场、不催促刷题的低负担氛围 |
+| 轻触唤醒与喊停 | `16:9` | [`companion-wake-gesture.webp`](assets/companion-wake-gesture.webp) / [`-small`](assets/companion-wake-gesture-small.webp) | 伸手轻拍肩侧示意触控唤醒或随时暂停，交互主权归学生 |
+| 睡前床头安静在场 | `16:9` | [`companion-bedtime.webp`](assets/companion-bedtime.webp) / [`-small`](assets/companion-bedtime-small.webp) | 微光亚麻寝具与原木床头柜旁无屏幕光在场，衔接睡前认知卸载 |
 
 ## 更新与核验步骤
 

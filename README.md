@@ -25,6 +25,11 @@
 2. **有界后台协作线（Bounded Cognition Lane）**：并行运行独立盲审简报与情境分析，经策略目录确定性筛选后由规划与跨家族审校协同制定候选方案，日常纯共情倾诉直走快路径免去冗余评审；
 3. **静默安全与来源蕴含记忆线（Safety, Grounded Memory & CAS）**：独立风险安全层在后台静默兜底而不抢夺日常主线；会话记忆与逐字摘要在两步有界预算内执行前提蕴含核对，再借助八组校园升学领域概念簇与四重版本号 CAS 事务控制写入 SQLite。
 
+<p align="center">
+  <a href="docs/assets/companion-desk-scale.webp"><img src="docs/assets/companion-desk-scale-small.webp" alt="硬件实体尺度与短密羊毛材质概念示意（约 22cm 掌心可抱）" width="680"></a><br>
+  <sub>概念形态与实体尺度示意：约 22cm 暖白奶油短密羊毛桌面伙伴，无屏幕、无按钮与指示灯（点击查看大图）</sub>
+</p>
+
 ---
 
 ## 1. 场景洞察：中国初高中升学日常压力与支持需求
@@ -130,6 +135,28 @@
 2. **晚归疲惫与随时喊停**：十点半放学拒绝对策走 `low_energy_companionship` + `fast_path_non_action` 去内疚，追说“让我静静”时 `generation` 递增立刻清空续问进入 `quiet_presence`。
 3. **跨会话更名与作用域隔离**：更名“小琳（王字旁）”与禁问成绩边界分别经过蕴含校验持久化；重连跳过多余引导且用 `identity_name` 精准复述称呼，同时丝滑支持睡前 `worry_parking`。
 
+### 典型日常与交互概念场景（点击查看高清图）
+
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <a href="docs/assets/companion-study-night.webp"><img src="docs/assets/companion-study-night-small.webp" alt="晚自习归来书桌陪伴" width="100%"></a><br>
+      <strong>晚自习归来书桌陪伴</strong><br>
+      <sub>暖黄台灯下低负担在场，不催促刷题</sub>
+    </td>
+    <td width="33%" align="center">
+      <a href="docs/assets/companion-wake-gesture.webp"><img src="docs/assets/companion-wake-gesture-small.webp" alt="轻触唤醒与随时喊停" width="100%"></a><br>
+      <strong>轻触唤醒与随时喊停</strong><br>
+      <sub>伸手轻拍触发或暂停，交互控制权归学生</sub>
+    </td>
+    <td width="33%" align="center">
+      <a href="docs/assets/companion-bedtime.webp"><img src="docs/assets/companion-bedtime-small.webp" alt="睡前床头微光安静在场" width="100%"></a><br>
+      <strong>睡前床头微光在场</strong><br>
+      <sub>无屏幕光打扰，仅作睡前卸载与晚安收尾</sub>
+    </td>
+  </tr>
+</table>
+
 ---
 
 ## 8. 附录：目录索引、本地运行与参考文献
@@ -190,4 +217,4 @@
 
 ## Scope & Ethics
 
-本系统为 HKUST(GZ) AIAA 3800 课程研发的初高中日常情感陪伴与减压原型，定位为非医疗、非诊断性的同龄感支持工具。后台独立风险分类仅作日常交互保护兜底，不构成临床心理评估、危机干预认证或升学政策推荐保证。公开仓库与站点仅包含合成案例、策略协议、工程架构规格及开源学术文献列表，绝不包含设备令牌、API 密钥或真实学生对话记录。两张概念玩偶图由模型创作并仅用作桌面质感概念示意，具体工业外观及真实量产传感器尚在硬件课程设计探索中。
+本系统为 HKUST(GZ) AIAA 3800 课程研发的初高中日常情感陪伴与减压原型，定位为非医疗、非诊断性的同龄感支持工具。后台独立风险分类仅作日常交互保护兜底，不构成临床心理评估、危机干预认证或升学政策推荐保证。公开仓库与站点仅包含合成案例、策略协议、工程架构规格及开源学术文献列表，绝不包含设备令牌、API 密钥或真实学生对话记录。全套概念玩偶场景图由模型创作并仅用作桌面质感与交互概念示意，具体工业外观及真实量产传感器尚在硬件课程设计探索中。

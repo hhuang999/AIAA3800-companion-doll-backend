@@ -578,6 +578,82 @@ h1 {
   color: var(--muted);
 }
 
+/* Lifestyle & Interaction Concept Scenes */
+.scene-duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.scene-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.scene-card picture {
+  display: block;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.scene-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.scene-card:hover img {
+  transform: scale(1.02);
+}
+
+.scene-caption {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.scene-caption-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.scene-caption strong {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.scene-caption a {
+  font: 600 12px/1.2 var(--mono);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.scene-caption a:hover {
+  text-decoration: underline;
+}
+
+.scene-caption p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.scene-provenance-note {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
 /* Strategy Catalog Explorer */
 .catalog-grid {
   display: grid;
@@ -852,6 +928,7 @@ th {
   .hero-grid,
   .sim-grid,
   .touch-grid,
+  .scene-duo,
   .catalog-grid,
   .lane-stage,
   .quickstart-grid {
