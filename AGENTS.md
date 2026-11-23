@@ -2,9 +2,9 @@
 
 ## 当前项目
 
-这是 Python 3.10 后端，服务于情感陪伴玩偶课程原型。当前主路径为 v2 Cognition，内容包为 `course-1.0`：六类支持策略、三段短练习和固定危机文本。公开网站为 `docs/` 下的静态研究说明和交互展示，不提供在线聊天 API。
+这是 Python 3.10 后端，服务于情感陪伴玩偶课程原型。当前主路径为 v2 Cognition，内容包包含 9 张支持策略卡、3 段短练习、固定危机支持文本与 19 篇学术文献依据（`companion/companion/config/content_manifest.yaml`）。公开网站为 `docs/` 下的旗舰交互展示与在线研究/系统设计说明书，不提供在线聊天 API。
 
-接手先读 [工程入口](ENGINEERING.md)、[本轮 review 与验证](companion/docs/ENGINEERING_REVIEW.md)，按任务查阅 [架构规格](companion/docs/ARCHITECTURE_V2.md)、[运行手册](companion/docs/V2_OPERATIONS.md) 和 [小智交接](companion/docs/XIAOZHI_HANDOFF.md)。根 README 与网站保留研究报告入口；它们引用的历史性能测量有独立日期和范围。
+接手先读 [工程入口](ENGINEERING.md)、[本轮 review 与验证](companion/docs/ENGINEERING_REVIEW.md)、[双语系统规格与实测素材包](companion/docs/reference-pack/README.md)，按任务查阅 [架构规格](companion/docs/ARCHITECTURE_V2.md)、[运行手册](companion/docs/V2_OPERATIONS.md) 和 [小智交接](companion/docs/XIAOZHI_HANDOFF.md)。根 README 与公开网站聚焦产品背景、交互功能与多 Agent 架构；完整技术参数与实测基准归口于 `companion/docs/reference-pack/` 与 `companion/docs/evidence/`。
 
 `companion/docs/autonomous-upgrade/` 中的 TASK、START、CONTEXT 是已经完成的升级任务资料，不是待执行清单。当前状态见该目录的 IMPLEMENTATION_STATUS。`companion/docs/history/` 为旧设计参考。
 

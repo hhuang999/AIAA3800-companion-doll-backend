@@ -1,66 +1,33 @@
-# Companion：日光场景与技术表达
+# 小伴 Companion 展示站设计系统：Warm Daylight × Teenage Engineering
 
-本约定现适用于辅助交互展示页 `showcase.html`。默认首页为完整研究说明，其正文与排版维护在 `companion/docs/research-design/`。
+本规范适用于公开 GitHub Pages 旗舰互动主页 [`index.html`](index.html)、深度研究与架构说明书 [`research-design/index.html`](research-design/index.html) 以及 11 张矢量工程图纸 [`assets/diagrams/`](assets/diagrams/)。产品底层规则与真实后端实现见根 [`PRODUCT.md`](../PRODUCT.md) 与 [`companion/docs/reference-pack/`](../companion/docs/reference-pack/README.md)。
 
-2026-11-04，第二次视觉改版。用户否定前版的赭色大标题和文字主导布局，明确选择 **Daylight 的场景感 + Teenage Engineering 的技术表达**。本文件替代前版视觉约定，产品事实仍以根目录 PRODUCT.md 为准。
+## 视觉定调与审美原则
 
-## 设计方向
+站点融合 **Warm Daylight Tactility（暖光羊毛触感）** 与 **Teenage Engineering 硬件工程排版**：先让温润无压迫的实体陪伴形象与学习生活场景建立氛围，再以克制的细线标尺、状态胶囊、交互沙盒与高清矢量图谱清晰拆解多 Agent 工程系统。
 
-页面服务课程老师、同学与接入开发者。先建立对陪伴对象的感受，再让访客操作情境、理解后台职责，最后进入策略依据与工程记录。Experience 为主，深入材料采用 Read 的清楚结构。
+- **反模板化节奏**：通过全幅日光摄影、`Editorial Pull-Quote` 叙事引语、高对比暗色信号监视台（`CompanionCore` 控制总线）、交替的鼠尾草绿记忆剖面以及网格画廊建立清晰节律，避免同质化白框堆砌。
+- **门面层内容契约**：首页与说明书 100% 聚焦产品痛点、9 张支持策略卡 + 3 段短练习的交互设计，以及三线解耦架构；完整实验参数与系统压测归口于后端 [`reference-pack/`](../companion/docs/reference-pack/README.md)，不在展示站呈现单元测试通过数或延迟统计表。
 
-实际查阅的参考：
+## 色彩与字体令牌（Design Tokens）
 
-- [Daylight](https://daylightcomputer.com/)：环境与产品共同承担首屏，光影和材质传达安静的生活感。
-- [Teenage Engineering OP–1](https://teenage.engineering/products/op-1)：克制的工业排版、产品细节和清楚的技术结构。
-- [rabbit r1](https://www.rabbit.tech/rabbit-r1) 与 [Lusion](https://lusion.co/) 作为比较；用户选择前两者，未采用强对比霓虹或大面积三维装饰。
-
-参考用于构图与表达，不复制品牌资产、文字或产品外观。原创陪伴形象是无屏幕、无嘴部的圆润羊毛概念物；并不表示实际硬件已经确定外观或有触摸感应器。
-
-Impeccable 的参考说明已读取。原技能目录在本轮中途不可用，复用忽略目录内的引擎完成 concept-seed 与一次检测。seed:05b50046a102df07 仅作探索记录，用户明确指定的方向优先。未运行额外选择问卷或效果图批准流程；直接按已授权方向制作可运行页面。本侧会话禁止子代理，因此设计复核在当前线程内完成，不宣称独立代理审核。
-
-## 首屏与阅读节奏
-
-首屏是一张完整的日光桌面照片式概念图。左侧留白放置中文主标题和入口，右侧是陪伴对象；底部“好，先听你说”连接后面的交互。手机将文案与照片分成上下区域，使中文标题和玩偶同时保有足够尺寸。
-
-后续顺序：项目意图 → 合成对话 → 四通路系统 → 陪伴与记忆场景 → 六类策略 → 实测 → 启动 → 研究来源。两张有材质的图与细线技术区域交替，避免整页都由文本卡片构成。研究路径、长协议和机制总图可展开；五张已有交互架构图保持可达。
-
-## 视觉令牌
-
-| 用途 | 值 |
-| --- | --- |
-| 主底色 | `#f5f5f1` |
-| 正文与主要按钮 | `#242824` |
-| 次要文字 | `#61665f` |
-| 细分隔线 | `#d5d8d0` |
-| 可交互强调 | `#bf471b` |
-| 信号与旋钮 | `#e7612f` |
-| 技术图背景 | `#e9ece4` |
-| 记忆场景底色 | `#e3e7dc` |
-| 后台决策与命令区域 | `#262c28` / `#252c27` |
-
-主字体为自托管 Manrope + Noto Sans SC 可变字体。中文标题500–650字重，正文400；数字使用tabular-nums，命令使用Consolas。标题不再采用宋体。正文16px，解释13–15px，辅助信息12px；SVG注明文字按viewBox缩放，手机默认改用HTML模块序列。
-
-桌面主边距 `clamp(24px,5.5vw,88px)`，内容最大1280px，视觉场景允许更宽。h1最大68px，h2最大52px；手机h1约31–43px。场景圆角8–12px，按钮4px，技术图节点6px。用细线、留白和字体层次分组；旋钮只用于实际通路选择。
-
-## 交互
-
-- 三个预设情境保留同意、拒绝、反馈、重置、播放和暂停。合成标签在演示内可见；不调用在线模型。
-- 实时、协作、安全、记忆四个按钮控制同一张信号图，并同步说明、源码图入口和手机模块序列。完整评议的候选经过CAS回到Core，不直接跳过Core执行。
-- 指针选择通路后，仅运行一次1300ms信号动画。新选择取消旧动画；页面隐藏或启用减少动效时取消。动画不伪装真实后端运行。
-- 手机先呈现所选通路的模块；完整图可明确展开，图容器独立横向滚动，页面本身不横向溢出。
-- 原生details、select、按钮与aria-pressed保留键盘语义；提供跳转正文、可见焦点、加载状态与恢复入口。
-- reduced-motion取消视觉过渡与信号动画，对话演示直接呈现判断结果。首屏没有自动循环视频或强制滚动。
-
-## 资产与维护
-
-Codex内置image_gen生成两张原创概念图，WebP导出仅缩放与压缩；精确提示词保存在 [image-provenance.json](assets/image-provenance.json)。每张图均在页面及alt文本中注明AI概念属性。没有复制参考网站图片，没有使用外部运行时图片服务。
-
-| 资产 | 原始尺寸 | 用途 |
+| 用途 | 令牌值 | 说明 |
 | --- | --- | --- |
-| `companion-daylight.webp` | 1672×941 | 日光桌面主视觉 |
-| `companion-touch.webp` | 1122×1402 | 记忆章节触感近景 |
-| 两个 `-small.webp` | 最长边960 | 移动端与README |
+| 主画布背景 | `#F5F5F1` / `#F7F3EC` | 暖白纸面与温润亚麻底色 |
+| 卡片与对照区背景 | `#FFFFFF` / `#EFEAE0` | 高可读表面与柔和层次区分 |
+| 核心文字 / 暗色控制台 | `#242824` / `#252C27` | 墨碳正文与 CompanionCore 深色控制面板 |
+| 次要文字 / 细线边界 | `#5A6058` / `#D5D8D0` | 低饱和辅助说明与 1px 精密标尺 |
+| 信号赤陶（交互强调） | `#BF471B` / `#E7612F` | 选中态、活跃通路脉冲与策略许可标识 |
+| 鼠尾草绿 / 橄榄墨绿 | `#E3E7DC` / `#3B5246` | 记忆与边界保护模块 |
 
-两张桌面WebP共约295KB，小尺寸版本共约102KB。Noto Sans SC与Manrope分别保留OFL许可，字体在本地提供；更新文字时按字体目录README重新生成子集。
+- **自托管字体**：`Manrope` + `Noto Sans SC`（见 [`assets/fonts/README.md`](assets/fonts/README.md)，OFL 许可），数字统一启用 `tabular-nums`，代码与阶段标识使用 `Consolas` / `JetBrains Mono`。
+- **可访问性与动效**：支持 `prefers-reduced-motion` 自动降级；完整键盘可达（方向键切换图谱、Lightbox `Escape` 关闭与焦点恢复、原生语义控件）。
 
-代码入口为 `index.html`、`assets/project.css`、`assets/project.js`。内容目录与五张生成架构图未改；历史数据不重新标记为本次验证。功能与浏览器证据见 [PAGES_VALIDATION.md](PAGES_VALIDATION.md)。
+## 核心交互与资产清单
+
+- **4 组升学日常情境交互沙盒**：基于合成演示流呈现“刚出成绩挫败倾听”“父母对比与单步许可”“晚自习疲惫与随时喊停”“睡前入睡困难与话题边界隔离”，严格标注合成示意属性，不调用外部 API。
+- **三线解耦信号监视台**：交互切换实时表达线、有界后台认知线、静默安全与蕴含记忆线，呈现四重版本号 CAS 提交逻辑。
+- **9 卡 + 3 练策略协议检查器**：动态读取 [`assets/project-data.json`](assets/project-data.json)，按压力场景筛选并展开机制说明、准入/排除规则与“作者 + 年份”标准文献引用。
+- **视觉资产清单**：
+  - 6 组无文字概念场景摄影图（[`assets/image-provenance.json`](assets/image-provenance.json)，均含 `-small.webp` 轻量移动端）：`companion-daylight`（16:9 主图）、`companion-touch`（4:5 触感）、`companion-desk-scale`（16:9 22cm 尺度）、`companion-study-night`（16:9 晚自习归来）、`companion-wake-gesture`（16:9 轻触唤醒/暂停）、`companion-bedtime`（16:9 睡前床头）。概念图底部不叠加侵入式文字说明条，仅用于生活质感与尺度示意。
+  - 11 张矢量工程图谱（`assets/diagrams/01-context-and-stressors` 至 `11-interaction-walkthroughs`，SVG + `@2x PNG`）。

@@ -1,51 +1,40 @@
-# 情感陪伴玩偶后端：安装与运行
+# 情感陪伴玩偶后端：安装、运行与工程维护
 
-本文保留原根 README 的工程使用说明。完整研究与系统设计现可直接在 [仓库首页](README.md) 或 [排版版网页](https://hhuang999.github.io/AIAA3800-companion-doll-backend/) 阅读。
+本文档提供 **小伴 Companion**（面向中国初高中升学日常压力陪伴的多 Agent 语音与对话系统）的本地安装、CLI/观测台运行、小智端侧联调、验证入口与源码架构导航。
 
-接手当前后端先读 [AGENTS.md](AGENTS.md) 和 [2026-11-09 工程 review](companion/docs/ENGINEERING_REVIEW.md)。升级任务已完成，当前进入维护阶段；详细的 [当前状态](companion/docs/autonomous-upgrade/IMPLEMENTATION_STATUS.md) 与既有研究、性能测量分开维护。
+- **项目主页（Markdown）**：[README.md](README.md)
+- **在线互动展示站**：<https://hhuang999.github.io/AIAA3800-companion-doll-backend/>
+- **在线研究与架构说明书**：<https://hhuang999.github.io/AIAA3800-companion-doll-backend/research-design/>
+- **中英双语权威系统规格、BibTeX 与基准图表素材包**：[`companion/docs/reference-pack/README.md`](companion/docs/reference-pack/README.md)
+- **本机运行与接手规范**：[`AGENTS.md`](AGENTS.md) · [工程 Review](companion/docs/ENGINEERING_REVIEW.md) · [运行与迁移手册](companion/docs/V2_OPERATIONS.md)
 
-依据 [v2 主规格](companion/docs/ARCHITECTURE_V2.md) 升级的 Python 3.10 模块化后端。默认 development 已接入实时 Talker、后台 Analysis / Planner / 独立 Critic、版本化策略、四类关系记忆、独立风险接管与小智语音流水。
+## 系统概况与当前内容配置
 
-当前内容版本为 `course-1.0`：六类支持策略、三段可中止短练习、固定危机支持文本，已接入默认 development 路径。研究情境是中国大陆高中生日常压力；课程演示仅用合成案例或成年成员扮演。来源核查、自动内容审查、真实回放和音频资源分别验收，课程回执已绑定当前版本，准备本机固定音频后可使用 `--mode demo`。当前升级进度见 [实施状态](companion/docs/autonomous-upgrade/IMPLEMENTATION_STATUS.md)，实测与未达项见 [验证报告](companion/docs/VALIDATION.md)。
+本系统为基于 Python 3.10 模块化单体的情感陪伴原型（`companion/companion/`），面向初高中升学日常学业与评价压力场景，课程验证仅使用合成案例或成年成员扮演，不作临床声明。当前默认启用配置（`companion/companion/config/`）：
 
-## 研究、策略与架构
+- **9 张分层支持策略卡**：`concrete_step`、`exam_steadying`、`kind_self_talk`、`comparison_reframe`、`expectation_boundary`、`safe_communication`、`safe_support`、`values_exploration`、`worry_parking`（配合 L1 四态陪伴底座）。
+- **3 段 `< 90s` 可随时中断短练习**：`bedtime`（39.0s）、`breathing_60s`（43.5s）、`grounding`（41.7s），共绑定 24 段预合成固定音频资源。
+- **19 篇学术与公共卫生文献依据**：完整收录于 `companion/companion/config/content_manifest.yaml` 与 [`references.bib`](companion/docs/reference-pack/references.bib)。
+- **研究说明书与视觉图谱**：[`PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md`](companion/docs/research-design/PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md) 配 11 张工程矢量图纸（[`docs/assets/diagrams/`](docs/assets/diagrams/)）与 6 组 AI 概念场景摄影图（[`docs/assets/image-provenance.json`](docs/assets/image-provenance.json)）。
 
-[在线阅读：项目研究与系统设计说明](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)
-
-新版说明从研究依据展开到六类策略、Multi-agent 协作、长期记忆及验证局限，配有 13 张说明图，支持章节目录、手机阅读与浏览器打印。另附 [Markdown 正文](companion/docs/research-design/PROJECT_RESEARCH_AND_SYSTEM_DESIGN.md) 和 [本地阅读版、图源与核对记录](companion/docs/research-design/README.md)。
-
-[![课程后端模块总图](docs/architecture-course/preview.png)](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)
-
-[打开项目展示与交互架构](https://hhuang999.github.io/AIAA3800-companion-doll-backend/showcase.html) · [逐项验收状态](companion/docs/V2_IMPLEMENTATION_STATUS.md) · [运行与迁移手册](companion/docs/V2_OPERATIONS.md)
-
-辅助展示页以日光场景与原创陪伴形象呈现项目；可切换“只想说说 / 想试办法 / 反馈没帮助”三种合成情境，亲自选择同意或拒绝，并点选实时、协作、安全、记忆四条系统通路。还可筛选六类策略、展开研究依据，并切换P50/P90实测时间轴。演示在浏览器本地运行，不调用在线模型；玩偶图片为AI概念视觉，非已验证设备实拍。[网站设计与验证](docs/PAGES_VALIDATION.md)记录界面检查。
-
-[![陪伴场景概念，AI生成](docs/assets/companion-daylight-small.webp)](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)
-
-图集包含五个可交互视图：研究与策略执行闭环、实时与安全通路、有限协作与版本发布、长期关系记忆、小智语音流水。点击节点可追溯到固定实现提交的 GitHub 源码；HTML 下载后也可以独立打开。
-
-[v1 历史图集](https://hhuang999.github.io/AIAA3800-companion-doll-backend/index-v1.html) 保留供比较，固定于历史提交 `d24f38f`。默认代码基于 v2，项目站增加研究证据、策略筛选和反馈记忆的解释。
-
-六类支持的来源、适用与排除条件见 [策略设计](companion/docs/autonomous-upgrade/STRATEGY_DESIGN.md)；完整核查见 [16项研究证据](companion/docs/autonomous-upgrade/research/EVIDENCE_REVIEW.md)。短语音步骤是原创改编，不继承完整人工干预的效果。
+[![三线解耦系统总图](docs/assets/diagrams/06-system-architecture.png)](https://hhuang999.github.io/AIAA3800-companion-doll-backend/)
 
 ## 立即运行
 
-首次使用请先按下方“安装到新环境”建立 `.venv`，并配置 `.env`。然后在本目录打开 PowerShell：
+首次使用请先按下方“安装到新环境”建立 `.venv`，并配置 `.env`（`AIHUBMIXKEY`）。随后在仓库根目录打开 PowerShell：
 
 ```powershell
-# 离线文字对话，不调用 API
-./scripts/run.ps1 fake
+# 离线文字对话（使用 FakeLLM，不调用外部 API）
+./scripts/run.ps1 fake --db data/development.db
 
-# 使用项目 .env 中的 AIHUBMIXKEY
-./scripts/run.ps1 live
+# 在线文字对话（读取 .env 中的 AIHUBMIXKEY）
+./scripts/run.ps1 live --db data/development.db
 
-# 在另一个终端打开观察台，地址 http://127.0.0.1:8501
-./scripts/run.ps1 dashboard
+# 在另一终端启动本地 WAL 只读双栏运行观测台（http://127.0.0.1:8501）
+./scripts/run.ps1 dashboard --db data/development.db
 ```
 
-命令行支持 `/policy` 查看当前与当轮策略、`/memory` 查询范围记忆、`/jobs` 查看任务及评审、`/state` 查看状态、`/wait` 等待后台分析、`/cry 今天很难过` 模拟哭声、`/emotion SAD 今天很累` 传递情绪、`/end` 模拟无语音结束、`/quit` 退出。输入“怎么办”会先请求许可；明确同意且有合格卡片后才进入行动。异步分析尚未完成时保留同意并等待卡片。
-
-文字入口中的练习默认按虚拟时间输出，使用 `--realtime` 观察停顿；音频播放由小智适配器负责。
+命令行支持 `/policy`（查看当前与当轮策略）、`/memory`（查询范围与来源记忆）、`/jobs`（查看后台认知任务及 Critic 评审）、`/state`（查看状态机阶段）、`/wait`（等待后台分析完成）、`/cry 今天很难过`（模拟哭声信号）、`/emotion SAD 今天很累`（传入情绪标识）、`/end`（触发结束整理）与 `/quit`（退出）。输入“怎么办”会先在 `permission` 阶段发出单步邀请，仅在明确同意且存在合格策略卡时进入 `action`；练习可通过 `--realtime` 在终端观察停顿节奏，真实音频播报由小智适配器承担：
 
 ```powershell
 ./scripts/run.ps1 fake --realtime
@@ -54,15 +43,15 @@
 
 ## 安装到新环境
 
-需要 Python 3.10 和 uv。Windows 已有 uv 时：
+需预装 Python 3.10 与 `uv`。Windows 环境下可执行：
 
 ```powershell
 ./scripts/setup.ps1
-# 也可明确指定已有 Python 3.10
+# 也可显式指定已有 Python 3.10 解释器路径
 ./scripts/setup.ps1 -Python C:/path/to/python.exe
 ```
 
-跨平台的等价安装方式：
+跨平台等价安装方式：
 
 ```sh
 uv venv --python 3.10 .venv
@@ -70,82 +59,69 @@ uv pip install --python .venv/bin/python -r companion/requirements.lock
 uv pip install --python .venv/bin/python --no-deps -e companion
 ```
 
-Windows 上解释器路径为 `.venv/Scripts/python.exe`。锁文件对应此次 Python 3.10 Windows 验证环境；其他平台请先验证本机依赖。`.env.example` 只有空变量名；将自己的 key 写入 `.env`。进程环境优先于 `.env`。源码、配置和日志不会写入 key。
+Windows 下解释器路径为 `.venv/Scripts/python.exe`；锁文件基于 Windows + Python 3.10 环境生成。参考 `.env.example` 创建本地 `.env`（进程环境变量优先于 `.env`）；源码、配置与数据库均不会持久化明文 key。
 
-## 验证
+## 验证与实测基准
 
-最新离线检查见 [工程 review](companion/docs/ENGINEERING_REVIEW.md)，统一入口覆盖 Ruff、格式和完整离线 pytest。
+统一离线门禁与最新实测汇总见 [双语系统规格与实测手册](companion/docs/reference-pack/SYSTEM_SPEC_AND_BENCHMARKS_ZH.md) 与 [`companion/docs/evidence/course-2.0-bench.json`](companion/docs/evidence/course-2.0-bench.json)（2026-11-21）：
 
-以下为 2026-11-04 的既有在线测量：预固定17段真实多轮及定点修复均留有证据；最终30次动态语音全部成功，文本首句P50 1.26秒、客户端首包P50 3.61秒。900ms文本首句和常规后台8秒未稳定达到，真机首响交由硬件同学测量。完整分母、失败和语言限制见[验证报告](companion/docs/VALIDATION.md)，现场步骤见[课程展示脚本](companion/docs/autonomous-upgrade/DEMO.md)。
+- **2026-11-21 基准实测**（`course-2.0-bench.json`）：22 段多轮合成回放全通过（0 超时，后台认知 P50 `5889.1 ms` / P90 `7389.3 ms`）；30 次在线流式文本首token P50 `1016.0 ms` / 首句 P50 `1109.5 ms`；30 次小智 WebSocket 环回 Opus 语音客户端首包 P50 `2656.0 ms`（P90 `3140.0 ms`，0 失败）。
+- **2026-11-09 安全与蕴含记忆核验**：[`online-regression-20261109.json`](companion/docs/evidence/online-regression-20261109.json)（120 条人工编制风险语料高风险/关注召回 `1.0`、高风险误报 `0.0`）与 [`grounded-memory-20261109.json`](companion/docs/evidence/grounded-memory-20261109.json)（8 组抽取 + 6/6 反事实蕴含核对）。
+- **2026-11-04 早期基线归档**：保留于 [VALIDATION.md](companion/docs/VALIDATION.md) 与 [V2_IMPLEMENTATION_STATUS.md](companion/docs/V2_IMPLEMENTATION_STATUS.md) 作为历史对比对照，不与当前 2026-11-21 数据混用。
 
 ```powershell
-# Ruff、格式检查和全部离线 pytest；不访问网络
+# Ruff 静态检查、格式检查与全部离线 pytest（不访问外部网络）
 ./scripts/run.ps1 test
 
-# 真实模型与语音检查、120 条风险回归，会消耗 API 额度
+# 显式运行在线回归与 120 条风险分类验收（消耗 API 额度）
 .venv/Scripts/python.exe -m pytest companion/tests -m online --basetemp artifacts/pytest-online-manual
 
-# 文字延迟探针；语音30次全尝试另见小智交接包
+# 30 次文本延迟探针
 .venv/Scripts/python.exe -m companion.tools.bench --env-file .env --count 30 --output artifacts/latency.json
 
-# 生成并测量固定音频；部署绑定命令见内容说明
+# 生成并校验 3 段短练习固定音频
 ./scripts/run.ps1 audio
 ```
 
-默认 `pytest` 排除 online 与 hardware。在线测试使用合成文本，不读取实际用户对话。14 个基础剧本在 `companion/tests/scenarios/`；其中 `fixture` 步骤只允许 FakeLLM，五类压力剧本验证流程而不验证研究适用性。时序、取消、过期与恢复由单独的单元测试控制。
+## 配置、持久化与数据清理
 
-## 配置与数据
-
-默认配置位于 `companion/companion/config/`。可复制整个目录后通过 `--config-dir` 指定自己的版本。
+默认配置位于 `companion/companion/config/`，可通过 `--config-dir` 指定部署副本：
 
 | 文件 | 用途 |
 | --- | --- |
-| `settings.yaml` | 模型、预算、线程池、数据库、时区、TTS |
-| `persona.yaml` / `stages.yaml` | 身份介绍、开场、收尾、各阶段及提议模板 |
-| `rules.yaml` / `risk_lexicon.yaml` | 确定性规则、输出护栏、第一层风险检测 |
-| `cards/*.yaml` / `content_manifest.yaml` | 可执行策略、来源核查、版本摘要与准入回执 |
-| `crisis.yaml` | 固定危机话术和审核信息 |
-| `exercises/*.yaml` | 练习文本、句后停顿及可选已测量音频 |
-| `prompts/*.j2` | Talker、风险及 Analysis / Brief / Planner / Critic / Delta / Memory / End 提示词 |
+| `settings.yaml` | 模型分配、预算上限、超时、线程池、数据库与 TTS |
+| `persona.yaml` / `stages.yaml` | 身份设定、开场/重连、收尾与邀请模板 |
+| `rules.yaml` / `risk_lexicon.yaml` | 口语否定前瞻同意/拒绝规则、输出护栏与 L1 词表 |
+| `cards/*.yaml` / `content_manifest.yaml` | 9 张策略卡协议、19 篇来源核查与准入摘要 |
+| `crisis.yaml` | 固定危机接管话术与审核信息 |
+| `exercises/*.yaml` | 3 段短练习文本、句后停顿与固定音频索引 |
+| `prompts/*.j2` | Talker、Risk 与后台 7 角色 Jinja2 提示词模板 |
 
-默认数据库为工作目录下的 `data/companion.db`。CLI 可用 `--db` 指定路径；小智适配器按 `project_root` 解析。固定音频位于 `data/fixed_audio/`；动态语音只在内存和短暂 WAV 文件中处理，转换后删除。数据库、运行音频、`.env`、测试产物和本地解释器均已忽略提交。
-
-v1 数据库会通过一致备份和事务迁移到 v2，重复启动不重复导入；详见 [迁移与回退步骤](companion/docs/V2_OPERATIONS.md)。启动时会恢复未完成会话，将其转为结束分析任务；旧会话不恢复为活动对话。`failed` 的结束分析保留错误记录，检查原因并停服后可显式重试：`python -m companion.tools.retry_end <session_id> --env-file .env --db data/companion.db`。一个数据库由一个后端进程持有；看板通过独立连接读取。
-
-清除一个用户的数据前停止该用户的对话：
+默认数据库为 `data/companion.db`；SQLite Schema 当前为 `user_version=2`，支持一致备份下的 `v1 -> v2` 事务迁移（详见 [V2_OPERATIONS.md](companion/docs/V2_OPERATIONS.md)）。同一数据库由单一 `WriterLease` 进程持有；中断未完成会话在重启后转为结束整理任务，已标记 `failed` 的结束任务可在停服后重试：
 
 ```powershell
+.venv/Scripts/python.exe -m companion.tools.retry_end <session_id> --env-file .env --db data/companion.db
 .venv/Scripts/python.exe -m companion.tools.purge cli-local --db data/companion.db
 ```
 
-运行中的服务使用 `CompanionCore.purge_user(user_key)`，它会先取消并等待后台任务。数据库包含原话、记忆和风险记录，备份与清理应覆盖 SQLite 主文件及关联 WAL 文件；正常停服后再备份。
+运行中服务调用 `CompanionCore.purge_user(user_key)` 会先取消并等待后台任务落盘后再清理；备份或删库须覆盖 `.db` 主文件及 `-wal` / `-shm` 附属文件。
 
-## 接入小智
+## 接入小智（ESP32 语音网关）
 
-接入包在 [xiaozhi_patch](xiaozhi_patch/README.md)，锁定上游提交 `92337881a7b6553614b47e137a774d02bf40512f`。六处补丁已批准并应用，独立环境、SenseVoice 权重、Opus 编解码和实际 WebSocket 对话链路已完成联调。
+接入补丁维护于 [`xiaozhi_patch/README.md`](xiaozhi_patch/README.md)，锁定上游提交 `92337881a7b6553614b47e137a774d02bf40512f`。6 处鉴权与流式协议补丁通过 `xiaozhi_patch/apply.py` 检查与应用，详细协议见 [小智交接包](companion/docs/XIAOZHI_HANDOFF.md)：
 
 ```powershell
-# 当前工作区直接启动
-./scripts/run_xiaozhi.ps1
-# 观察小智服务的独立数据库
+./scripts/setup_xiaozhi.ps1   # 首次安装小智独立 venv 与运行环境
+./scripts/run_xiaozhi.ps1     # 启动小智 WebSocket 服务（ws://127.0.0.1:8000/xiaozhi/v1/）
 ./scripts/run.ps1 dashboard --db data/xiaozhi.db
-# 新机器首次安装（需先安装根目录环境、uv 与 FFmpeg）
-./scripts/setup_xiaozhi.ps1
 ```
 
-默认 WebSocket 地址为 `ws://127.0.0.1:8000/xiaozhi/v1/`。连接需要独立设备 Bearer 凭据；服务端映射 user_key，不能只凭 device-id 读取记忆。完整安装、协议、错误处理和硬件分工见 [小智交接包](companion/docs/XIAOZHI_HANDOFF.md)。
+## 源码导航
 
-小智适配器通过统一 OutputPort 发送普通语音、固定危机音频与练习计划，具有独立取消入口。服务端的队列排空估计与设备实际播放完成分开记录，设备首响及停止时刻仍须真机采集。
+- `companion/companion/core/`：`CompanionCore`（`api.py`）、单步许可状态机（`state_machine.py`）、`Talker` 分句与 `OutputRail`（`talker.py`）、静默安全分类（`risk.py`）、策略校验（`validator.py`）。
+- `companion/companion/cognition/`：公平调度、自适应快路径（`fast_path_non_action`）、跨家族独立 `Critic`、`DeltaChecker`、四重版本号 CAS 与局部边界判定（`policy.py`）。
+- `companion/companion/content/`：策略资格过滤、内容准入回执与固定音频清单绑定。
+- `companion/companion/memory/` 与 `store/`：四类记忆、`ConsolidationGrounder` 来源蕴含核对、8 组中文概念簇索引（`concepts.py`）、SQLite 单写者租约与事务迁移。
+- `companion/companion/adapters/` 与 `dashboard/`：CLI、离线剧本、小智 WebSocket + 内存 60ms Opus + 64 项 LRU 输出适配器、Streamlit 只读观测台。
 
-## 代码入口
-
-- `companion/companion/core/api.py`：输入、风险回调、输出、播放回执和会话结束。
-- `companion/companion/core/state_machine.py`：阶段、同意对象与行动次数。
-- `companion/companion/cognition/`：公平调度、共享预算、独立评议、DeltaGuard 与最终 CAS；`core/validator.py` 保留行动校验。
-- `companion/companion/content/`：结构化内容过滤、来源/hash准入、固定音频绑定。
-- `companion/companion/memory/`：四类记忆、来源、范围、中文相关性与更正。
-- `companion/companion/store/`：SQLite 事务、快照、记忆、跟进与恢复。
-- `companion/companion/adapters/`：文字、剧本与小智适配器。
-- `companion/companion/dashboard/`：本地观察看板。
-
-实现取舍见 [DECISIONS.md](companion/docs/DECISIONS.md)，课程内容准入与准备见 [内容准备](companion/docs/CONTENT.md)。
+实现决策归档见 [DECISIONS.md](companion/docs/DECISIONS.md)，内容准入见 [CONTENT.md](companion/docs/CONTENT.md)。

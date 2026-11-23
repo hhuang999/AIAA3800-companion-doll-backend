@@ -1,12 +1,20 @@
 {
+  "measured_on": "2026-11-21",
+  "source": "companion/docs/evidence/course-2.0-bench.json",
   "mode": "development",
   "model": "gpt-4o-mini-tts",
   "voice": "coral",
   "exercise_duration_s": {
-    "bedtime": 42.05,
-    "breathing_60s": 53.55,
-    "grounding": 41.3
+    "bedtime": 39.0,
+    "breathing_60s": 43.5,
+    "grounding": 41.7
   },
   "within_90s": true,
-  "audio_count": 21
+  "audio_count": 24,
+  "archived_2026_11_04_baseline": {
+    "bedtime": 42.05,
+    "breathing_60s": 53.55,
+    "grounding": 41.3,
+    "audio_count": 21
+  }
 }

@@ -6,7 +6,7 @@
 请开始执行这个项目的“研究驱动的策略与后端自主升级”。
 
 工作区：
-D:\HHB\HKUST(GZ)_Library_code\AIAA3800_HCI\3800_final_project
+<PROJECT_ROOT>
 
 首先完整阅读：
 1. 适用的 AGENTS.md

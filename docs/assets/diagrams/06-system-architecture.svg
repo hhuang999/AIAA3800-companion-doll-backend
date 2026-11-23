@@ -38,7 +38,7 @@
 <line x1="272" y1="185" x2="318" y2="185" stroke="#242824" stroke-width="1.8" marker-end="url(#arr)"/>
 <rect x="324" y="112" width="520" height="146" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.6"/>
 <text x="344" y="142" class="t-h-w">CompanionCore &amp; StateMachine（唯一权威内核）</text>
-<text x="344" y="168" class="t-m-w">• 独占阶段流转、PendingOffer 许可生命周期、generation 代次递减与取消</text>
+<text x="344" y="168" class="t-m-w">• 独占阶段流转、PendingOffer 许可生命周期、generation 代次递增与取消</text>
 <text x="344" y="191" class="t-m-w">• active_plan_id 管固定音频播放，active_support_plan_id 管支持策略，严格分离</text>
 <text x="344" y="214" class="t-m-w">• 冻结单轮 TurnPolicyFrame 送实时线；所有后台结果经 CAS 核准后影响下轮</text>
 <text x="344" y="240" class="t-code-w">Single-Writer SQLite Lease + Atomic State Transition</text>
@@ -47,7 +47,7 @@
 <text x="910" y="148" class="t-h-sig">语音与表情实时输出</text>
 <text x="910" y="174" class="t-b">• 首分句 (&gt;=8 字) 即送流式 TTS</text>
 <text x="910" y="196" class="t-b">• 内存 60ms Opus + 64 项短语缓存</text>
-<text x="910" y="218" class="t-b">• 上下文动态 emoji 映射表达式</text>
+<text x="910" y="218" class="t-b">• 上下文动态表情映射</text>
 <rect x="48" y="294" width="344" height="244" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
 <text x="66" y="322" class="t-code-sig">LANE 01 · REALTIME TALKER</text>
 <text x="66" y="348" class="t-h">实时表达通路（永不阻塞等待后台）</text>

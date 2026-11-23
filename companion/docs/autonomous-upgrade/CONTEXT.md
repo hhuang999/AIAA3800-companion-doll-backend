@@ -12,7 +12,7 @@
 
 ## 研究附件来源
 
-- 原路径：`E:\download\研究链.md`。
+- 原归档文件名：`<LOCAL_DOWNLOAD>/研究链.md`（本地只读存档，不在公开仓库路径）。
 - 文档标题：《情感陪伴玩偶 · 研究链 v3》；文内日期为 Nov 2, 2026。
 - 本包保存字节一致的副本，原文件保留。
 - 原文件 SHA-256：`35bc34b9164647ae1c90ab8b6067f09787e55d324c26c13e0ae91dab0646fefe`。
@@ -36,7 +36,7 @@
 
 ## 工程快照：开始执行时重新检查
 
-- 工作区：`D:\HHB\HKUST(GZ)_Library_code\AIAA3800_HCI\3800_final_project`。
+- 工作区：`<PROJECT_ROOT>`。
 - 核对时分支：`codex/backend-v2`。
 - 核对时 HEAD：`3cb20bc8b47ef15924ca1a3c6557951a5680cd0c`，标题为 Align overview diagram notes with public v2 deployment。
 - 仓库 remote：<https://github.com/hhuang999/companion-doll-backend.git>。

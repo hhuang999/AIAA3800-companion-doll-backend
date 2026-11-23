@@ -1,4 +1,6 @@
 {
+  "status": "archived_baseline_2026-11-04",
+  "superseded_by": "companion/docs/evidence/course-2.0-bench.json",
   "batch": "voice-final2",
   "unit": "seconds",
   "foreground_n": 30,

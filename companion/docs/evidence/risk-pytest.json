@@ -1,6 +1,6 @@
 {
   "model": "qwen-flash",
-  "corpus": "D:\\HHB\\HKUST(GZ)_Library_code\\AIAA3800_HCI\\3800_final_project\\companion\\tests\\risk_set.jsonl",
+  "corpus": "companion/tests/risk_set.jsonl",
   "label_status": "developer-authored; pending independent review",
   "counts": {
     "none": 40,
