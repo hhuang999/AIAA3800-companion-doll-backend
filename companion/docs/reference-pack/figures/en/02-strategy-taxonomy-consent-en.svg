@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 21px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 10.5px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #FF9A76; font-weight: 700; }
+      .t-num { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #242824; }
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">FIGURE 02 · LAYERED TAXONOMY &amp; CONSENT FSM</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Deterministic StateMachine + Scoped Boundaries + Silent Crisis Override</text>
+  <text x="48" y="68" class="t-title">Tier-1 Presence, Single-Step PendingOffer Gate, 9 Strategy Cards &amp; 3 Exercises</text>
+  <text x="48" y="114" class="t-code">TIER 1 · DEFAULT NON-ACTION PRESENCE</text>
+<text x="348" y="114" class="t-code-sig">CONSENT &amp; BOUNDARY FSM</text>
+<text x="634" y="114" class="t-code">TIER 2 · 9 STRATEGY CARDS + 3 EXERCISES</text>
+<rect x="48" y="130" width="272" height="342" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="64" y="156" class="t-h">L1 Default Empathy Modes</text>
+<rect x="62" y="174" width="244" height="60" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="196" class="t-code-sig">attuned_listen</text>
+<text x="72" y="217" class="t-m">Reflective, non-prescriptive listening</text>
+<rect x="62" y="246" width="244" height="60" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="268" class="t-code-sig">tentative_reflect</text>
+<text x="72" y="289" class="t-m">Corrigibility check on mixed affect</text>
+<rect x="62" y="318" width="244" height="60" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="340" class="t-code-sig">low_energy_companionship</text>
+<text x="72" y="361" class="t-m">Normalize late-night rest, zero tasks</text>
+<rect x="62" y="390" width="244" height="60" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="412" class="t-code-sig">quiet_presence</text>
+<text x="72" y="433" class="t-m">Silent companionship, 0 questions</text>
+<line x1="320" y1="300" x2="342" y2="300" stroke="#242824" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="348" y="130" width="256" height="342" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.5"/>
+<text x="364" y="156" class="t-h-sig">Single-Step PendingOffer Gate</text>
+<rect x="362" y="172" width="228" height="49" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="372" y="191" class="t-h" font-size="11.5">1. Trigger Check</text>
+<text x="372" y="209" class="t-m">Explicit help request or open readiness</text>
+<rect x="362" y="230" width="228" height="49" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="372" y="249" class="t-h" font-size="11.5">2. Deterministic Filter</text>
+<text x="372" y="267" class="t-m">Intensity, exclusions &amp; refused sets</text>
+<rect x="362" y="288" width="228" height="49" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="372" y="307" class="t-h" font-size="11.5">3. One Contextual Invite</text>
+<text x="372" y="325" class="t-m">Hold stage=&#x27;permission&#x27; (&lt;=2 turns)</text>
+<rect x="362" y="346" width="228" height="49" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="372" y="365" class="t-h" font-size="11.5">4. Explicit Agree Only</text>
+<text x="372" y="383" class="t-m">Unlock &lt;=3 action steps (or 2 for park)</text>
+<rect x="362" y="404" width="228" height="49" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="372" y="423" class="t-h" font-size="11.5">5. Instant Exit &amp; Expiry</text>
+<text x="372" y="441" class="t-m">refuse / quiet / high risk clears state</text>
+<line x1="604" y1="260" x2="628" y2="260" stroke="#BF471B" stroke-width="1.6" marker-end="url(#arr-sig)"/>
+<line x1="604" y1="405" x2="628" y2="405" stroke="#3B5246" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="634" y="130" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="644" y="153" class="t-code-sig">concrete_step</text>
+<text x="644" y="174" class="t-m">3 steps · Leigh 2025</text>
+<rect x="808" y="130" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="818" y="153" class="t-code-sig">exam_steadying</text>
+<text x="818" y="174" class="t-m">3 steps · Yeager 2022</text>
+<rect x="982" y="130" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="992" y="153" class="t-code-sig">kind_self_talk</text>
+<text x="992" y="174" class="t-m">3 steps · Lunn 2023</text>
+<rect x="634" y="200" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="644" y="223" class="t-code-sig">comparison_reframe</text>
+<text x="644" y="244" class="t-m">3 steps · Megalok. 2024</text>
+<rect x="808" y="200" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="818" y="223" class="t-code-sig">expectation_boundary</text>
+<text x="818" y="244" class="t-m">3 steps · Ding 2026</text>
+<rect x="982" y="200" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="992" y="223" class="t-code-sig">safe_communication</text>
+<text x="992" y="244" class="t-m">3 steps · Filia 2021</text>
+<rect x="634" y="270" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="644" y="293" class="t-code-sig">safe_support</text>
+<text x="644" y="314" class="t-m">3 steps · Zhao 2022</text>
+<rect x="808" y="270" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="818" y="293" class="t-code-sig">values_exploration</text>
+<text x="818" y="314" class="t-m">3 steps · Chen 2022</text>
+<rect x="982" y="270" width="166" height="60" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="992" y="293" class="t-code-sig">worry_parking</text>
+<text x="992" y="314" class="t-m">2 steps · Scullin 2018</text>
+<rect x="634" y="344" width="518" height="128" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="650" y="368" class="t-h">3 Pre-Synthesized Audio Exercises (All &lt; 90s · Stop Anytime)</text>
+<rect x="650" y="382" width="154" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="660" y="402" class="t-code-sig">breathing_60s</text>
+<text x="660" y="422" class="t-m">5 lines / 13s pause / 43.5s</text>
+<text x="660" y="440" class="t-m">No breath-hold; eyes open</text>
+<rect x="814" y="382" width="154" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="824" y="402" class="t-code-sig">grounding</text>
+<text x="824" y="422" class="t-m">4 lines / 11s pause / 41.7s</text>
+<text x="824" y="440" class="t-m">External object anchor</text>
+<rect x="978" y="382" width="154" height="76" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="988" y="402" class="t-code-sig">bedtime</text>
+<text x="988" y="422" class="t-m">4 lines / 10s pause / 39.0s</text>
+<text x="988" y="440" class="t-m">Req: bedtime context</text>
+<rect x="48" y="492" width="540" height="218" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="64" y="518" class="t-code-sig">COLLOQUIAL NEGATIVE-LOOKAHEAD &amp; SCOPED BOUNDARIES</text>
+<text x="64" y="548" class="t-h" font-size="11.5">• Lookahead Agree Regex</text>
+<text x="76" y="564" class="t-m">Accepts &#x27;ok tell me&#x27;; blocks &#x27;not that I don&#x27;t want&#x27; or &#x27;no thanks&#x27;.</text>
+<text x="64" y="590" class="t-h" font-size="11.5">• Lookahead Future Probe</text>
+<text x="76" y="606" class="t-m">Allows &#x27;curious about subjects&#x27; while blocking premature lock-in.</text>
+<text x="64" y="632" class="t-h" font-size="11.5">• Scoped Topic / Advice Ban</text>
+<text x="76" y="648" class="t-m">Blocks banned exam/grade probes without blocking bedtime soothing.</text>
+<text x="64" y="674" class="t-h" font-size="11.5">• Correction vs Clarification</text>
+<text x="76" y="690" class="t-m">&#x27;You misremembered my name&#x27; supersedes old label cleanly.</text>
+<rect x="612" y="492" width="540" height="218" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.4"/>
+<text x="630" y="518" class="t-code-w">SAFETY, LIFECYCLE INVARIANTS &amp; WAKE LOGIC</text>
+<text x="630" y="548" class="t-code-w">Silent Crisis Lane Isolation</text>
+<text x="642" y="564" class="t-m-w" font-size="10.5">Lexicon + async qwen-flash; sticky crisis takeover overrides cards.</text>
+<text x="630" y="590" class="t-code-w">Monotonic generation Counter</text>
+<text x="642" y="606" class="t-m-w" font-size="10.5">Any turn, barge-in, or high risk increments generation &amp; drops TTS.</text>
+<text x="630" y="632" class="t-code-w">Dual Plan ID Separation</text>
+<text x="642" y="648" class="t-m-w" font-size="10.5">active_plan_id tracks exercises; active_support_plan_id holds strategy.</text>
+<text x="630" y="674" class="t-code-w">resolve_opening() Reconnect</text>
+<text x="642" y="690" class="t-m-w" font-size="10.5">Queries SQLite prior user turns to skip redundant onboarding on wake.</text>
+  <rect x="48" y="732" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="749" class="t-m">Companion System Reference Pack · Architecture &amp; Empirical Benchmarks</text>
+  <text x="1152" y="749" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 21px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 10.5px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #FF9A76; font-weight: 700; }
+      .t-num { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #242824; }
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">FIGURE 12 · 系统客观实测延迟与安全守门基准对照</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">严格依据 course-2.0-bench.json (2026-11-21) 与 online-regression-20261109.json 绘制</text>
+  <text x="48" y="68" class="t-title">本机环回语音/文本分阶段延迟、多 Agent 认知耗时与静默安全守门实测</text>
+  <rect x="48" y="108" width="668" height="348" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="68" y="134" class="t-code-sig">面板 A · 小智环回 Opus 语音延迟对比 (n=30, 0 失败)</text>
+<text x="68" y="155" class="t-h">分阶段 P50 &amp; [P90] 耗时（秒）：早期基线 vs 当前实测</text>
+<rect x="454" y="122" width="10" height="10" rx="2" fill="#B8BDB5" stroke="none" stroke-width="1.2"/>
+<text x="469" y="131" class="t-m">11-04 基线 [P90]</text>
+<rect x="572" y="122" width="10" height="10" rx="2" fill="#BF471B" stroke="none" stroke-width="1.2"/>
+<text x="587" y="131" class="t-code-sig">11-21 实测 [P90]</text>
+<line x1="226.0" y1="170" x2="226.0" y2="392" stroke="#D5D8D0" stroke-width="1"/>
+<text x="226.0" y="407" text-anchor="middle" class="t-code">0s</text>
+<line x1="292.8" y1="170" x2="292.8" y2="392" stroke="#D5D8D0" stroke-width="1"/>
+<text x="292.8" y="407" text-anchor="middle" class="t-code">2s</text>
+<line x1="359.6" y1="170" x2="359.6" y2="392" stroke="#D5D8D0" stroke-width="1"/>
+<text x="359.6" y="407" text-anchor="middle" class="t-code">4s</text>
+<line x1="426.3" y1="170" x2="426.3" y2="392" stroke="#D5D8D0" stroke-width="1"/>
+<text x="426.3" y="407" text-anchor="middle" class="t-code">6s</text>
+<line x1="493.1" y1="170" x2="493.1" y2="392" stroke="#D5D8D0" stroke-width="1"/>
+<text x="493.1" y="407" text-anchor="middle" class="t-code">8s</text>
+<line x1="559.9" y1="170" x2="559.9" y2="392" stroke="#D5D8D0" stroke-width="1"/>
+<text x="559.9" y="407" text-anchor="middle" class="t-code">10s</text>
+<text x="216" y="193" text-anchor="end" class="t-b">Talker 首 Token</text>
+<rect x="226" y="178" width="39.7" height="10.5" rx="2" fill="#B8BDB5"/>
+<text x="270.7" y="187" class="t-m" font-size="9.5">1.19s [1.36s]</text>
+<rect x="226" y="191" width="33.4" height="11.5" rx="2" fill="#BF471B"/>
+<text x="264.4" y="201" class="t-code-sig" font-size="9.5">1.00s [1.08s] (-15.8%)</text>
+<text x="216" y="229" text-anchor="end" class="t-b">首句 / 安全闸放行</text>
+<rect x="226" y="214" width="42.0" height="10.5" rx="2" fill="#B8BDB5"/>
+<text x="273.0" y="223" class="t-m" font-size="9.5">1.26s [1.42s]</text>
+<rect x="226" y="227" width="36.8" height="11.5" rx="2" fill="#BF471B"/>
+<text x="267.8" y="237" class="t-code-sig" font-size="9.5">1.10s [1.20s] (-12.4%)</text>
+<text x="216" y="265" text-anchor="end" class="t-b">内存 Opus 首包就绪</text>
+<rect x="226" y="250" width="119.7" height="10.5" rx="2" fill="#B8BDB5"/>
+<text x="350.7" y="259" class="t-m" font-size="9.5">3.59s [3.98s]</text>
+<rect x="226" y="263" width="80.9" height="11.5" rx="2" fill="#BF471B"/>
+<text x="311.9" y="273" class="t-code-sig" font-size="9.5">2.42s [2.75s] (-32.5%)</text>
+<text x="216" y="301" text-anchor="end" class="t-b">流式 TTS 合成完成*</text>
+<rect x="226" y="286" width="118.2" height="10.5" rx="2" fill="#B8BDB5"/>
+<text x="349.2" y="295" class="t-m" font-size="9.5">3.54s [3.94s]</text>
+<rect x="226" y="299" width="83.7" height="11.5" rx="2" fill="#BF471B"/>
+<text x="314.7" y="309" class="t-code-sig" font-size="9.5">2.51s [2.89s] (-29.1%)</text>
+<text x="216" y="337" text-anchor="end" class="t-b">客户端首包接收 (总)</text>
+<rect x="226" y="322" width="120.5" height="10.5" rx="2" fill="#B8BDB5"/>
+<text x="351.5" y="331" class="t-m" font-size="9.5">3.61s [4.01s]</text>
+<rect x="226" y="335" width="88.7" height="11.5" rx="2" fill="#BF471B"/>
+<text x="319.7" y="345" class="t-code-sig" font-size="9.5">2.66s [3.14s] (-26.4%)</text>
+<text x="216" y="373" text-anchor="end" class="t-b">服务端完整播报结束</text>
+<rect x="226" y="358" width="309.6" height="10.5" rx="2" fill="#B8BDB5"/>
+<text x="540.6" y="367" class="t-m" font-size="9.5">9.27s [11.03s]</text>
+<rect x="226" y="371" width="270.5" height="11.5" rx="2" fill="#BF471B"/>
+<text x="501.5" y="381" class="t-code-sig" font-size="9.5">8.10s [9.78s] (-12.6%)</text>
+<text x="68" y="427" class="t-m" font-size="10">*TTS 为 n=28 未命中缓存（2/30 命中 64 项短语缓存，客户端首包达 1.02s / 1.17s）。</text>
+<text x="68" y="443" class="t-m" font-size="10">注：本机 WebSocket 环回实测不含物理 ESP32 端侧 Wi-Fi 与声学硬件缓冲延迟；30 次全部成功（均值 2.51s）。</text>
+<rect x="734" y="108" width="418" height="348" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="752" y="136" class="t-code">面板 B · 后台多 Agent 协作耗时与稳定性</text>
+<text x="752" y="156" class="t-h">后台认知耗时腰斩，22 场多轮回放 0 超时</text>
+<line x1="842.0" y1="176" x2="842.0" y2="306" stroke="#D5D8D0" stroke-width="1"/>
+<text x="842.0" y="320" text-anchor="middle" class="t-code">0s</text>
+<line x1="923.2" y1="176" x2="923.2" y2="306" stroke="#D5D8D0" stroke-width="1"/>
+<text x="923.2" y="320" text-anchor="middle" class="t-code">5s</text>
+<line x1="1004.4" y1="176" x2="1004.4" y2="306" stroke="#D5D8D0" stroke-width="1"/>
+<text x="1004.4" y="320" text-anchor="middle" class="t-code">10s</text>
+<line x1="1085.6" y1="176" x2="1085.6" y2="306" stroke="#D5D8D0" stroke-width="1"/>
+<text x="1085.6" y="320" text-anchor="middle" class="t-code">15s</text>
+<text x="834" y="198" text-anchor="end" class="t-b">多轮回放 P50</text>
+<rect x="842" y="183" width="174.3" height="11" rx="2" fill="#B8BDB5"/>
+<text x="1020.3" y="192" class="t-m" font-size="9.5">10.73s</text>
+<rect x="842" y="197" width="95.7" height="12" rx="2" fill="#3B5246"/>
+<text x="941.7" y="207" class="t-code" font-size="9.5">5.89s (-45.1%)</text>
+<text x="834" y="240" text-anchor="end" class="t-b">多轮回放 P90</text>
+<rect x="842" y="225" width="250.5" height="11" rx="2" fill="#B8BDB5"/>
+<text x="1096.5" y="234" class="t-m" font-size="9.5">15.42s</text>
+<rect x="842" y="239" width="120.0" height="12" rx="2" fill="#3B5246"/>
+<text x="966.0" y="249" class="t-code" font-size="9.5">7.39s (-52.1%)</text>
+<text x="834" y="282" text-anchor="end" class="t-b">语音认知 P50</text>
+<rect x="842" y="267" width="204.8" height="11" rx="2" fill="#B8BDB5"/>
+<text x="1050.8" y="276" class="t-m" font-size="9.5">12.61s</text>
+<rect x="842" y="281" width="104.9" height="12" rx="2" fill="#3B5246"/>
+<text x="950.9" y="291" class="t-code" font-size="9.5">6.46s (-48.8%)</text>
+<rect x="752" y="336" width="382" height="100" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="766" y="358" class="t-code-sig">22 / 22 场景全通过</text>
+<text x="896" y="358" class="t-m">12/12 策略练习目标全激活；最大耗时 8.19s</text>
+<text x="766" y="386" class="t-code-sig">0 / 69 任务超时</text>
+<text x="896" y="386" class="t-m">58 完全提交 · 8 部分提交(记事实) · 3 拒绝</text>
+<text x="766" y="414" class="t-code-sig">会话整理 (n=23)</text>
+<text x="896" y="414" class="t-m">P50 7.31s · P90 12.03s (严格 2-Call/20s 上限)</text>
+<rect x="48" y="470" width="356" height="182" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="66" y="498" class="t-code-sig">面板 C · 流式文本端到端实测 (n=30)</text>
+<text x="66" y="520" class="t-h">0 错误 · 0 降级回退 · 0 安全超时</text>
+<text x="206" y="546" class="t-code">P50</text><text x="296" y="546" class="t-code">P90</text>
+<line x1="66" y1="554" x2="386" y2="554" stroke="#D5D8D0" stroke-width="1"/>
+<text x="66" y="572" class="t-b">文本首 Token</text>
+<text x="206" y="572" class="t-code-sig">1016.0 ms</text>
+<text x="296" y="572" class="t-num">1453.0 ms</text>
+<line x1="66" y1="582" x2="386" y2="582" stroke="#D5D8D0" stroke-width="1"/>
+<text x="66" y="600" class="t-b">首句完整切分</text>
+<text x="206" y="600" class="t-code-sig">1109.5 ms</text>
+<text x="296" y="600" class="t-num">1578.0 ms</text>
+<line x1="66" y1="610" x2="386" y2="610" stroke="#D5D8D0" stroke-width="1"/>
+<text x="66" y="628" class="t-b">全轮生成结束</text>
+<text x="206" y="628" class="t-code-sig">1202.5 ms</text>
+<text x="296" y="628" class="t-num">1656.0 ms</text>
+<rect x="422" y="470" width="356" height="182" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="440" y="498" class="t-code">面板 D · 缓存加速、固定音频与离线验证</text>
+<text x="440" y="520" class="t-h">语音首包分布：均值 2.51s（1.00–3.41s）</text>
+<text x="440" y="550" class="t-b">• 64 项短语缓存热命中：#20 (1.17s) 与 #30 (1.02s)</text>
+<text x="440" y="574" class="t-b">• 24 段固定音频：睡前 39.0s · 自然呼吸 43.5s</text>
+<text x="440" y="598" class="t-b">• 外部感官着陆：41.7s（全量严格 &lt; 90 秒上限）</text>
+<text x="440" y="622" class="t-b">• 离线测试：224 passed (1 skipped) · 孤立 wheel 通过</text>
+<rect x="796" y="470" width="356" height="182" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.4"/>
+<text x="814" y="498" class="t-code-w">面板 E · 静默安全守门矩阵 (n=120 语料)</text>
+<text x="814" y="520" class="t-h-w">高危 / 关注召回 1.00 · 高危误报率 0.00</text>
+<text x="814" y="544" class="t-m-w">L1 词表 + L2 并发分类联合矩阵（0 故障；打断耗时 16ms）：</text>
+<text x="908" y="566" class="t-code-w">Pred:N</text><text x="976" y="566" class="t-code-w">Pred:W</text><text x="1044" y="566" class="t-code-w">Pred:H</text>
+<text x="814" y="586" class="t-m-w">真实无 (40)</text>
+<text x="920" y="586" class="t-code-w">28</text>
+<text x="988" y="586" class="t-code-w">12</text>
+<text x="1056" y="586" class="t-code-w">0</text>
+<text x="814" y="608" class="t-m-w">真实关注 (40)</text>
+<text x="920" y="608" class="t-code-w">0</text>
+<text x="988" y="608" class="t-code-w">37</text>
+<text x="1056" y="608" class="t-code-w">3</text>
+<text x="814" y="630" class="t-m-w">真实高危 (40)</text>
+<text x="920" y="630" class="t-code-w">0</text>
+<text x="988" y="630" class="t-code-w">0</text>
+<text x="1056" y="630" class="t-code-w">40</text>
+  <rect x="48" y="672" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="689" class="t-m">Companion System Reference Pack · Architecture &amp; Empirical Benchmarks</text>
+  <text x="1152" y="689" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

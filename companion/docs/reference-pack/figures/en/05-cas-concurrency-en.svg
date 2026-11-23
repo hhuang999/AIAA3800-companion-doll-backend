@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 21px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 10.5px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #FF9A76; font-weight: 700; }
+      .t-num { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #242824; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">FIGURE 05 · CAS CONCURRENCY &amp; DELTA GUARD</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Deterministic Concurrency Authority Under Continuous User Interruption</text>
+  <text x="48" y="68" class="t-title">Quadruple-Version Transactional CAS, DeltaChecker &amp; Dual Plan Isolation</text>
+  <text x="48" y="118" class="t-code-sig">THREE-STAGE CONCURRENCY GUARD UNDER USER INTERRUPTION</text>
+<rect x="48" y="138" width="1104" height="152" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="68" y="166" class="t-h">Timeline · Immediate Audio/Turn Cancellation via generation Increment</text>
+<line x1="88" y1="214" x2="1112" y2="214" stroke="#8F968E" stroke-width="2"/>
+<rect x="92" y="184" width="210" height="56" rx="5" fill="#EFEAE0" stroke="#242824" stroke-width="1.2"/>
+<text x="106" y="206" class="t-code">t0 · Turn #1 Enqueued</text>
+<text x="106" y="226" class="t-m">Baseline: topic=0 · policy=0 · gen=1</text>
+<rect x="366" y="184" width="240" height="56" rx="5" fill="#FBECE6" stroke="#BF471B" stroke-width="1.2"/>
+<text x="380" y="206" class="t-code-sig">t1 · Barge-In Turn #2</text>
+<text x="380" y="226" class="t-b">gen -&gt; 2: drops stale queue/audio</text>
+<rect x="672" y="184" width="212" height="56" rx="5" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.2"/>
+<text x="686" y="206" class="t-code">t2 · Plan Candidate Ready</text>
+<text x="686" y="226" class="t-m">Checked against new turns</text>
+<rect x="942" y="184" width="178" height="56" rx="5" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="956" y="206" class="t-code-w">t3 · Atomic CAS</text>
+<text x="956" y="226" class="t-m-w">Commit if all versions match</text>
+<text x="88" y="268" class="t-m">Note: Barge-in immediately stops stale TTS output while letting valid in-flight deliberation finish into Gate 1 &amp; Gate 2 arbitration.</text>
+<rect x="48" y="314" width="534" height="176" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="66" y="344" class="t-code">GATE 1 · DeltaChecker Mid-Flight Review (Max 1 Call)</text>
+<text x="66" y="370" class="t-h">Did Intervening User Turns Invalidate Premises?</text>
+<text x="66" y="398" class="t-b">• qwen-flash inspects new user turns since job.source_turn_id</text>
+<text x="66" y="422" class="t-b">• Strict validity window: plan_ttl_s &lt;= 120s AND user_turns delta &lt;= 4</text>
+<text x="66" y="446" class="t-b">• Any new refusal, quiet request, or boundary blocks plan activation</text>
+<text x="66" y="470" class="t-code-sig">compatible advances checked_through_user_index only</text>
+<rect x="618" y="314" width="534" height="176" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.5"/>
+<text x="636" y="344" class="t-code-sig">GATE 2 · Quadruple-Version Transactional CAS</text>
+<text x="636" y="370" class="t-h-sig">Committed Inside UserLock + SessionLock + SQLite Tx</text>
+<text x="636" y="398" class="t-b">plan_invalid_reason() &amp; publish() verify strict equality before commit:</text>
+<text x="636" y="422" class="t-code">  (1) topic_revision &amp; policy_revision unchanged (control_revision)</text>
+<text x="636" y="444" class="t-code">  (2) boundary_revision unchanged (pre &amp; post memory commit)</text>
+<text x="636" y="466" class="t-code">  (3) support_plan_version == job.base_plan_version &amp; user_turns match</text>
+<text x="636" y="484" class="t-code">  (4) referenced memory_dependency_versions still active &amp; lifecycle=active</text>
+<rect x="48" y="514" width="534" height="120" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="66" y="544" class="t-h">Dual Plan IDs Never Collide</text>
+<text x="66" y="570" class="t-b">• active_plan_id governs deterministic segmented exercise playback.</text>
+<text x="66" y="594" class="t-b">• active_support_plan_id holds cognitive guidance without hijacking audio.</text>
+<text x="66" y="618" class="t-m">Rejected background plans never block Talker; Talker uses conservative empathy.</text>
+<rect x="618" y="514" width="534" height="120" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="636" y="544" class="t-h">Partial Commit &amp; Durable End Recovery</text>
+<text x="636" y="570" class="t-b">• Even if an action plan fails CAS due to topic shift, verified memories commit.</text>
+<text x="636" y="594" class="t-b">• end_consolidation jobs bind final_turn_id inside SQLite queue.</text>
+<text x="636" y="618" class="t-m">Process restarts recover interrupted sessions into ending tasks, never stale active state.</text>
+  <rect x="48" y="652" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="669" class="t-m">Companion System Reference Pack · Architecture &amp; Empirical Benchmarks</text>
+  <text x="1152" y="669" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

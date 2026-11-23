@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 21px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 10.5px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #FF9A76; font-weight: 700; }
+      .t-num { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #242824; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">FIGURE 07 · STREAMING VOICE &amp; FIXED AUDIO PIPELINE</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Clause Slicer + OutputRail + PacketCache (64 LRU) + Xiaozhi WebSocket Adapter</text>
+  <text x="48" y="68" class="t-title">Clause-Level TTS Dispatch, In-Memory 60ms Opus Framing, LRU Cache &amp; Fixed Exercises</text>
+  <text x="48" y="118" class="t-code-sig">A · STREAMING VOICE PIPELINE (Clause Dispatch · In-Memory 60ms Opus · 64-Entry LRU Cache)</text>
+<rect x="48" y="136" width="204" height="210" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="60" y="164" class="t-h" font-size="12">1. Clause Slicer</text>
+<text x="60" y="198" class="t-b" font-size="11">qwen-flash stream</text>
+<text x="60" y="228" class="t-b" font-size="11">Clause &gt;= 8 chars at</text>
+<text x="60" y="258" class="t-b" font-size="11">comma outside quotes;</text>
+<text x="60" y="288" class="t-b" font-size="11">keeps closing quotes</text>
+<line x1="252" y1="241" x2="269" y2="241" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="273" y="136" width="204" height="210" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.4"/>
+<text x="285" y="164" class="t-h" font-size="12">2. Output &amp; Safety Gate</text>
+<text x="285" y="198" class="t-b" font-size="11">OutputRail filters cliches</text>
+<text x="285" y="228" class="t-b" font-size="11">Lexicon + L2 classifier</text>
+<text x="285" y="258" class="t-b" font-size="11">Releases at 400ms gate;</text>
+<text x="285" y="288" class="t-b" font-size="11">late high -&gt; cancel</text>
+<line x1="477" y1="241" x2="494" y2="241" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="498" y="136" width="204" height="210" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="510" y="164" class="t-h" font-size="12">3. 64-Entry PacketCache</text>
+<text x="510" y="198" class="t-b" font-size="11">Warm phrases hit RAM</text>
+<text x="510" y="228" class="t-b" font-size="11">LRU (MAX=64 entries)</text>
+<text x="510" y="258" class="t-b" font-size="11">Miss -&gt; gpt-4o-mini-tts</text>
+<text x="510" y="288" class="t-b" font-size="11">(coral, format=opus)</text>
+<line x1="702" y1="241" x2="719" y2="241" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="723" y="136" width="204" height="210" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="735" y="164" class="t-h" font-size="12">4. Memory Opus Frame</text>
+<text x="735" y="198" class="t-b" font-size="11">PyAV decodes opus</text>
+<text x="735" y="228" class="t-b" font-size="11">opuslib_next 60ms RAM</text>
+<text x="735" y="258" class="t-b" font-size="11">Zero disk WAV I/O</text>
+<text x="735" y="288" class="t-b" font-size="11">Zero subprocess spawn</text>
+<line x1="927" y1="241" x2="944" y2="241" stroke="#242824" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="948" y="136" width="204" height="210" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.4"/>
+<text x="960" y="164" class="t-h-w" font-size="12">5. Xiaozhi WS &amp; Abort</text>
+<text x="960" y="198" class="t-m-w" font-size="11">Pushes 60ms Opus WS</text>
+<text x="960" y="228" class="t-m-w" font-size="11">Tags generation per pkt</text>
+<text x="960" y="258" class="t-m-w" font-size="11">Abort/barge-in increments</text>
+<text x="960" y="288" class="t-m-w" font-size="11">gen -&gt; instant queue drop</text>
+<text x="48" y="388" class="t-code">B · DETERMINISTIC FIXED-AUDIO SHORT EXERCISE PIPELINE (Pinned Upstream: 92337881 · 6 Patches)</text>
+<rect x="48" y="404" width="1104" height="232" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<rect x="68" y="424" width="250" height="190" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="82" y="454" class="t-h" font-size="12.5">YAML Script &amp; &lt;90s Cap</text>
+<text x="82" y="488" class="t-b">Segments + pause_s</text>
+<text x="82" y="515" class="t-b">All 3 exercises &lt; 90s:</text>
+<text x="82" y="542" class="t-b">bedtime 39.0s · breath</text>
+<text x="82" y="569" class="t-b">43.5s · ground 41.7s</text>
+<line x1="318" y1="519" x2="334" y2="519" stroke="#BF471B" stroke-width="1.5" marker-end="url(#arr-sig)"/>
+<rect x="338" y="424" width="250" height="190" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="352" y="454" class="t-h" font-size="12.5">Offline Build &amp; Hash Bind</text>
+<text x="352" y="488" class="t-b">prepare_audio builds 24</text>
+<text x="352" y="515" class="t-b">segments + audio_manifest</text>
+<text x="352" y="542" class="t-b">Strict integrity verify</text>
+<text x="352" y="569" class="t-b">on --mode demo start</text>
+<line x1="588" y1="519" x2="604" y2="519" stroke="#BF471B" stroke-width="1.5" marker-end="url(#arr-sig)"/>
+<rect x="608" y="424" width="250" height="190" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="622" y="454" class="t-h" font-size="12.5">Segmented PlaybackPlan</text>
+<text x="622" y="488" class="t-b">Started on explicit agree</text>
+<text x="622" y="515" class="t-b">on_playback_event steps</text>
+<text x="622" y="542" class="t-b">through pause waits via</text>
+<text x="622" y="569" class="t-b">active_plan_id</text>
+<line x1="858" y1="519" x2="874" y2="519" stroke="#BF471B" stroke-width="1.5" marker-end="url(#arr-sig)"/>
+<rect x="878" y="424" width="250" height="190" rx="5" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="892" y="454" class="t-h" font-size="12.5">Zero Forced Continuation</text>
+<text x="892" y="488" class="t-b">Stop words, refusal, or</text>
+<text x="892" y="515" class="t-b">risk clear resume ID</text>
+<text x="892" y="542" class="t-b">Neutral noise triggers</text>
+<text x="892" y="569" class="t-b">gentle check only</text>
+  <rect x="48" y="652" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="669" class="t-m">Companion System Reference Pack · Architecture &amp; Empirical Benchmarks</text>
+  <text x="1152" y="669" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

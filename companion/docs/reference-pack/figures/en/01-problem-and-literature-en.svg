@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 21px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 10.5px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #FF9A76; font-weight: 700; }
+      .t-num { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #242824; }
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">FIGURE 01 · PROBLEM SPACE &amp; LITERATURE TRANSLATION</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Context: Chinese Secondary School Exam Pressure (Synthetic / Non-Clinical)</text>
+  <text x="48" y="68" class="t-title">Stressors, Psychological Pathways, Failure Modes &amp; 19-Source Mechanism Mapping</text>
+  <text x="48" y="114" class="t-code-sig">01 · FIVE CONCURRENT STRESSOR DOMAINS</text>
+<text x="406" y="114" class="t-code">02 · FOUR PATHWAYS &amp; HELP-SEEKING BARRIERS</text>
+<text x="772" y="114" class="t-code-sig">03 · 19-SOURCE LITERATURE-TO-SYSTEM TRANSLATION</text>
+<rect x="48" y="130" width="326" height="92" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="153" class="t-h">Academic Load (academic)</text>
+<text x="62" y="174" class="t-b">Late-night problem sets &amp; backlog</text>
+<text x="62" y="197" class="t-m">Synthetic cue: "10:30 PM guilt when stopping to rest"</text>
+<line x1="374" y1="176" x2="400" y2="176" stroke="#AEB3AA" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="48" y="236" width="326" height="92" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="259" class="t-h">Social Evaluation (social_evaluative)</text>
+<text x="62" y="280" class="t-b">Visible class ranks &amp; acute test anxiety</text>
+<text x="62" y="303" class="t-m">Synthetic cue: "Feeling left behind while peers rush ahead"</text>
+<line x1="374" y1="282" x2="400" y2="282" stroke="#AEB3AA" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="48" y="342" width="326" height="92" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="365" class="t-h">Family &amp; Peers (relationship)</text>
+<text x="62" y="386" class="t-b">Parental rank comparison &amp; peer friction</text>
+<text x="62" y="409" class="t-m">Synthetic cue: "Not ready for an open argument tonight"</text>
+<line x1="374" y1="388" x2="400" y2="388" stroke="#AEB3AA" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="48" y="448" width="326" height="92" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="471" class="t-h">Future &amp; Track Choice (future)</text>
+<text x="62" y="492" class="t-b">Subject-selection uncertainty &amp; purpose</text>
+<text x="62" y="515" class="t-m">Synthetic cue: "Not ready to lock life choices tonight"</text>
+<line x1="374" y1="494" x2="400" y2="494" stroke="#AEB3AA" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="48" y="554" width="326" height="92" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="62" y="577" class="t-h">Self-Criticism (self)</text>
+<text x="62" y="598" class="t-b">Over-generalizing one poor exam score</text>
+<text x="62" y="621" class="t-m">Synthetic cue: "Harsher inner standard than for friends"</text>
+<line x1="374" y1="600" x2="400" y2="600" stroke="#AEB3AA" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="406" y="130" width="332" height="246" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="422" y="156" class="t-h">Transdiagnostic Psychological Pathways</text>
+<rect x="420" y="174" width="304" height="40" rx="4" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="430" y="190" class="t-code">Abstract Rumination (rumination)</text>
+<text x="430" y="206" class="t-m">Stuck on &#x27;why do I always fail?&#x27; vs action</text>
+<rect x="420" y="222" width="304" height="40" rx="4" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="430" y="238" class="t-code">Self-Criticism (self_criticism)</text>
+<text x="430" y="254" class="t-m">Mistaking one score for global worth</text>
+<rect x="420" y="270" width="304" height="40" rx="4" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="430" y="286" class="t-code">Sleep Disruption (sleep)</text>
+<text x="430" y="302" class="t-m">31.0% statistical mediation (Wang et al., 2025)</text>
+<rect x="420" y="318" width="304" height="40" rx="4" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="430" y="334" class="t-code">Loneliness &amp; Stigma (loneliness)</text>
+<text x="430" y="350" class="t-m">26.8% mediation; 99.3% informal help-seeking</text>
+<rect x="406" y="392" width="332" height="270" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.4"/>
+<text x="422" y="418" class="t-h-sig">Generic LLM Failure Modes &amp; Barriers</text>
+<rect x="420" y="436" width="304" height="46" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="430" y="454" class="t-h" font-size="11.5">1. Unsolicited 1-2-3 Advice Lists</text>
+<text x="430" y="472" class="t-m">Treats venting as task request; triggers reactance</text>
+<rect x="420" y="490" width="304" height="46" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="430" y="508" class="t-h" font-size="11.5">2. Coarse Keyword Topic Blackouts</text>
+<text x="430" y="526" class="t-m">Confuses &#x27;no permanent decision&#x27; vs topic ban</text>
+<rect x="420" y="544" width="304" height="46" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="430" y="562" class="t-h" font-size="11.5">3. Ungrounded Profile Hallucination</text>
+<text x="430" y="580" class="t-m">Persists model guesses as enduring user facts</text>
+<rect x="420" y="598" width="304" height="46" rx="4" fill="#FFFFFF" stroke="#E8B5A2" stroke-width="1.2"/>
+<text x="430" y="616" class="t-h" font-size="11.5">4. Screen Fatigue After Evening Study</text>
+<text x="430" y="634" class="t-m">Bright UI increases cognitive load before sleep</text>
+<line x1="738" y1="250" x2="766" y2="250" stroke="#242824" stroke-width="1.4" marker-end="url(#arr)"/>
+<line x1="738" y1="520" x2="766" y2="520" stroke="#BF471B" stroke-width="1.4" marker-end="url(#arr-sig)"/>
+<rect x="772" y="130" width="380" height="532" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.5"/>
+<text x="790" y="158" class="t-h-w">Empirical Grounding -&gt; System Mechanism</text>
+<text x="790" y="176" class="t-m-w">Mechanism adaptation only (no clinical claim transfer)</text>
+<rect x="788" y="194" width="348" height="54" rx="5" fill="#303833" stroke="#4C5850" stroke-width="1.2"/>
+<text x="800" y="214" class="t-code-w">Ye 2019 · Wang 2025 · Dickerson 2004</text>
+<text x="800" y="234" class="t-m-w">5 stressors, 4 pathways, bedtime context gating</text>
+<rect x="788" y="258" width="348" height="54" rx="5" fill="#303833" stroke="#4C5850" stroke-width="1.2"/>
+<text x="800" y="278" class="t-code-w">Leigh 2025 · WHO/UNICEF 2023 (EASE)</text>
+<text x="800" y="298" class="t-m-w">concrete_step: concrete next step, single small focus</text>
+<rect x="788" y="322" width="348" height="54" rx="5" fill="#303833" stroke="#4C5850" stroke-width="1.2"/>
+<text x="800" y="342" class="t-code-w">Yeager 2022 · Megalokonomou 2024</text>
+<text x="800" y="362" class="t-m-w">exam_steadying (arousal reappraisal) &amp; comparison_reframe</text>
+<rect x="788" y="386" width="348" height="54" rx="5" fill="#303833" stroke="#4C5850" stroke-width="1.2"/>
+<text x="800" y="406" class="t-code-w">Ding 2026 · Lunn 2023 · Bluth 2024</text>
+<text x="800" y="426" class="t-m-w">expectation_boundary (unsafe filter) &amp; kind_self_talk</text>
+<rect x="788" y="450" width="348" height="54" rx="5" fill="#303833" stroke="#4C5850" stroke-width="1.2"/>
+<text x="800" y="470" class="t-code-w">Filia 2021 · Chen 2022 · Scullin 2018</text>
+<text x="800" y="490" class="t-m-w">safe_communication, values_exploration, worry_parking</text>
+<rect x="788" y="514" width="348" height="54" rx="5" fill="#303833" stroke="#4C5850" stroke-width="1.2"/>
+<text x="800" y="534" class="t-code-w">Gulliver 2010 · WHO 2011 · Dunning 2022</text>
+<text x="800" y="554" class="t-m-w">safe_support &amp; &lt;90s optional stop-anytime audio</text>
+<rect x="788" y="578" width="348" height="54" rx="5" fill="#303833" stroke="#4C5850" stroke-width="1.2"/>
+<text x="800" y="598" class="t-code-w">Zhao 2022 · Liu 2021 · Deng 2024</text>
+<text x="800" y="618" class="t-m-w">Informal-tone bridge, Tier-1 empathy &amp; decoupled planner</text>
+  <rect x="48" y="692" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="709" class="t-m">Companion System Reference Pack · Architecture &amp; Empirical Benchmarks</text>
+  <text x="1152" y="709" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

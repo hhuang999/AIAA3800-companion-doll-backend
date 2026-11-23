@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 21px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 10.5px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #FF9A76; font-weight: 700; }
+      .t-num { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #242824; }
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">FIGURE 08 · INTERACTION WALKTHROUGHS</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Demonstrating Agency, Empathy Priority &amp; Cross-Session Continuity</text>
+  <text x="48" y="68" class="t-title">End-to-End Synthetic Traces: Consent Entry, Exhaustion Stop &amp; Scoped Memory</text>
+  <text x="48" y="114" class="t-code-sig">THREE SYNTHETIC INTERACTION WALKTHROUGHS (Permission Flow · Fast-Path Empathy · Scoped Memory)</text>
+<rect x="48" y="130" width="352" height="540" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="48" y="130" width="352" height="60" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="64" y="155" class="t-h-w">Trace 1 · Parental Rank Comparison</text>
+<text x="64" y="177" class="t-code-w">expectation_boundary · explore -&gt; action</text>
+<rect x="62" y="204" width="324" height="78" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="224" class="t-code-sig">Student (Help Seeking)</text>
+<text x="72" y="245" class="t-b" font-size="11">&quot;Parents keep comparing my rank with my</text>
+<text x="72" y="263" class="t-b" font-size="11">cousin, I don&#x27;t want to fight. What do I do?&quot;</text>
+<rect x="62" y="294" width="324" height="78" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="314" class="t-code-sig">Pool + Permission Hold</text>
+<text x="72" y="335" class="t-b" font-size="11">Catalog filters out unsafe paths; Critic picks</text>
+<text x="72" y="353" class="t-b" font-size="11">expectation_boundary; pauses in permission</text>
+<rect x="62" y="384" width="324" height="78" rx="5" fill="#FBECE6" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="404" class="t-code-sig">Companion (1-Step Invite)</text>
+<text x="72" y="425" class="t-b" font-size="11">&quot;That sounds suffocating. Want to separate</text>
+<text x="72" y="443" class="t-b" font-size="11">their anxiety from your own study pace first?&quot;</text>
+<rect x="62" y="474" width="324" height="78" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="494" class="t-code-sig">Student (Colloquial Agree)</text>
+<text x="72" y="515" class="t-b" font-size="11">&quot;Sure, tell me how to separate that.&quot;</text>
+<text x="72" y="533" class="t-b" font-size="11">-&gt; Matches negative-lookahead agree regex</text>
+<rect x="62" y="564" width="324" height="78" rx="5" fill="#E3E7DC" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="72" y="584" class="t-code-sig">Companion (action Step 1)</text>
+<text x="72" y="605" class="t-b" font-size="11">&quot;Their worry is theirs; tonight before 11 PM,</text>
+<text x="72" y="623" class="t-b" font-size="11">how you pace this page is still yours.&quot;</text>
+<rect x="424" y="130" width="352" height="540" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="424" y="130" width="352" height="60" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="440" y="155" class="t-h-w">Trace 2 · Late-Night Exhaustion &amp; Stop</text>
+<text x="440" y="177" class="t-code-w">low_energy_companionship · fast_path -&gt; quiet</text>
+<rect x="438" y="204" width="324" height="78" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="448" y="224" class="t-code-sig">Student (Exhausted + Refusal)</text>
+<text x="448" y="245" class="t-b" font-size="11">&quot;Back at 10:30 PM, brain is fried, feel guilty</text>
+<text x="448" y="263" class="t-b" font-size="11">resting, please don&#x27;t give me action steps.&quot;</text>
+<rect x="438" y="294" width="324" height="78" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="448" y="314" class="t-code-sig">Fast-Path Non-Action</text>
+<text x="448" y="335" class="t-b" font-size="11">readiness=low + refusal -&gt; Planner emits</text>
+<text x="448" y="353" class="t-b" font-size="11">low_energy_companionship (bypasses Critic)</text>
+<rect x="438" y="384" width="324" height="78" rx="5" fill="#E3E7DC" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="448" y="404" class="t-code-sig">Companion (De-Guilt)</text>
+<text x="448" y="425" class="t-b" font-size="11">&quot;Resting after a full evening isn&#x27;t slacking;</text>
+<text x="448" y="443" class="t-b" font-size="11">you do not have to touch problems tonight.&quot;</text>
+<rect x="438" y="474" width="324" height="78" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="448" y="494" class="t-code-sig">Student (Requests Quiet)</text>
+<text x="448" y="515" class="t-b" font-size="11">&quot;Let me just sit quietly.&quot; -&gt; triggers=[quiet]</text>
+<text x="448" y="533" class="t-b" font-size="11">Clears pending_offer; sets question budget=0</text>
+<rect x="438" y="564" width="324" height="78" rx="5" fill="#FBECE6" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="448" y="584" class="t-code-sig">Companion (quiet_presence)</text>
+<text x="448" y="605" class="t-b" font-size="11">&quot;Alright, I&#x27;m right here with you, no questions.&quot;</text>
+<text x="448" y="623" class="t-b" font-size="11">(generation++ voids in-flight prompts)</text>
+<rect x="800" y="130" width="352" height="540" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="800" y="130" width="352" height="60" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.2"/>
+<text x="816" y="155" class="t-h-w">Trace 3 · Cross-Session Rename &amp; Scope</text>
+<text x="816" y="177" class="t-code-w">grounded_memory · no_topic_probe:exam</text>
+<rect x="814" y="204" width="324" height="78" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="824" y="224" class="t-code-sig">Session 1 (Rule &amp; Correction)</text>
+<text x="824" y="245" class="t-b" font-size="11">&quot;Call me Xiao-Lin [木], never ask math ranks&quot;</text>
+<text x="824" y="263" class="t-b" font-size="11">-&gt; &quot;You misheard, use Xiao-Lin with [王] radical.&quot;</text>
+<rect x="814" y="294" width="324" height="78" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="824" y="314" class="t-code-sig">Grounder Commit</text>
+<text x="824" y="335" class="t-b" font-size="11">ConsolidationGrounder entails new name,</text>
+<text x="824" y="353" class="t-b" font-size="11">supersedes old; stores no_topic_probe:math</text>
+<rect x="814" y="384" width="324" height="78" rx="5" fill="#E3E7DC" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="824" y="404" class="t-code-sig">Reconnect Wake Check</text>
+<text x="824" y="425" class="t-b" font-size="11">resolve_opening detects prior turns in SQLite;</text>
+<text x="824" y="443" class="t-b" font-size="11">skips onboarding, greets naturally</text>
+<rect x="814" y="474" width="324" height="78" rx="5" fill="#FBECE6" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="824" y="494" class="t-code-sig">identity_name Recall</text>
+<text x="824" y="515" class="t-b" font-size="11">Asked &quot;what name did I pick?&quot; -&gt; recalls</text>
+<text x="824" y="533" class="t-b" font-size="11">&quot;Xiao-Lin with the [王] radical&quot; accurately</text>
+<rect x="814" y="564" width="324" height="78" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="824" y="584" class="t-code-sig">Cross-Topic Bedtime Aid</text>
+<text x="824" y="605" class="t-b" font-size="11">Shares insomnia -&gt; enforces grade ban while</text>
+<text x="824" y="623" class="t-b" font-size="11">offering bedtime worry_parking smoothly</text>
+  <rect x="48" y="692" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="709" class="t-m">Companion System Reference Pack · Architecture &amp; Empirical Benchmarks</text>
+  <text x="1152" y="709" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 21px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 10.5px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #FF9A76; font-weight: 700; }
+      .t-num { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #242824; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">FIGURE 06 · GROUNDED MEMORY &amp; CONCEPT CLUSTERS</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">ConsolidationGrounder + Scoped Mention Policy + Deterministic Overlap</text>
+  <text x="48" y="68" class="t-title">Cross-Family Entailment Gate, Verbatim Summaries &amp; 8 School Domain Clusters</text>
+  <text x="48" y="118" class="t-code-sig">A · TWO-CALL SOURCE-ENTAILED MEMORY PIPELINE (2 Calls / 20s Shared Budget)</text>
+<rect x="48" y="136" width="252" height="166" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="62" y="166" class="t-h">1. Raw Evidence Anchors</text>
+<text x="62" y="198" class="t-b">Strictly indexes transcribed</text>
+<text x="62" y="221" class="t-b">user_turn IDs &amp; Core events.</text>
+<text x="62" y="244" class="t-b">Assistant prose never creates</text>
+<text x="62" y="267" class="t-b">factual claims about the user.</text>
+<line x1="300" y1="219" x2="328" y2="219" stroke="#242824" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="332" y="136" width="252" height="166" rx="6" fill="#EFEAE0" stroke="#242824" stroke-width="1.4"/>
+<text x="346" y="166" class="t-h">2. Candidate Extraction (#1)</text>
+<text x="346" y="198" class="t-b">gpt-4.1-mini extracts typed</text>
+<text x="346" y="221" class="t-b">candidates + summary_evidence</text>
+<text x="346" y="244" class="t-b">turn IDs within session/persistent</text>
+<text x="346" y="267" class="t-b">boundaries (extra=forbid).</text>
+<line x1="584" y1="219" x2="612" y2="219" stroke="#242824" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="616" y="136" width="252" height="166" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.4"/>
+<text x="630" y="166" class="t-h">3. Entailment Gate (#2)</text>
+<text x="630" y="198" class="t-b">ConsolidationGrounder (qwen-flash)</text>
+<text x="630" y="221" class="t-b">checks PREMISE (verbatim turns) -&gt;</text>
+<text x="630" y="244" class="t-b">HYPOTHESIS; unsupported claims</text>
+<text x="630" y="267" class="t-b">dropped before commit.</text>
+<line x1="868" y1="219" x2="896" y2="219" stroke="#242824" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="900" y="136" width="252" height="166" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<text x="914" y="166" class="t-h">4. Scoped Store &amp; Summary</text>
+<text x="914" y="198" class="t-b">extractive_summary() joins verbatim</text>
+<text x="914" y="221" class="t-b">user quotes (&lt;=150 chars).</text>
+<text x="914" y="244" class="t-b">Corrections mark old items</text>
+<text x="914" y="267" class="t-b">as superseded automatically.</text>
+<text x="48" y="346" class="t-code">B · EIGHT ZERO-DEPENDENCY CHINESE SCHOOL CONCEPT CLUSTERS (concepts.py)</text>
+<rect x="48" y="360" width="650" height="276" rx="6" fill="#E3E7DC" stroke="#3B5246" stroke-width="1.4"/>
+<rect x="66" y="378" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="398" class="t-code-sig">cluster:parent_family</text>
+<text x="78" y="417" class="t-m">parents / comparison / nagging / relatives</text>
+<rect x="380" y="378" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="392" y="398" class="t-code-sig">cluster:exam_grade</text>
+<text x="392" y="417" class="t-m">monthly test / mock exam / rank / math / homework</text>
+<rect x="66" y="440" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="460" class="t-code-sig">cluster:peer_school</text>
+<text x="78" y="479" class="t-m">deskmate / roommate / class / teacher / dorm</text>
+<rect x="380" y="440" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="392" y="460" class="t-code-sig">cluster:future_track</text>
+<text x="392" y="479" class="t-m">subject track / major / college / future path</text>
+<rect x="66" y="502" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="522" class="t-code-sig">cluster:sleep_burnout</text>
+<text x="78" y="541" class="t-m">insomnia / late evening study / bedtime / fatigue</text>
+<rect x="380" y="502" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="392" y="522" class="t-code-sig">cluster:appearance_self</text>
+<text x="392" y="541" class="t-m">body image / weight / appearance self-criticism</text>
+<rect x="66" y="564" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="78" y="584" class="t-code-sig">cluster:time_plan</text>
+<text x="78" y="603" class="t-m">time management / schedule / study planner</text>
+<rect x="380" y="564" width="300" height="50" rx="5" fill="#FFFFFF" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="392" y="584" class="t-code-sig">cluster:identity_name</text>
+<text x="392" y="603" class="t-m">name / nickname / preferred form of address</text>
+<text x="722" y="346" class="t-code-sig">C · SCOPED MENTION &amp; REVISION POLICY</text>
+<rect x="722" y="360" width="430" height="276" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<rect x="738" y="378" width="398" height="52" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="750" y="398" class="t-h" font-size="12">allowed (Ambient Safe Facts)</text>
+<text x="750" y="417" class="t-m">Preferred name &amp; benign context injected naturally across turns.</text>
+<rect x="738" y="440" width="398" height="52" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="750" y="460" class="t-h" font-size="12">only_when_raised (On-Demand Recall)</text>
+<text x="750" y="479" class="t-m">Past stressors or strategy outcomes unlocked only on cluster match.</text>
+<rect x="738" y="502" width="398" height="52" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="750" y="522" class="t-h" font-size="12">avoid_proactive (Hard Boundary)</text>
+<text x="750" y="541" class="t-m">Explicit &#x27;do not ask about X&#x27; enforces proactive &amp; followup silence.</text>
+<rect x="738" y="564" width="398" height="52" rx="5" fill="#EFEAE0" stroke="#D5D8D0" stroke-width="1.2"/>
+<text x="750" y="584" class="t-h" font-size="12">supersedes_id (Correction Chain)</text>
+<text x="750" y="603" class="t-m">Name/fact corrections deactivate stale items cleanly across sessions.</text>
+  <rect x="48" y="652" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="669" class="t-m">Companion System Reference Pack · Architecture &amp; Empirical Benchmarks</text>
+  <text x="1152" y="669" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>

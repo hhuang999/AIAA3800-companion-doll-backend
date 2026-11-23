@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#242824"/>
+    </marker>
+    <marker id="arr-sig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#BF471B"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#5A6058"/>
+    </marker>
+    <style>
+      .t-kicker { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; fill: #BF471B; font-weight: 700; }
+      .t-title { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 21px; font-weight: 700; fill: #242824; }
+      .t-sub { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 12px; fill: #5A6058; }
+      .t-h { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #242824; }
+      .t-h-sig { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; fill: #BF471B; }
+      .t-h-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13.5px; font-weight: 700; fill: #FFFFFF; }
+      .t-b { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11.5px; fill: #242824; }
+      .t-m { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 10.5px; fill: #5A6058; }
+      .t-m-w { font-family: 'Manrope', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 11px; fill: #DCE2DD; }
+      .t-code { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #242824; font-weight: 600; }
+      .t-code-sig { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #BF471B; font-weight: 700; }
+      .t-code-w { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 10.5px; fill: #FF9A76; font-weight: 700; }
+      .t-num { font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #242824; }
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#F7F3EC"/>
+  <path d="M 48 86 H 1152" stroke="#D5D8D0" stroke-width="1"/>
+  <text x="48" y="38" class="t-kicker">FIGURE 03 · THREE-LANE SYSTEM ARCHITECTURE</text>
+  <text x="1152" y="38" text-anchor="end" class="t-sub">Python 3.10 Modular Monolith · Deterministic Authority &amp; Latency Isolation</text>
+  <text x="48" y="68" class="t-title">Decoupled Realtime, Cognitive Deliberation &amp; Safety/Persistence Architecture</text>
+  <rect x="48" y="118" width="224" height="134" rx="6" fill="#FFFFFF" stroke="#242824" stroke-width="1.5"/>
+<text x="66" y="148" class="t-h">Voice &amp; Text Adapters</text>
+<text x="66" y="174" class="t-b">• Xiaozhi ESP32 WebSocket</text>
+<text x="66" y="196" class="t-b">• SenseVoice ASR + emotion cue</text>
+<text x="66" y="218" class="t-code">Bearer Auth + device_id-&gt;user_key</text>
+<line x1="272" y1="185" x2="318" y2="185" stroke="#242824" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="324" y="112" width="520" height="146" rx="6" fill="#252C27" stroke="#242824" stroke-width="1.6"/>
+<text x="344" y="142" class="t-h-w">CompanionCore &amp; StateMachine (Sole Authority)</text>
+<text x="344" y="168" class="t-m-w">• Owns stage, PendingOffer lifecycle, generation monotonic increment &amp; cancel</text>
+<text x="344" y="191" class="t-m-w">• Strictly separates active_plan_id (audio) from active_support_plan_id</text>
+<text x="344" y="214" class="t-m-w">• Freezes TurnPolicyFrame for Talker; adopts background plans via CAS only</text>
+<text x="344" y="240" class="t-code-w">Single-Writer SQLite Lease (v2) + Atomic State Transition</text>
+<line x1="844" y1="185" x2="886" y2="185" stroke="#BF471B" stroke-width="1.8" marker-end="url(#arr-sig)"/>
+<rect x="892" y="118" width="260" height="134" rx="6" fill="#FBECE6" stroke="#BF471B" stroke-width="1.5"/>
+<text x="910" y="148" class="t-h-sig">Voice &amp; Expression Output</text>
+<text x="910" y="174" class="t-b">• Streaming clause (&gt;=8 chars) TTS</text>
+<text x="910" y="196" class="t-b">• In-memory 60ms Opus + 64 LRU</text>
+<text x="910" y="218" class="t-b">• Context-mapped dynamic emoji</text>
+<rect x="48" y="294" width="344" height="244" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="66" y="322" class="t-code-sig">LANE 01 · REALTIME TALKER</text>
+<text x="66" y="348" class="t-h">Low-Latency Expression Lane</text>
+<text x="66" y="376" class="t-b">• qwen-flash streaming generation</text>
+<text x="66" y="400" class="t-b">• 400ms safety gate + lexicon guard</text>
+<text x="66" y="424" class="t-b">• OutputRail blocks cliches &amp; lectures</text>
+<text x="66" y="448" class="t-b">• Quote-aware boundary (&lt;=3 sentences)</text>
+<text x="66" y="472" class="t-b">• Question budget constrained to 0 / 1</text>
+<text x="66" y="514" class="t-code">Never blocks on background pool</text>
+<rect x="412" y="294" width="392" height="244" rx="6" fill="#EFEAE0" stroke="#3B5246" stroke-width="1.4"/>
+<text x="430" y="322" class="t-code">LANE 02 · BOUNDED MULTI-AGENT POOL</text>
+<text x="430" y="348" class="t-h">Background Cognitive Deliberation</text>
+<text x="430" y="376" class="t-b">• Brief (qwen-flash) // Analysis (gpt-4.1-mini)</text>
+<text x="430" y="400" class="t-b">• Deterministic Catalog qualification filter</text>
+<text x="430" y="424" class="t-b">• Planner (gpt-4.1-mini) staged guidance</text>
+<text x="430" y="448" class="t-b">• Cross-family Critic (qwen-flash) / Fast-Path</text>
+<text x="430" y="472" class="t-b">• DeltaChecker mid-flight interruption review</text>
+<text x="430" y="514" class="t-code-sig">Hard Budget: 8 Calls / 6k Out / 20s Deadline</text>
+<rect x="824" y="294" width="328" height="244" rx="6" fill="#E3E7DC" stroke="#AEB3AA" stroke-width="1.4"/>
+<text x="842" y="322" class="t-code">LANE 03 · SAFETY, MEMORY &amp; STORE</text>
+<text x="842" y="348" class="t-h">Safety, Grounded Memory &amp; Telemetry</text>
+<text x="842" y="376" class="t-b">• Concurrent L1 lexicon + L2 risk takeover</text>
+<text x="842" y="400" class="t-b">• 2-call entailment + verbatim summary</text>
+<text x="842" y="424" class="t-b">• 8 Chinese school stressor concept clusters</text>
+<text x="842" y="448" class="t-b">• Transactional v1-&gt;v2 backup &amp; crash recovery</text>
+<text x="842" y="472" class="t-b">• Streamlit WAL read-only telemetry dashboard</text>
+<text x="842" y="514" class="t-code">End / Memory Share 2-Call / 20s Cap</text>
+<line x1="396" y1="258" x2="220" y2="290" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<line x1="600" y1="258" x2="600" y2="290" stroke="#242824" stroke-width="1.3" marker-end="url(#arr)"/>
+<line x1="780" y1="258" x2="970" y2="290" stroke="#5A6058" stroke-width="1.3" marker-end="url(#arr-muted)"/>
+<path d="M 650 294 C 650 272, 690 272, 690 262" fill="none" stroke="#BF471B" stroke-width="1.6" marker-end="url(#arr-sig)"/>
+<rect x="48" y="560" width="1104" height="96" rx="6" fill="#FFFFFF" stroke="#AEB3AA" stroke-width="1.2"/>
+<text x="68" y="590" class="t-h">Architectural Isolation &amp; Authority Invariants</text>
+<text x="68" y="615" class="t-b">1. Only one active CompanionCore holds WriterLease per SQLite file; the Streamlit dashboard opens uri mode=ro (writing only risk review ack).</text>
+<text x="68" y="638" class="t-b">2. Background agents hold no direct audio/state handles; every proposal passes schema validation, Critic/Fast-Path, and quadruple CAS commit.</text>
+  <rect x="48" y="672" width="1104" height="1" fill="#D5D8D0"/>
+  <text x="48" y="689" class="t-m">Companion System Reference Pack · Architecture &amp; Empirical Benchmarks</text>
+  <text x="1152" y="689" text-anchor="end" class="t-code">VECTOR SPECIFICATION</text>
+</svg>
